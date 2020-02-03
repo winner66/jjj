@@ -1,0 +1,38 @@
+<!--pages/person/person-menu.wxml 个人中心-->
+
+<view class="userinfo" >
+  <open-data type="userAvatarUrl" class="userinfo-avatar" default-text='../../assets/images/person/avatar.png'></open-data>
+  <!-- <image src="{{img_src}}" class="userinfo-avatar" ></image> -->
+  <view class="userinfo-login" wx:if='login==0'>
+    <view class="login" bindtap="loginOrReg">登录/注册</view>   
+  </view>
+  <view class="userinfo-login" wx:else > {{nickName}}用户名</view>
+</view>
+<view class="usermotto ">
+<view bindtap="toAgent" class="weui-cell">
+    <view class="weui-cell__bd ">
+      <view>优质代办</view>
+    </view>
+    <view class="weui-cell__ft">
+      <i-icon type="enter" size="28" />
+    </view>  
+</view>
+ 
+<!-- 
+  <view class="weui-cell "  bindtap="baoBei">
+    <view class="weui-cell__bd ">
+      <view>报备</view>
+    </view>
+    <view class="weui-cell__ft">
+      <i-icon type="enter" size="28" />
+    </view>
+  </view> -->
+  <view class="weui-cell " hover-class="weui-cell_active " bindtap="memberCode">
+    <view class="weui-cell__bd ">
+      <view>会员码</view>
+    </view>
+    <view class="weui-cell__ft">
+      <i-icon type="enter" size="28" />
+    </view>
+  </view>
+</view>

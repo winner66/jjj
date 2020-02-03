@@ -1,0 +1,42 @@
+<!--pages/computer/index.wxml资金监管细节-->
+
+<view class="weui-cell ">
+  <view class="weui-cell__hd">
+    <view class="weui-label">银行：</view>
+  </view>
+  <view class="weui-cell__bd">
+     <view class="weui-label">{{bankname}}</view>
+  </view>
+</view>
+<view class="weui-cell ">
+  <view class="weui-cell__hd">
+    <view class="weui-label">账号名：</view>
+  </view>
+  <view class="weui-cell__bd">
+     <view class="weui-label">{{accountname}}</view>
+  </view>
+</view>
+<view class="weui-cell ">
+  <view class="weui-cell__hd">
+    <view class="weui-label">账号：</view>
+  </view>
+  <view class="weui-cell__bd">
+     <view class="weui-label">{{account}}</view>
+  </view>
+</view>
+<view class="weui-cell ">
+  <view class="hd">
+    <view class="weui-label">存入网点：</view>
+  </view>
+  <view class="bd">
+    {{cun}}
+  </view>
+</view>
+<view class="weui-cell ">
+  <view class="hd">
+    <view class="weui-label">支付网点：</view>
+  </view>
+  <view class="bd">
+     {{zhi}}
+  </view>
+</view>

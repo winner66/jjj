@@ -1,0 +1,18 @@
+<!--pages/houseActive/index.wxml  新盘活动-即优惠-->
+<scroll-view>
+  <view class="container">
+    <view class="imga">
+      <image src="{{cover}}" class="img"></image>
+    </view>
+    <view class="title">{{title}}</view>
+    <view class="time_row">
+      
+      <view class="time">{{date_start}}--{{date_end}}</view>
+      <view class="house" bindtap="toHouse">{{build}}</view>     
+    </view>
+    <view class="con">
+      <rich-text nodes="{{con}}"></rich-text>
+    </view>
+  </view>
+</scroll-view>
+

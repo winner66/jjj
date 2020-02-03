@@ -1,0 +1,18 @@
+<style lang="less">
+</style>
+<template>
+    <view>33动态学习使我快乐
+    </view>
+</template>
+
+<script>
+    import wepy from 'wepy'
+    export default class LEARN extends wepy.page {
+        components ={ };
+        mixins =[];
+        data={info:null};
+        methods ={};
+        events ={};
+        onLoad(){}
+    }
+</script>

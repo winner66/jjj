@@ -1,0 +1,23 @@
+<!--pages/qudao/list/index.wxml-->
+<!-- <text>pages/qudao/list/index.wxml</text> -->
+
+ <scroll-view class="classify_detail"   scroll-y scroll-with-animation="true" style="height:{{winHeight}}rpx">
+    <view>
+      <scroll-view style="height:{{winHeight-50}}px background: gray" scroll-y="true" bindscrolltolower="scrollLower" >
+        <view wx:for="{{qudao}}" wx:key="objectId">
+          <view class="item" bindtap="gotoDetail" data-item="{{item}}">
+            <view class="left">
+              <view class="title">{{item.title}}</view>
+              <view class="time">{{item.createtime}}</view>
+            </view>
+            <view class="img">
+              <image class="img" src="{{item.cover}}"></image>
+            </view>
+          </view>
+        </view>
+         <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>
+      <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>
+      </scroll-view>
+
+    </view>
+  </scroll-view>

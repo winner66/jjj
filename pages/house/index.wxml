@@ -1,0 +1,194 @@
+<!--pages/house/index.wxml置业计算-->
+<view class='history-table-wrap'>
+<!-- <view class="header">
+  <view class="company">南充（德佑）西华大地房产:</view>
+  <view class="td-explain">尊敬的客户,首先感谢您的信任，我们必将不辱使命！南充（德佑）西华大地房产，依托全国规模的“贝壳找房”大平台，秉承“客户至上、诚实可信”的服务理念，竭诚为您解决房产相关的一切问题！下面，请允许我为您做置业预算规划！</view>
+</view> -->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="table">
+    <!-- <view class="tr">
+      <view class="td-title">置业预算单</view>
+    </view> -->
+    <!-- <view class="tr">
+      <view class="td-explain">尊敬的客户：首先感谢您的信任，我们必将不辱使命！南充（德佑）西华大地房产，依托全国规模的“贝壳找房”大平台，秉承“客户至上、诚实可信”的服务理念，竭诚为您解决房产相关的一切问题！下面，请允许我为您做置业预算规划！</view>
+    </view> -->
+    <view class="tr">
+      <view class="td-subtitle">房产基本信息</view>
+    </view>
+    <view class="tr">
+      <view class="td3">
+        <view class="tdl">房产座落：</view>
+        <input class="tdr" bindinput='localChange' name="local" type='text'></input>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">建筑面积：</view>
+        <input class="tdr" bindinput='buildAreaChange' name="buildArea" type='text'  />
+      </view>
+      <view class="td2">
+        <view class="tdl">土地分摊面积：</view>
+        <input class="tdr" bindinput='landAreaChange' type='text'name="landArea"  />
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">装修情况：</view>
+        <input class="tdr"  type='text' name="fit" />
+      </view>
+      <view class="td2">
+        <view class="tdl">是否有电梯：</view>
+        <input class="tdr" type='text' name="ele" />
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">建筑性质：</view>
+        <input class="tdr" bindinput='buildChange' type='text' name="build" />
+      </view>
+      <view class="td2">
+        <view class="tdl">土地性质：</view>
+        <input class="tdr" bindinput='landChange' type='text' name="land" />
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">房屋来源：</view>
+        <input class="tdr" bindinput='houseOrigChange' type='text' name="houseOrig" />
+      </view>
+      <view class="td2">
+        <view class="tdl">建成年代：</view>
+        <input class="tdr" bindinput='houseTimeChange' type='text' name="houseTime" />
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">产权时间：</view>
+        <input class="tdr" bindinput='timeChange' type='text' name="time" />
+      </view>
+      <view class="td2">
+        <view class="tdl">是否满五唯一：</view>
+        <input class="tdr" bindinput='onlyHouseChange' type='text' name="onlyHouse" />
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">预计成交价：</view>
+        <input class="tdr" bindinput='tradePriceChange' type='text' name="tradePrice" />
+      </view>
+      <view class="td2">
+        <view class="tdl">付款方式：</view>
+        <input class="tdr" bindinput='payMethodsChange' type='text' name="payMethods" />
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td-subtitle">经费预算</view>
+    </view>
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">贷款评估单价预估：</view>
+        <input class="tdr" bindinput='estimatePerPriceChange' type='text' name="estimatePerPrice" />
+      </view>
+      <view class="td2">
+        <view class="tdl">贷款评估总价预估：</view>
+        <input class="tdr" bindinput='estimatePriceChange' type='text' name="estimatePrice" />
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">首付款额预估：</view>
+        <input class="tdr" bindinput='firstPayPriceChange' type='text' name="firstPayPrice" />
+      </view>
+      <view class="td2">
+        <view class="tdl">贷款额预估：</view>
+        <input class="tdr" bindinput='loanPriceChange' type='text' name="loanPrice" />
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">预计税金：</view>
+        <input class="tdr" bindinput='taxChange' type='text' name="tax" />
+      </view>
+      <view class="td2">
+        <view class="tdl">预计土地出让金：</view>
+        <input class="tdr" bindinput='landTaxChange' type='text' name="landTax" />
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">中介服务费用预估：</view>
+        <input class="tdr" bindinput='midServerEstimateChange' type='text' name="midServerEstimate" />
+      </view>
+      <view class="td2">
+        <view class="tdl">首付预备合计预估：</view>
+        <input class="tdr" bindinput='firstSumEstimateChange' type='text' name="firstSumEstimate"/>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">贷款年限：</view>
+        <input class="tdr" bindinput='loanTimeChange' type='text' name="loanTime" />
+      </view>
+      <view class="td2">
+        <view class="tdl">还款方式：</view>
+        <input class="tdr" bindinput='MethodsChange' type='text' name="Methods" />
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td3">
+        <view class="tdl">预计月供：</view>
+        <input class="tdr" bindinput='monthPayChange' type='text' name="monthPay" />
+      </view>
+    </view>
+
+    <view class="tr">
+      <view class="td">
+        <view class="jf_rule">
+          <view class="title tc">温馨提示：</view>
+          <view class="jf_content">
+            <view class="sec_title">本预算单，基于经纪人的专业、经验做出判断，数据供客户参考，不承担法律责任，相关法律责任以买卖合同和居间服务合同为准。</view>
+          </view>
+          <!-- <view class="jf_content">
+            <view class="sec_title">2.本预算单中所涉及金额数据，均为预估，但涉及的面积、楼层等数据，应为实际信息。“装修情况”系根据日常认知进行口头表达，具体情况以买卖合同为准。 </view>
+          </view>
+          <view class="jf_content">
+            <view class="sec_title">3.“预计成交价”一栏，如无单独说明，通常包含现有家具家电、附属设施、搭接面积等。</view>
+          </view>
+          <view class="jf_content">
+            <view class="sec_title">4.税金、土地出让金的具体交纳方，以买卖合同为准。 </view>
+          </view>
+          <view class="jf_content">
+            <view class="sec_title">5.本预算单所列经费数据，仅以做出预算当时的买卖双方期望、市场、政策情况为参考依据。 </view>
+          </view>
+          <view class="jf_content">
+            <view class="sec_title">6.计划按揭贷款购房的，在签定买卖合同前，请一定事先与经纪人确认贷款资格！ </view>
+          </view> -->
+        </view>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">经纪人：</view>
+        <input class="tdr" bindinput='areapriceChange' type='text'name="name" />
+      </view>
+      <view class="td2">
+        <view class="tdl">电话：</view>
+        <input class="tdr" bindinput='areapriceChange' type='digit' maxlength="11" name="phone" />
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td3">
+        <view class="tdl">预算时间：</view>
+        <input class="tdr" bindinput='areapriceChange' type='text' name="createTime" />
+      </view>
+    </view>
+  </view>
+   <!-- <view class="btn-area">
+    <button formType="submit">Submit</button>
+    <button formType="reset">Reset</button>
+  </view> -->
+</form>
+  <!-- <view class="phone">服务投诉电话：0817-2339717</view>
+   <view class="login">大地，为您一生所托！</view> -->
+
+</view>

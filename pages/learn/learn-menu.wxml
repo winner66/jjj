@@ -1,0 +1,32 @@
+<!--pages/learn/learn-menu.wxml终身学习-->
+
+
+<view class="classify" style="height:{{winHeight-50}}px">
+  <scroll-view class="classify_catetory" scroll-y scroll-with-animation="true" style="height:{{winHeight-50}}px">
+    <!-- <view class="name {{item.active? 'active':''}}" wx:for="{{categories}}" wx:key="item" bindtap="changeCate" data-code="{{item.id}}">
+      {{item.name}}
+    </view> -->
+    <view class=" name {{currentIndex==0?'active':'default'}}" data-code="0" bindtap="changeCate">制度汇总</view>
+    <view class="name {{currentIndex==1?'active':'default'}}" data-code="1" bindtap="changeCate">重点解析</view>
+    <view class="name {{currentIndex==2?'active':'default'}}" data-code="2" bindtap="changeCate">楼市见解</view>
+
+  </scroll-view>
+  <scroll-view class="classify_detail" scroll-y scroll-with-animation="true" style="height:{{winHeight-50}}px">
+    <view>
+      <scroll-view style="height:{{winHeight-50}}px background: gray" >
+        <view wx:for="{{childcateList}}" wx:key="objectId">
+          <view class="item" bindtap="gotoDetail" data-item="{{item}}">
+            <view class="left">
+              <view class="title">{{item.title}}</view>
+              <view class="time">{{item.createtime}}</view>
+            </view>
+            <view class="img">
+              <image class="img" src="{{img}}"></image>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,406 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"enhance": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"nodeModules": true,
+		"autoAudits": true,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.7.7",
+	"appid": "wxb686d11b965db08e",
+	"projectname": "mini",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 14,
+			"list": [
+				{
+					"id": -1,
+					"name": "about",
+					"pathName": "pages/about",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "cpt",
+					"pathName": "pages/cpt/cpt",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "/ricetext",
+					"pathName": "pages/riceText/ricetext",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "p/map",
+					"pathName": "pages/map/map",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "scancode",
+					"pathName": "pages/scancode/scancode",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "loading",
+					"pathName": "pages/page_loading/loading",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "iview",
+					"pathName": "pages/ivew/ivew",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "base64",
+					"pathName": "pages/base64",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "apitest",
+					"pathName": "pages/test/apitest",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "cpt-cpt-comm-result",
+					"pathName": "pages/cpt-comm-result/cpt-comm-result",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 10,
+					"name": "/cpt1/cpt",
+					"pathName": "pages/cpt1/cpt",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "/cpt/cpt",
+					"pathName": "pages/cpt/cpt",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 12,
+					"name": "/tax/tax",
+					"pathName": "pages/tax/tax",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "/about",
+					"pathName": "pages/about",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "ricetext",
+					"pathName": "pages/riceText/ricetext",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "/grid/index",
+					"pathName": "pages/grid/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 16,
+					"name": "housecpt/cpt",
+					"pathName": "pages/housecpt/cpt",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/tools/index",
+					"pathName": "pages/tools/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/map/map",
+					"pathName": "pages/map/map",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/tools/map",
+					"pathName": "pages/tools/map",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/housecpt/cpt",
+					"pathName": "pages/housecpt/cpt",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/privice",
+					"pathName": "pages/privice",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/TAX/index",
+					"pathName": "pages/TAX/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "/tAX/index",
+					"pathName": "pages/tAX/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/cpt-text",
+					"pathName": "pages/cpt-text",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/computer/computer-menu",
+					"pathName": "pages/computer/computer-menu",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/learn/learn-menu",
+					"pathName": "pages/learn/learn-menu",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dynamic/dynamic-menu",
+					"pathName": "pages/dynamic/dynamic-menu",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/learn/learn-menu",
+					"pathName": "pages/learn/learn-menu",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/seller/map",
+					"pathName": "pages/seller/map",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/person/person-menu",
+					"pathName": "pages/person/person-menu",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/person/agent/index",
+					"pathName": "pages/person/agent/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/person/agent_proc/index",
+					"pathName": "pages/person/agent_proc/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/person/agent/index",
+					"pathName": "pages/person/agent/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/person/loginOrReg/index",
+					"pathName": "pages/person/loginOrReg/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/houseActive/index",
+					"pathName": "pages/houseActive/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/houseActive/list/index",
+					"pathName": "pages/houseActive/list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/house/index",
+					"pathName": "pages/house/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/houseDetail/index",
+					"pathName": "pages/houseDetail/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/build/list/index",
+					"pathName": "pages/build/list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/build/index",
+					"pathName": "pages/build/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/learn/learn-menu",
+					"pathName": "pages/learn/learn-menu",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/jg/index",
+					"pathName": "pages/jg/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/learn/index",
+					"pathName": "pages/learn/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/houseDetail/list/index",
+					"pathName": "pages/houseDetail/list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/map/map",
+					"pathName": "pages/map/map",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/cpt-comm-result/cpt-comm-result",
+					"pathName": "pages/cpt-comm-result/cpt-comm-result",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index",
+					"pathName": "pages/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/qudao/list/index",
+					"pathName": "pages/qudao/list/index",
+					"scene": null
+				}
+			]
+		}
+	}
+}

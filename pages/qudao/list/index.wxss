@@ -1,0 +1,75 @@
+/* pages/qudao/list/index.wxss */
+
+.item{
+  display: flex;  
+  border-bottom:  3rpx solid #b2b2b2;
+  background:#fff;
+  height: 150rpx;
+
+    /* margin-bottom: 1em; */
+    /* padding: 1em 0em 0.5em 0em; */
+}
+
+.item .left{
+  display: flex;  
+  flex-direction: column;
+  flex: 1;
+  /* width: 80%; */
+
+}
+.item .left .title { 
+height: 80rpx;
+font-size: 36rpx;
+text-align: left;
+font-weight: bold;
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis; 
+justify-content: center;
+margin-top: 20rpx;
+
+margin-bottom: 18rpx;
+margin-left: 24rpx;
+padding: 6rpx;
+}
+.item .left .time{
+height: 40rpx;
+font-size: 25rpx;
+text-align: left;
+color: gray;
+/* margin-top: 10px; */
+margin-bottom: 14rpx;
+margin-left: 24rpx;
+}
+.item .img{
+  flex: 1;
+  /* width: 20%; */
+  text-align: right;
+  padding-right: 10rpx;
+
+  height: 120rpx;
+  width: 120rpx;
+  margin-top: 8rpx;
+  margin-bottom: 4rpx;   
+  border-radius:10rpx;
+
+}
+
+.loading{  
+  padding: 10rpx;  
+  text-align: center;  
+ }  
+ .loading:before{  
+   display: inline-block;  
+   margin-right: 5rpx;  
+   vertical-align: middle;  
+   content: '';  
+   width: 60rpx;  
+  height: 60rpx;  
+  /* background: url(../../../assets/images/common/loadding.gif) no-repeat;   */
+   background-size: contain;  
+  animation: rotate 1s linear infinite;  
+ }  
+ .loading.complete:before{  
+   display: none;  
+ }

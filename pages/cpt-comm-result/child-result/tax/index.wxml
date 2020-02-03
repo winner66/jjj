@@ -1,0 +1,143 @@
+<!--pages/cpt-comm-result/child-result/tax/index.wxml-->
+
+<view class="weui-cell ">
+    <view class="weui-cell__hd">
+      <view class="weui-label">契税：约</view>
+    </view>
+    <view class="weui-cell__bd">
+      <view class="weui-label">{{deedTax}}</view>
+    </view>
+    <view class="weui-cell__fd">
+      <view class="weui-label">元</view>
+    </view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__hd">
+      <view class="weui-label">个人所得税：约</view>
+    </view>
+    <view class="weui-cell__bd">
+      <view class="weui-label">{{personTax}}</view>
+    </view>
+    <view class="weui-cell__fd">
+      <view class="weui-label">元</view>
+    </view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__hd">
+      <view class="weui-label">增值税计附加：约：</view>
+    </view>
+    <view class="weui-cell__bd">
+      <view class="weui-label">{{addMoney}}</view>
+    </view>
+    <view class="weui-cell__fd">
+      <view class="weui-label">元</view>
+    </view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__hd">
+      <view class="weui-label">土地增值税：约</view>
+    </view>
+    <view class="weui-cell__bd">
+      <view class="weui-label">{{landMoney}}</view>
+    </view>
+    <view class="weui-cell__fd">
+      <view class="weui-label">元</view>
+    </view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__hd">
+      <view class="weui-label">继承税：约</view>
+    </view>
+    <view class="weui-cell__bd">
+      <view class="weui-label">{{heritMoney}}</view>
+    </view>
+    <view class="weui-cell__fd">
+      <view class="weui-label">元</view>
+    </view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__hd">
+      <view class="weui-label">赠予税：约</view>
+    </view>
+    <view class="weui-cell__bd">
+      <view class="weui-label">{{giveMoney}}</view>
+    </view>
+    <view class="weui-cell__fd">
+      <view class="weui-label">元</view>
+    </view>
+  </view>
+
+  <view class="weui-cell ">
+    <view class="weui-cell__hd">
+      <view class="weui-label">印花税：约</view>
+    </view>
+    <view class="weui-cell__bd">
+      <view class="weui-label">{{creditMoney}}</view>
+    </view>
+    <view class="weui-cell__fd">
+      <view class="weui-label">元</view>
+    </view>
+  </view>
+   <view class="weui-cell ">
+    <view class="weui-cell__hd">
+      <view class="weui-label">其中买方：{{creditBuyMoney}}元</view>
+    </view>
+     <view class="weui-cell__hd">
+      <view class="weui-label">卖方：{{creditSellMoney}}元</view>
+    </view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__hd">
+      <view class="weui-label">工本费：约</view>
+    </view>
+    <view class="weui-cell__bd">
+      <view class="weui-label">{{usbkeyMoney}}</view>
+    </view>
+    <view class="weui-cell__fd">
+      <view class="weui-label">元</view>
+    </view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__hd">
+      <view class="weui-label">中介费：约</view>
+    </view>
+    <view class="weui-cell__bd">
+      <view class="weui-label">{{mediumMoney}}</view>
+    </view>
+    <view class="weui-cell__fd">
+      <view class="weui-label">元</view>
+    </view>
+  </view>
+    <view class="weui-cell ">
+    <view class="weui-cell__hd">
+      <view class="weui-label">其中买方：{{buyerMoney}}元</view>
+    </view>
+     <view class="weui-cell__hd">
+      <view class="weui-label">卖方：{{sellerMoney}}元</view>
+    </view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__hd">
+      <view class="weui-label">贷款服务费：约</view>
+    </view>
+    <view class="weui-cell__bd">
+      <view class="weui-label">{{loanService}}</view>
+    </view>
+    <view class="weui-cell__fd">
+      <view class="weui-label">元</view>
+    </view>
+  </view>
+
+  <view class="weui-cell ">
+    <view class="weui-cell__hd">
+      <view class="weui-label">税费合计：约</view>
+    </view>
+    <view class="weui-cell__bd">
+      <view class="weui-label">{{sumTax}}</view>
+    </view>
+    <view class="weui-cell__fd">
+      <view class="weui-label">元</view>
+    </view>   
+  </view>
+ 
+  <view bindtap="toHouse">生成置业单</view>

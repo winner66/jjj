@@ -1,0 +1,96 @@
+<!--pages/computer/computer-menu.wxml-->
+<scroll-view>
+  <view class="swiper-container">
+    <swiper class="swiper" bindchange="swiperchange" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="indicator-dots" indicator-color="rgba(0, 0, 0, .3)}" indicator-active-color="#000000" current="{{current_img}}">
+
+      <block wx:for="{{img_urls}}" wx:key="*this">
+        <swiper-item>
+          <image src="{{item}}" mode="widthFix" bindtap="swipclick" class="img"></image>
+        </swiper-item>
+      </block>
+      <!-- <swiper-item >
+     <image src="/assets/tarbar_cpt/h1.jpg"></image>
+    </swiper-item>
+     <swiper-item >
+     <image src="/assets/tarbar_cpt/h2.jpg"></image>
+    </swiper-item>    -->
+    </swiper>
+  </view>
+
+  <view class='recommend'>
+
+    <view class='recommend-item' bindtap="cptchange">
+      <view>
+        <image src="../../assets/images/common/cpt_house.png" />
+      </view>
+      <view>房贷计算</view>
+    </view>
+
+    <view class='recommend-item' bindtap="taxchange">
+      <view>
+        <image src="../../assets/images/common/cpt_tax.png" />
+      </view>
+      <view>税费计算</view>
+    </view>
+    <view class='recommend-item' bindtap="housechange">
+      <view>
+        <image src="../../assets/images/common/infoTable.png" />
+      </view>
+      <view>置业单</view>
+    </view>
+    <view class='recommend-item' bindtap="jgchange">
+      <view>
+        <image src="../../assets/images/common/supervition.png" />
+      </view>
+      <view>监管</view>
+    </view>
+        <view class='recommend-item' bindtap="ptaxchange">
+      <view>
+        <image src="../../assets/images/common/supervition.png" />
+      </view>
+      <view>评税建议</view>
+    </view>
+  </view>
+  <view class="money"> 
+
+      <!-- <view class="loginTitle" style='height:80rpx'>
+        <block wx:for="{{jgArea}}" wx:key="{{jgArea.bank}}" wx:for-item="itemName" bindtap="areaChange">
+          <view bindtap="areaChange" class=" {{itemName.active=='true' ?'select':'default'}}" data-item="{{itemName}}">{{itemName.areaName}}
+          </view>
+        </block>
+      </view>
+      <view class='hr'></view>
+    
+      <view class="bankContent">
+      <block wx:for="{{itemName.banks}}"  wx:for-item="item" wx:key="{{itemName.banks.account}}">
+        <view class="weui-cell " data-item="{{item}}" bindtap="toDetail">
+          <view class="weui-cell__bd">{{item.bankname}}</view>
+          <view class="weui-cell__ft">
+            <i-icon type="enter" size="28" />
+          </view>
+        </view>
+      </block>
+      </view> -->
+      <block wx:for="{{jgArea}}" wx:key="{{jgArea.bank}}" wx:for-item="itemName">
+        <view data-item="{{itemName}}">
+          <view class="title">
+            <view class="left">{{itemName.areaName}}</view>
+            <!-- <view class="right" bindtap="toList">加载更多</view> -->
+            <!-- 想在 区后面增加一个控制显示-区下银行 -->
+            <!-- <view class="imgSec" bindtap="secUpDown">
+            <image class="img" wx:if="{{secFlag}}"src="../../assets/images/common/up.png"></image>
+            <image class="img"wx:else src="../../assets/images/common/up.png"></image>
+            </view> -->
+          </view>
+          <block data-item="{{itemName}}" wx:for="{{itemName.banks}}" wx:for-item="item" wx:key="{{itemName.banks.account}}">
+            <view class="block" data-item="{{item}}" bindtap="gotoDetail">
+              <view class="left" data-item="{{item}}">{{item.jg_bank}}</view>
+              <view class="right">
+                <i-icon type="enter" size="20" />
+              </view>
+            </view>
+          </block>
+        </view>
+      </block>   
+    </view>
+</scroll-view>

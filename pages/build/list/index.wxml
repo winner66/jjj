@@ -1,0 +1,23 @@
+<!--pages/build/list/index.wxml 建设进度list-->
+<scroll-view style="height:{{winHeight}}rpx background: gray" scroll-y="true" bindscrolltolower="scrollLower" >
+  <block wx:for="{{schedule}}" wx:key="objectId">
+    <view class="content"  data-item="{{item}}"  bindtap="gotoDetail">
+      <view class="imge">
+        <image class="img" src="{{imgs}}"></image>
+      </view>
+      <view class="title">{{item.title}}</view>
+      <view class="time">{{item.createtime}}</view>
+    </view>
+  </block>
+  <!-- <view class="block"></view> -->
+  <view wx:if="{{!searchLoading}}" class="loadMoreGif">
+    <image src="../../../assets/images/common/loadding.gif" />
+    <text>正在加载</text>
+  </view>
+  <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>
+  <!--暂无数据显示 wx:if=""-->
+  <view wx:if="{{activity}}==[]" hidden="{{!searchLoadingComplete}}" class="empty-placeholder row-center">
+    <image class="icon-xl" src="../../../assets/images/common/empty.png" />
+    <view class="txt">暂无发现数据</view>
+  </view>
+</scroll-view>

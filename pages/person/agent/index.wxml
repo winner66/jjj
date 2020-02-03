@@ -1,0 +1,83 @@
+<!--pages/person/agent/index.wxml-代办-->
+
+<view>
+  <form bindreset='commFormReset' bindsubmit='commFormSubmit'>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">姓名：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name="name" bindinput='nameChange' type='text' placeholder="请输入代办者姓名" />
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">电话：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name="phone" bindinput='phoneChange' type='digit' maxlength="11" placeholder="请输入电话号码" />
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">楼盘名称：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name="loupan"  bindinput='houseChange' type='text' placeholder="请输入楼盘名称" />
+      </view>
+    </view>
+    <!-- <view class="weui-cell ">
+
+      <view class="weui-cell__hd">
+        <view class="weui-label">楼盘：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="selector" name="loupan"  data-item="{{item}}" range='{{houses}}' range-key="name" value='{{index}}' bindchange='houseChange'>
+          <view class='picker' >{{houses[index].name}}</view>
+        </picker>
+      </view>
+      <view class="weui-cell__ft">
+        <i-icon type="enter" size="28" />
+      </view>
+    </view> -->
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">付款方式：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="selector" name="pay" range='{{methods}}' value='{{methodsindex}}' range-key="name" bindchange='methodsPickerChange'>
+          <view class='picker' data-item="{{item}}">{{methods[methodsindex].name}}</view>
+        </picker>
+        <!-- {{methods[methodsindex].name}} -->
+      </view>
+      <view class="weui-cell__ft">
+        <i-icon type="enter" size="28" />
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">是否有按揭：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="selector" name="diya" range='{{mortgages}}' value='{{mortgagesindex}}' range-key="name" bindchange='methodsPickerChange'>
+          <view class='picker'>{{mortgages[mortgagesindex].name}}</view>
+        </picker>
+      </view>
+      <view class="weui-cell__ft">
+        <i-icon type="enter" size="28" />
+      </view>
+    </view>
+    <view class="text">
+      <view class="title">声明：</view>
+      <view class="textcon">1.LPR和基点，不同银行可能不同，且可能随时变动，平台将适时更新建议数据；</view>
+      <view class="textcon">2.借款人的征信、未结贷款、年龄、收入、流水、婚姻状况等，以及该房产的楼 层、房龄等，都可能对贷款额、利率浮动产生影响，必要时可能要求担保；
+      </view>
+      <view class="textcon">3.一手房合同价即评估价，二手房请一定提前注意评估价和房龄。
+      </view>
+    </view>
+    <button class="btn" form-type='submit' type='primary'>提交</button>
+
+
+  </form>
+
+</view>

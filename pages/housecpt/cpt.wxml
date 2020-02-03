@@ -1,0 +1,108 @@
+<!--pages/housecpt/cpt.wxml房贷计算-->
+
+<view class="content">
+  <view class="loginTitle">
+    <view class="{{currentTab==0?'select':'default'}}" data-current="0" bindtap="switchNav">商业贷</view>
+
+    <view class="{{currentTab==1?'select':'default'}}" data-current="1" bindtap="switchNav">公积金贷</view>
+    <view class="{{currentTab==2?'select':'default'}}" data-current="2" bindtap="switchNav">组合贷</view>
+  </view>
+  <view class='hr'></view>
+  <swiper current="{{currentTab}}" style='height:{{winHeight}}px'>
+    <swiper-item>
+      <scroll-view scroll-y="true" style="height: 300rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+      <form bindreset='commFormReset' bindsubmit='commFormSubmit'>
+        <i-cell-group>
+          <i-cell title="选择银行：">
+            <picker mode="selector" range='{{banks}}' value='{{banksindex}}'range:key="{{bank_type_name}}" bindchange='banksPickerChange'>
+              <view class='picker'>{{banks[banksindex].bank_type_name}}</view>
+            </picker>
+
+          </i-cell>
+          <i-cell title="网点示例：">
+            <picker mode="selector" range='{{banksF}}' value='{{banksFindex}}' bindchange='banksFPickerChange'>
+              <view class='picker'>{{banksF[banksFindex].name}}</view>
+            </picker>
+          </i-cell>
+          <i-cell title="网点地址："> {{banksF[banksFindex].houseId}}
+          </i-cell>
+
+          <i-cell>
+            <i-row>
+              <i-col span="8" i-class="col-class">二手房龄约：</i-col>
+              <i-col span="6" i-class="col-class">{{banksF[banksFindex].houseage}}</i-col>
+              <i-col span="6" i-class="col-class">年龄上限：</i-col>
+              <i-col span="4" i-class="col-class">{{banksF[banksFindex].maxage}}</i-col>
+            </i-row>
+          </i-cell>
+          <view class="methods">
+            <view class="methods_hd">计算方式: </view>
+            <radio-group class="methods_radio" bindchange='cpt_radioChange_1'>
+              <radio class="radio" checked value='1'>按面积</radio>
+              <radio class="radio" value='2'>按贷款额度</radio>
+            </radio-group>
+          </view>
+          <!-- wx:if="{{method}}" -->
+          <view>
+      
+              <view class="methods">
+                <view>评估单价: </view>
+                 <input class="input"  bindinput='areapriceChange' type='digit' placeholder="请输入房屋单价" />
+              </view>
+        
+    
+              <view class="methods">
+                <view>评估单价: </view>
+               
+                 <input  class="input" bindinput='areapriceChange' type='digit' placeholder="请输入房屋单价" />
+              </view>
+      
+       
+              <view class="methods">
+                <view>评估单价: </view>
+                <input  class="input"  bindinput='areapriceChange' type='digit' placeholder="请输入房屋单价" />
+              </view>
+ 
+
+          </view>
+          <!-- wx:else -->
+          <view>
+            <i-cell title="网点地址："> {{banksF[banksFindex].houseId}}
+            </i-cell>
+          </view>
+
+
+          <i-panel title="checkbox-动物">
+            <i-checkbox value="{{animal}}" disabled="{{disabled}}" checked="{{checked}}" bindchange="handleAnimalChange">
+            </i-checkbox>
+            <i-checkbox value="{{animal}}" disabled="{{disabled}}" checked="{{checked}}" bindchange="handleAnimalChange">
+            </i-checkbox>
+          </i-panel>
+
+
+
+
+          <i-cell title="自定义内容">
+            <i-switch value="{{switch1}}" size="large" bind:change="onChange" slot="footer">
+              <view slot="open">开启</view>
+              <view slot="close">关闭</view>
+            </i-switch>
+          </i-cell>
+          <i-cell title="图标">
+            <i-switch value="{{switch1}}" bind:change="onChange" slot="footer">
+              <i-icon type="right" slot="open"></i-icon>
+              <i-icon type="close" slot="close"></i-icon>
+            </i-switch>
+          </i-cell>
+          <i-cell title="禁止切换">
+            <i-switch value="{{switch1}}" disabled="{{true}}" slot="footer"></i-switch>
+          </i-cell>
+        </i-cell-group>
+
+      </form>
+</scroll-view>
+    </swiper-item>
+    <swiper-item>2</swiper-item>
+    <swiper>3</swiper>
+  </swiper>
+</view>

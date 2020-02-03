@@ -1,0 +1,13 @@
+{
+ "usingComponents": {
+  "i-button": "../../iview/dist/button/index",
+  "i-panel": "../../iview/dist/panel/index",
+  "i-radio": "../../iview/dist/radio/index",
+  "px-comm-result":"./child-result/comm/comm-result",
+  "px-tax1-result":"./child-result/tax/tax-result",
+  "px-tax2-result": "./child-result/tax/index",
+  "px-fund-result": "./child-result/funds/fund-result",
+  "px-compose-result": "./child-result/compose/compose-result"
+  },
+  "navigationBarTitleText": "计算结果"
+}

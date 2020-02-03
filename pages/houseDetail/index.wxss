@@ -1,0 +1,110 @@
+/* pages/houseDetail/index.wxss */
+
+.pageClass{
+  height: 100%;
+  width: 100%;
+  
+  padding:20rpx ;
+  display: flex;
+  flex-direction: column;
+  /* background-color: #b2b2b2; */
+
+}
+.container {
+  /* padding: 20rpx; */
+  padding:0rpx ;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  background-color: #fff;
+}
+.container .address {  
+  width: 100%;
+  font-size: 36rpx;
+   padding-top: 10rpx;
+  padding-left: 30rpx;
+  /* font-weight: bold;   */
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+}
+.sell .imga{
+  padding-left: 20rpx;
+  padding-top:10rpx ;
+  width: 60rpx;
+  height: 40rpx;
+}
+.img {
+  width: 100%;
+  height: 100%;
+  /* background-color: red; */
+}
+.container .title {
+  width: 100%;
+  padding-top: 20rpx;
+  padding-left: 30rpx;
+  font-size: 36rpx;
+  /* font-weight: bold; */
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+}
+.container .sell {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding-top: 20rpx;
+  padding-left: 30rpx;
+  font-size: 36rpx;
+  /* font-weight: bold; */
+  text-align: left;
+  height: 60rpx;
+  border-bottom: 2rpx solid #b2b2b2;
+}
+/* .sell view{  
+  font-weight: bold;
+  padding-top: 30rpx;
+  width: 100rpx;
+  font-size: 30rpx;
+  flex: 1;
+} */
+.container .time{
+  width: 100%;
+  padding-top: 10rpx;
+  padding-left: 30rpx;
+  font-size: 36rpx;
+  /* font-weight: bold; */
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+}
+.con{
+
+}
+.btn{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+.btn .btn1{
+  width: 250rpx;
+  height: 80rpx;
+  font-size: 36rpx;  
+  color:#070707;
+  background-color: #0fdffd;
+}
+
+.text {
+  margin-top: 20rpx;
+  text-align: center;
+  align-items: center;
+  background-color: #b2b2b2;
+}
+.textcon {
+  font-size: 35rpx;
+  color: rgb(3, 3, 3);
+  text-align: left;
+  padding: 3px;
+}

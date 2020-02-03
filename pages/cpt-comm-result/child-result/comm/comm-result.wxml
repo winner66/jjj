@@ -1,0 +1,171 @@
+<!--pages/cpt-comm-result/child-result/comm/comm-result.wxml-->
+
+<!-- <text>pages/cpt-comm-result/child-result/comm/comm-result.wxml</text>
+<view>{{info}}</view> -->
+<view >
+
+  <view wx:if="{{methods==1}}">
+  <view>等额本息：</view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <view class="weui-label">首付：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="weui-label">{{firstMoney}}</view>
+      </view>
+      <view class="weui-cell__fd">
+        <view class="weui-label">元</view>
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">每月月供：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="weui-label">{{firstMonthMoney}}</view>
+      </view>
+      <view class="weui-cell__fd">
+        <view class="weui-label">元</view>
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">贷款总额：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="weui-label">{{sumLoan}}</view>
+      </view>
+      <view class="weui-cell__fd">
+        <view class="weui-label">元</view>
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">支付利息：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="weui-label">{{sumRate}}</view>
+      </view>
+      <view class="weui-cell__fd">
+        <view class="weui-label">元</view>
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">还款总额：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="weui-label">{{sumMoney}}</view>
+      </view>
+      <view class="weui-cell__fd">
+        <view class="weui-label">元</view>
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">还款月数：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="weui-label">{{months}}</view>
+      </view>
+      <view class="weui-cell__fd">
+        <view class="weui-label">元</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="methods">
+  <view>等额本金：</view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">首付：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="weui-label">{{firstMoney}}</view>
+      </view>
+      <view class="weui-cell__fd">
+        <view class="weui-label">元</view>
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">首月月供：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="weui-label">{{firstMonthMoney}}</view>
+      </view>
+      <view class="weui-cell__fd">
+        <view class="weui-label">元</view>
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">最后一个月月供：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="weui-label">{{lastMonthMoney}}</view>
+      </view>
+      <view class="weui-cell__fd">
+        <view class="weui-label">元</view>
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">每月递减：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="weui-label">{{reduceMoney}}</view>
+      </view>
+      <view class="weui-cell__fd">
+        <view class="weui-label">元</view>
+      </view>
+    </view>
+
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">贷款总额：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="weui-label">{{sumLoan}}</view>
+      </view>
+      <view class="weui-cell__fd">
+        <view class="weui-label">元</view>
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">支付利息：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="weui-label">{{sumRate}}</view>
+      </view>
+      <view class="weui-cell__fd">
+        <view class="weui-label">元</view>
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">还款总额：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="weui-label">{{sumMoney}}</view>
+      </view>
+      <view class="weui-cell__fd">
+        <view class="weui-label">元</view>
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">还款月数：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="weui-label">{{months}}</view>
+      </view>
+      <view class="weui-cell__fd">
+        <view class="weui-label">元</view>
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view bindtap="toHouse">生成置业单</view>
+    </view>
+  </view>
+</view>

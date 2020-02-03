@@ -1,0 +1,18 @@
+<!--pages/learn/index.wxml-->
+
+<scroll-view>
+  <view class="container">
+    <view class="imga">
+      <image src="{{cover}}" class="img"></image>
+    </view>
+    <view class="title">{{title}}</view>
+    <view class="time_row">
+
+      <view class="time">{{time}}</view>
+      <view class="house" bindtap="toHouse">{{build}}</view>
+    </view>
+    <view class="con">
+      <rich-text nodes="{{con}}"></rich-text>
+    </view>
+  </view>
+</scroll-view>

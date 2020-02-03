@@ -1,0 +1,151 @@
+/* pages/build/list/index.wxss */
+Page{
+ 
+  /* color: #babab2; */
+  background-color:  #b2b2b2;
+  
+
+}
+scroll-view{
+   display: flex;
+  /* flex: 1; */
+  flex-direction: column;
+
+}
+.content{  
+  display: flex;
+  /* flex: 1; */
+  flex-direction: column;
+  background-color: #fff;
+  margin-right: 20rpx;
+  margin-left: 20rpx;
+  margin-bottom: 15rpx;
+  padding:25rpx 25rpx 2rpx ;
+  height: 350rpx;
+  border-radius:20rpx;
+
+}
+.imge{
+  height:250rpx;
+  background-color: #fff;
+}
+.block{
+  height:300rpx;
+  width: 100%;
+  background-color: red;
+
+}
+
+.loadMoreGif {
+  margin: 15rpx auto;
+  width: 220rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loadMoreGif text {
+  font-size: 30rpx;
+  color: #999;
+  margin-left: 10rpx;
+}
+.loadMoreGif image {
+  width: 30rpx;
+  height: 30rpx;
+}
+.empty-placeholder {
+margin-top: 150rpx;
+width: 100%;
+text-align: center;
+}
+.empty-placeholder text {
+color: #666;
+font-size: 40rpx;
+margin-left: 30rpx;
+}
+.icon-xl {
+width: 140rpx;
+height: 148rpx;
+display: block;
+margin: 0 auto;
+}
+.txt {
+font-size: 26rpx;
+color: #888888;
+margin-top: 36rpx;
+}
+ .list_item{
+  display: flex; 
+  flex-direction: column;
+  /* margin: 20rpx,; */
+  /* height: 1400rpx; */
+
+}
+
+.item{
+  display: flex; 
+  flex-direction: column;  
+  height: 350rpx;
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  /* padding: 10rpx,0rpx,10rpx,0rpx ; */
+  border-bottom:  20rpx solid #666;
+  background:#fff;
+
+    /* margin-bottom: 1em; */
+    /* padding: 1em 0em 0.5em 0em; */
+}
+
+.title { 
+flex: 1;
+height: 60rpx;
+font-size: 36rpx;
+text-align: left;
+font-weight: bold;
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis; 
+justify-content: center;
+margin-left: 20rpx;
+margin-top: 4rpx;
+/* padding-top: 4rpx; */
+/* padding-bottom: 4rpx; */
+margin-bottom: 4rpx;
+}
+.time{
+height: 40rpx;
+flex: 1;
+/* height: 40rpx; */
+font-size: 25rpx;
+text-align: left;
+color: gray;
+margin-top: 4rpx;
+padding-top: 4rpx;
+margin-left: 20rpx;
+/* padding-bottom: 4rpx; */
+margin-bottom: 4rpx;
+}
+.img{
+  /* height: 300rpx; */
+  height: 100%;
+  width: 100%;    
+  border-radius:20rpx;
+}  
+
+/* .loading{  
+  padding: 10rpx;  
+  text-align: center;  
+ }  
+ .loading:before{  
+   display: inline-block;  
+   margin-right: 5rpx;  
+   vertical-align: middle;  
+   content: '';  
+   width: 60rpx;  
+  height: 60rpx;  
+  background: url(../../assets/images/common/loadding.gif) no-repeat;  
+   background-size: contain;  
+  animation: rotate 1s linear infinite;  
+ }  
+ .loading.complete:before{  
+   display: none;  
+ } */

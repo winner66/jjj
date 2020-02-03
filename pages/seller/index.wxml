@@ -1,0 +1,26 @@
+<!--pages/tools/index.wxml-->
+<!-- <text>pages/tools/楼盘-制度汇总列表</text> -->
+
+<view>
+  <view wx:for="{{rulesList}}" wx:key="objectId">
+
+    <view class="list_item" bindtap="gotoDetail" data-item="{{item}}">
+      <text class="itemtext_title" data-item="{{item}}">{{item.title}}</text>
+      
+      <!-- <text class="sub_title" data-item="{{item}}">离我{{item.distance}}km</text> -->
+
+      <view>
+        <!-- <image class="img" mode="aspectFill" src="{{item.head_url}}" data-item="{{item}}"></image> -->
+      </view>
+
+      <!-- <text class="address" data-item="{{item}}">简介：{{item.des}}</text> -->
+<!-- 
+      <view class="support_info" data-item="{{item}}">
+        <image data-item="{{item}}" src="/imgs/ic_like.png"></image>
+        <text data-item="{{item}}">{{item.support ? item.support : 0}}</text>
+        <image data-item="{{item}}" src="/imgs/ic_unlike.png"></image>
+        <text data-item="{{item}}">{{item.objection ? item.objection : 0}}</text>
+      </view> -->
+    </view>
+  </view>
+</view>

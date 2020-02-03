@@ -1,0 +1,57 @@
+/* pages/houseActive/index.wxss */
+
+.container {
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.container .imga {
+  display: flex;
+  width: 100%;
+  height: 350rpx;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  /* background-color: red; */
+}
+
+.container .title {
+  width: 100%;
+  padding-top: 20rpx;
+  padding-left: 50rpx;
+  font-size: 36rpx;
+  font-weight: bold;
+  text-align: left;
+}
+
+.container .time_row {
+  width: 100%;
+  font-size: 30rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  color: #b2b2b2;
+  font-weight: bold;
+  padding-top: 15rpx;
+}
+
+.time_row .time {
+  width: 70%; 
+  text-align: left;
+  padding-left: 30rpx;
+}
+
+.time_row .house {
+  width: 30%;  
+  text-align: right;
+  padding-right: 100rpx;
+}
+
+.container .con {
+  width: 100%;
+  display: flex;
+}

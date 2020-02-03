@@ -1,0 +1,23 @@
+<!--pages/jg/index.wxml-->
+
+<view class="classify" style="height:{{winHeight-50}}px">
+  <scroll-view class="classify_catetory" scroll-y scroll-with-animation="true" style="height:{{winHeight-50}}px">
+   <view class="name {{item.active? 'active':''}}" wx:for="{{categories}}" wx:key="item" bindtap="changeCate" data-code="{{item.area_id-1}}">
+      {{item.area_name}}
+    </view>
+    </scroll-view>
+  <scroll-view class="classify_detail" scroll-y scroll-with-animation="true" style="height:{{winHeight-50}}px">
+    <view>
+      <scroll-view style="height:{{winHeight-50}}px background: gray" >
+        <view wx:for="{{childcateList}}" wx:key="objectId">
+        <view class="block" data-item="{{item}}" bindtap="gotoDetail" >
+        <view class="left"  data-item="{{item}}" >{{item.jg_bank}}</view>
+        <view class="right" ><i-icon type="enter" size="20" /></view>
+        </view>          
+          
+        </view>
+      </scroll-view>
+
+    </view>
+  </scroll-view>
+</view>

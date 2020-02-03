@@ -1,0 +1,19 @@
+<style lang="less">
+
+</style>
+<template >
+  <view>33动态哈哈哈哈哈
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+
+  export default class INDEX extends wepy.page {
+    components ={ };
+    mixins =[];
+    data={};
+    methods ={};
+    events ={};
+    onLoad(){}
+  }
+</script>

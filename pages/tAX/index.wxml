@@ -1,0 +1,464 @@
+<!--pages/tAX/index.wxml-->
+<scroll-view scroll-y="true" style="height: {{winHeight}}rpx;">
+  <view class="content">
+    <view class="loginTitle">
+      <view class="{{currentTab==0?'select':'default'}}" data-current="0" bindtap="switchNav">住宅</view>
+
+      <view class="{{currentTab==1?'select':'default'}}" data-current="1" bindtap="switchNav">非住宅</view>
+    </view>
+    <view class='hr'></view>
+    <!-- style='height:{{winHeigh-80}}px'  -->
+    <swiper current="{{currentTab}}" style='height:{{winHeight-80}}rpx'>
+      <swiper-item>
+        <scroll-view scroll-y="true" style="height: {{winHeight-80}}rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+          <form bindsubmit='commFormSubmit'>
+
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">楼盘名称：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" bindinput='houseNameChange' type="text" placeholder="请输入楼盘名称" />
+              </view>
+            </view>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">所处楼层：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" bindinput='houseStoreyChange' type='digit' placeholder="请输入楼盘名称" />
+              </view>
+
+            </view>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">总层数：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" bindinput='houseStoreyCountChange' type='digit' placeholder="请输入楼盘名称" />
+              </view>
+
+            </view>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">建筑面积：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" bindinput='areaChange' type='digit' placeholder="请输入..." />
+              </view>
+              <view class="weui-cell__fd">
+                <view>平方米</view>
+              </view>
+            </view>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">实际成交价：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" bindinput='priceChange' type='digit' placeholder="请输入..." />
+              </view>
+              <view class="weui-cell__fd">
+                <view>元</view>
+              </view>
+            </view>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">中介费方案：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="selector" range='{{mediums}}' value='{{mediumIndex}}' range-key="name" bindchange='mediumsPickerChange'>
+                  <view class='picker' data-item="{{item}}">{{mediums[mediumIndex].name}}</view>
+                </picker>
+              </view>
+              <view class="weui-cell__ft">
+                <i-icon type="enter" size="24" />
+              </view>
+            </view>
+            <view wx:if="{{mediumIndex==3}}">
+              <view class="weui-cell">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">中介费方案买方：</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <input class="weui-input" bindinput='sellChange' type='digit' placeholder="请输入..." />
+                </view>
+                <view class="weui-cell__fd">
+                  <view>%</view>
+                </view>
+              </view>
+              <view class="weui-cell ">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">中介费方案卖方：</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <input class="weui-input" bindinput='buyerChange' type='digit' placeholder="请输入..." />
+                </view>
+                <view class="weui-cell__fd">
+                  <view>%</view>
+                </view>
+              </view>
+            </view>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">委托贷款金额：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" bindinput='loanmoneyChange' type='digit' placeholder="请输入..." />
+              </view>
+              <view class="weui-cell__fd">
+                <view>元</view>
+              </view>
+            </view>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">贷款服务费：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="selector" range='{{loanserver}}' value='{{loanserverIndex}}' range-key="name" bindchange='loanServerPickerChange'>
+                  <view class='picker' data-item="{{item}}">{{loanserver[loanserverIndex].name}}</view>
+                </picker>
+              </view>
+              <view class="weui-cell__ft">
+                <i-icon type="enter" size="24" />
+              </view>
+            </view>
+            <view wx:if="{{loanserverIndex==1}}">
+              <view class="weui-cell">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">自定义贷款服务费：</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <input class="weui-input" bindinput='loanServerChange' type='digit' placeholder="请输入..." />
+                </view>
+                <view class="weui-cell__fd">
+                  <view>%</view>
+                </view>
+              </view>
+            </view>           
+
+         
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">评税单价最低约：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" bindinput='minpriceChange' type='digit' placeholder="请输入..." />
+              </view>
+              <view class="weui-cell__ft">
+                <view>元</view>
+              </view>
+            </view>
+            <!-- <view> 建议查看“评税建议数据”</view> -->
+            <navigator  class="recommend" url='../../pages/ptax/index'>建议查看“评税建议数据”</navigator>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">卖方产权年限：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="selector" range='{{years}}' value='{{yearIndex}}' bindchange='yearChange'>
+                  <view class='picker'>{{years[yearIndex]}}</view>
+                </picker>
+              </view>
+              <view class="weui-cell__ft">
+                <i-icon type="enter" size="24" />
+              </view>
+            </view>
+            <view class="recommend"> 以“房产证/不动产证”与交纳契税孰先认定</view>
+
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="label">是否卖方家庭唯一住房：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="selector" range='{{isorNo}}' value='{{houseOnlyIndex}}' bindchange='houseOnlyChange'>
+                  <view class='picker'>{{isorNo[houseOnlyIndex]}}</view>
+                </picker>
+              </view>
+              <view class="weui-cell__ft">
+                <i-icon type="enter" size="24" />
+              </view>
+            </view>
+            <view class="recommend"> 建议查看“家庭套数认定规定”</view>
+
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">土地性质：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="selector" name="land" range='{{lands}}' data-item="{{item}}" range-key="name" value='{{}}' bindchange='landChange'>
+                  <view class='picker' data-item="{{item}}">{{lands[landIndex].name}}</view>
+                </picker>
+              </view>
+              <view class="weui-cell__ft">
+                <i-icon type="enter" size="24" />
+              </view>
+            </view>
+
+            <view class="recommend"> 以“房产证/不动产证”与交纳契税孰先认定</view>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">继承情况：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="selector" range='{{isorNo}}' value='{{heritIndex}}' bindchange='heritChange'>
+                  <view class='picker'>{{isorNo[heritIndex]}}</view>
+                </picker>
+              </view>
+              <view class="weui-cell__ft">
+                <i-icon type="enter" size="24" />
+              </view>
+            </view>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">赠与情况：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="selector" range='{{isorNo}}' value='{{giveIndex}}' bindchange='giveChange'>
+                  <view class='picker'>{{isorNo[giveIndex]}}</view>
+                </picker>
+              </view>
+              <view class="weui-cell__ft">
+                <i-icon type="enter" size="24" />
+              </view>
+            </view>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">买方拆迁</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="selector" range='{{isorNo}}' value='{{cQIndex}}' bindchange='cQChange'>
+                  <view class='picker'>{{isorNo[cQIndex]}}</view>
+                </picker>
+              </view>
+              <view class="weui-cell__ft">
+                <i-icon type="enter" size="24" />
+              </view>
+            </view>
+            <view class="weui-cell " wx:if="cQIndex==1">
+              <view class="weui-cell__hd">
+                <view class="weui-label">拆迁金额：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="cQprice" bindinput='cQpriceChange' type='digit' placeholder="请输入..." />
+              </view>
+              <view class="weui-cell__ft">
+                <view>元</view>
+              </view>
+            </view>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="label">本房属于买房家庭住宅数：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="selector" name="buyerHouseCount" range='{{years}}' value='{{buyerHouseCount}}' bindchange='houseCountChange'>
+                  <view class='picker'>{{years[buyerHouseCount]}}</view>
+                </picker>
+              </view>
+              <view class="weui-cell__ft">
+                <i-icon type="enter" size="24" />
+              </view>
+            </view>
+
+            <view class="recommend"> 建议查看“家庭套数认定规定”</view>
+            <view>
+              <button class="btn" form-type='submit' type='primary'>计算</button>
+            </view>
+          </form>
+        </scroll-view>
+      </swiper-item>
+      <swiper-item>
+        <scroll-view scroll-y="true" style="height: {{winHeight-80}}rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+          <form bindsubmit='FformSubmit'>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">楼盘名称：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="name" bindinput='houseNameChange' type="text" placeholder="请输入楼盘名称" />
+              </view>
+            </view>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">所处楼层：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="houseStorey" bindinput='houseStoreyChange' type='digit' placeholder="请输入楼盘名称" />
+              </view>
+
+            </view>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">总层数：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="houseStoreyCount" bindinput='houseStoreyCountChange' type='digit' placeholder="请输入楼盘名称" />
+              </view>
+
+            </view>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">建筑面积：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="area" bindinput='areaChange' type='digit' placeholder="请输入..." />
+              </view>
+              <view class="weui-cell__fd">
+                <view>平方米</view>
+              </view>
+            </view>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">实际成交价：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="price" bindinput='priceChange' type='digit' placeholder="请输入..." />
+              </view>
+              <view class="weui-cell__fd">
+                <view>元</view>
+              </view>
+            </view>
+           <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">中介费方案：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="selector" range='{{mediums}}' value='{{mediumIndex}}' range-key="name" bindchange='mediumsPickerChange'>
+                  <view class='picker' data-item="{{item}}">{{mediums[mediumIndex].name}}</view>
+                </picker>
+              </view>
+              <view class="weui-cell__ft">
+                <i-icon type="enter" size="24" />
+              </view>
+            </view>
+            <view wx:if="{{mediumIndex==3}}">
+              <view class="weui-cell">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">中介费方案买方：</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <input class="weui-input" bindinput='sellChange' type='digit' placeholder="请输入..." />
+                </view>
+                <view class="weui-cell__fd">
+                  <view>%</view>
+                </view>
+              </view>
+              <view class="weui-cell ">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">中介费方案卖方：</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <input class="weui-input" bindinput='buyerChange' type='digit' placeholder="请输入..." />
+                </view>
+                <view class="weui-cell__fd">
+                  <view>%</view>
+                </view>
+              </view>
+            </view>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">委托贷款金额：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" bindinput='loanmoneyChange' type='digit' placeholder="请输入..." />
+              </view>
+              <view class="weui-cell__fd">
+                <view>元</view>
+              </view>
+            </view>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">贷款服务费：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="selector" range='{{loanserver}}' value='{{loanserverIndex}}' range-key="name" bindchange='loanServerPickerChange'>
+                  <view class='picker' data-item="{{item}}">{{loanserver[loanserverIndex].name}}</view>
+                </picker>
+              </view>
+              <view class="weui-cell__ft">
+                <i-icon type="enter" size="24" />
+              </view>
+            </view>
+            <view wx:if="{{loanserverIndex==1}}">
+              <view class="weui-cell">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">自定义贷款服务费：</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <input class="weui-input" bindinput='loanServerChange' type='digit' placeholder="请输入..." />
+                </view>
+                <view class="weui-cell__fd">
+                  <view>%</view>
+                </view>
+              </view>
+            </view>  
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">评税单价最低约：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="minprice" bindinput='minpriceChange' type='digit' placeholder="请输入..." />
+              </view>
+              <view class="weui-cell__ft">
+                <view>元</view>
+              </view>
+            </view>
+            <view class="recommend"> 建议查看“评税建议数据”</view>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">继承情况：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="selector" name="herit" range='{{isorNo}}' value='{{heritIndex}}' bindchange='heritChange'>
+                  <view class='picker'>{{isorNo[heritIndex]}}</view>
+                </picker>
+              </view>
+              <view class="weui-cell__ft">
+                <i-icon type="enter" size="24" />
+              </view>
+            </view>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">赠与情况：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="selector" name="give" range='{{isorNo}}' value='{{giveIndex}}' bindchange='giveChange'>
+                  <view class='picker'>{{isorNo[giveIndex]}}</view>
+                </picker>
+              </view>
+              <view class="weui-cell__ft">
+                <i-icon type="enter" size="24" />
+              </view>
+            </view>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">买方拆迁</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="selector" name="cQ" range='{{isorNo}}' value='{{cQIndex}}' bindchange='cQChange'>
+                  <view class='picker'>{{isorNo[cQIndex]}}</view>
+                </picker>
+              </view>
+              <view class="weui-cell__ft">
+                <i-icon type="enter" size="24" />
+              </view>
+            </view>
+            <view class="weui-cell " wx:if="{{cQIndex==0}}">
+              <view class="weui-cell__hd">
+                <view class="weui-label">拆迁金额：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="cQprice" bindinput='cQpriceChange' type='digit' placeholder="请输入..." />
+              </view>
+              <view class="weui-cell__ft">
+                <view>元</view>
+              </view>
+            </view>
+            <view>
+              <button class="btn" form-type='submit' type='primary'>计算</button>
+            </view>
+          </form>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+</scroll-view>

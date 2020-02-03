@@ -1,0 +1,159 @@
+/* pages/computer/computer-menu.wxss */
+/* swiper {
+    height: 600rpx;
+}
+
+swiper-item image {
+    width: 100%;
+    height: 100%;
+} */
+
+.swiper-container{
+  position: relative;
+}
+.swiper-container .swiper{
+  height: 350rpx;
+}
+
+.swiper-container .swiper .img{
+  width: 100%;
+  height: 100%;
+}
+.row-class{
+    background: #fff;
+}
+.col-class{
+    height: 32px;
+    line-height: 32px;
+    color: #fff;
+    text-align: center;
+    background: #2d8cf0;
+    font-size: 12px;
+}
+
+.col-class.light{
+    background: #5cadff;
+}
+.recommend {
+  display: flex;
+  margin-top: 5rpx;
+  padding-bottom: 5rpx;
+  border-bottom: 16rpx solid #eee;
+}
+.recommend-item {
+  flex: 1;
+  text-align: center;
+}
+.recommend-item  view image {
+  width: 120rpx;
+  height: 120rpx;
+  /* border-radius:10rpx; */
+  margin:5rpx auto;
+  /* border-radius:50%; */
+}
+.recommend-item view {
+  font-size: 35rpx;
+  color: #555;
+  margin-top: 5rpx;
+}
+/* .money{
+  padding: 5rpx 20rpx ;
+  background: #fff;
+  font-size: 12px;
+  width: 100%;
+  
+} */
+.section {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  border-bottom: 1px solid #dbdbdb;
+  background: #fff;
+}
+.section .section_title {
+  color: #1a1a1a;
+  padding-right: 36rpx;
+  width: 30%;
+}
+.section .section_hd {
+  width: 45%;
+
+}
+.section .section_ftError {
+  width: 25%;
+   font-size: 10px;
+   color: red;
+   text-align: right;
+}
+.section .section_ft {
+
+}
+
+.title{
+  display: flex;
+  /* margin-top:8rpx; */
+  /* margin-bottom:3px; */
+  padding-left:12rpx;
+  padding-right:12rpx;
+  /* height: 140rpx; */
+  color:rgba(0,0,0,5);
+  font-size:14px;
+  font-weight: bold;
+  text-align: left;
+  background-color: #cccccc;
+}
+
+.block{
+  display: flex;
+  /* background-color:red; */
+  padding: 20rpx 20rpx 0rpx ; 
+  /* margin: 0rpx,10rpx; */
+  border-bottom: 3rpx solid  #b2b2b2;
+  height: 60rpx;
+  font-size: 36rpx;
+}
+.block .left{
+  flex: 1;
+  text-align: left;
+  padding-left: 60rpx;
+ 
+  /* border-bottom: 2rpx solid #cccccc; */
+}
+.block .right{
+  flex: 1;
+  text-align: right;
+}
+
+.loginTitle {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+ 
+  height: 130rpx;
+  top: 0rpx;
+  z-index: 1;
+}
+
+.select {
+  font-size: 35rpx;
+  color: rgb(51, 165, 38);
+  width: 25%;
+  text-align: center;
+  height: 45px;
+  line-height: 45px;
+  border-bottom: 5rpx solid  rgb(51, 165, 38);
+}
+.default {
+  font-size: 35rpx;
+  margin: 0 auto;
+  padding: 15px;
+}
+.hr {
+  border: lpx solid#cccccc;
+  opacity: 0.2;
+}
+.bankContent{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

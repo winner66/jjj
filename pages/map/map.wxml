@@ -1,0 +1,18 @@
+<!--pages/map/map.wxml 在售一览-->
+
+<!-- polyline="{{polyline}}"  controls="{{controls}}"  -->
+<map id="map" latitude="{{latitude}}" longitude="{{longitude}}" scale="{{scale}}" bindcontroltap="controltap" controls="{{controls}}" markers="{{markers}}" include-points="includepoints" bindmarkertap="markertap" bindcallouttap="bindcallouttap" bindregionchange="regionchange"
+  show-location style="width: 100%; height:{{winHeight}}rpx;" enable-zoom="ture" enable-scroll="ture">
+</map>
+<view>
+  <!-- <view>{{houseData[markerindex].name}}</view>   //没有数据不显示 -->
+  <!-- <view>1322没有数据不显示22222222222222</view>
+  <view class="loading" wx:if="loading">
+    <view>正在加载</view>
+  </view>
+  <view class="loaded" wx:else bindtap="toDetail">
+    <view>加载成功</view>
+  </view> -->
+
+
+</view>

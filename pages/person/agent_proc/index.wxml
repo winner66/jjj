@@ -1,0 +1,40 @@
+<!--pages/person/agent_proc/index.wxml 代办进度-->
+<view class='history-table-wrap'>
+  <view class="table">
+    <view class="tr">
+      <view class="td">代办信息</view>
+    </view>
+    <view class="tr">
+      <view class="td1">
+        <view class="tdl">姓名：</view>
+        <view class="tdr">{{name}}</view>
+      </view>
+      <view class="td2">
+        <view class="tdl">电话：</view>
+        <view class="tdr">{{phone}}</view>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td1">
+        <view class="tdl">付款方式：</view>
+        <view class="tdr">{{methods}}</view>
+      </view>
+      <view class="td2">
+        <view class="tdl">是否按揭：</view>
+        <view class="tdr">{{mortgages}}</view>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td3">
+        <view class="tdl">楼盘名称：</view>
+        <view class="tdr">{{housename}}</view>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+
+
+
+

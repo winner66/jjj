@@ -1,0 +1,2 @@
+/* pages/cpt-comm-result/child-result/compose/compose-result.wxss */
+@import '../weui.wxss';

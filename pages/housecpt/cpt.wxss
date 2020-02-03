@@ -1,0 +1,50 @@
+/* pages/housecpt/cpt.wxss */
+.loginTitle{
+
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+}
+.select{
+
+      font-size: 35rpx;
+      color: red;
+      width: 25%;
+      text-align: center ;
+      height: 45px;
+      line-height: 45px;
+      border-bottom:5rpx solid red;
+}
+.default{
+
+      font-size: 35rpx;
+      margin: 0 auto;
+      padding: 15px;
+}
+.hr{
+
+      border: lpx solid#cccccc;
+      opacity: 0.2;
+}
+.cptrightimage{
+  position: absolute;
+  right: 30rpx;
+  margin-top: 30rpx;
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.methods{
+  position:relative;padding:12px 15px;display:flex;background:#fff;align-items:center;line-height:1.4;font-size:14px;overflow:hidden
+
+}
+.methods::after{content:'';position:absolute;top:0;left:0;width:200%;height:200%;transform:scale(.5);transform-origin:0 0;pointer-events:none;box-sizing:border-box;border:0 solid #e9eaec;border-bottom-width:1px;left:15px;right:0}
+
+
+/* .methods_hd{
+
+}
+.methods_radio{
+
+} */
+

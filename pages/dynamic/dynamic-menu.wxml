@@ -1,0 +1,109 @@
+<!--pages/dynamic/dynamic-menu.wxml-->
+
+<view class="weui-search-bar">
+  <view class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="12"></icon>
+      <input type="text"  name="search" confirm-type="search" class="weui-search-bar__input" placeholder="搜索" value="{{searchKeyword}}" focus="{{inputShowed}}" bindinput="inputTyping" bindconfirm="startSearch" />
+      <view class="weui-icon-clear" wx:if="{{searchKeyword.length > 0}}" bindtap="clearInput">
+        <icon type="clear" size="12"></icon>
+      </view>
+    </view>
+    <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+      <icon class="weui-icon-search" type="search" size="12"></icon>
+      <view class="weui-search-bar__text">搜索</view>
+    </label>
+  </view>
+  <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+</view>
+
+<view class="weui-cells searchbar-result" wx:if="{{searchKeyword.length > 0}}">
+  <!-- <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">
+      <view>实时搜索文本</view>
+    </view>
+  </navigator> -->
+  <scroll-view scroll-y="true" bindscrolltolower="searchScrollLower">
+    <block wx:for="{{searchList}}" wx:key="{{searchList.title}}">
+      <view class="weui-cell weui-cell_example " bindtap="tosearchdetail" data-item="{{item}}">
+        <view class="weui-cell__bd" data-item="{{item}}">{{item.title}}</view>
+        <view class="weui-cell__ft" data-item="{{item}}">{{item.time}}</view>
+      </view>
+    </block>
+      <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>
+      <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>
+  </scroll-view>
+</view>
+
+<view wx:else>
+  <view class="swiper-container">
+    <swiper  class="swiper" bindchange="swiperchange" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="indicator-dots" indicator-color="rgba(0, 0, 0, .3)}" indicator-active-color="#000000" current="{{current_img}}">
+<!--  wx:key="*this" -->
+      <block wx:for="{{img_urls}}" wx:key="item" >
+        <swiper-item>
+          <image src="{{item.imgs}}" mode="widthFix" bindtap="swipclick" class="img"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class='recommend'>
+    <view class='recommend-item' bindtap="sellerChange">
+      <view>
+        <image src="../../assets/images/common/houseSell.png" />
+      </view>
+      <view>在售一览</view>
+    </view>
+
+    <view class='recommend-item' bindtap="qudaochange">
+      <view>
+        <image src="../../assets/images/common/qudao.png" />
+      </view>
+      <view>渠道规则</view>
+    </view>
+    <view class='recommend-item' bindtap="tupaichange">
+      <view>
+        <image src="../../assets/images/common/land.png" />
+      </view>
+      <view>土拍信息</view>
+    </view>
+    <view class='recommend-item' bindtap="housechange">
+      <view>
+        <image src="../../assets/images/common/house.png" />
+      </view>
+      <view>新盘活动</view>
+    </view>
+    <view class='recommend-item' bindtap="buildchange">
+      <view>
+        <image src="../../assets/images/common/supervition.png" />
+      </view>
+      <view>建设进度</view>
+    </view>
+  </view>
+  <view class="title">
+    <view class="left"> 土拍信息</view>
+    <view class="right" bindtap="totupaiList"> 加载更多</view>
+  </view>
+  <view class="weui-cells weui-cells_after-title">
+    <block wx:for="{{tupai}}" wx:key="tupai.title">
+      <view class="weui-cell weui-cell_example " bindtap="totupaidetail" data-item="{{item}}">
+        <!-- <view class="weui-cell__hd">
+          <image src="{{icon}}" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
+        </view> -->
+        <view class="weui-cell__bd" data-item="{{item}}">{{item.title}}</view>
+        <view class="weui-cell__ft" data-item="{{item}}">{{item.time}}</view>
+      </view>
+    </block>
+  </view>
+  <view class="title">
+    <view class="left">渠道</view>
+    <view class="right" bindtap="toqudaoList">加载更多</view>
+  </view>
+  <view class="weui-cells weui-cells_after-title">
+    <block wx:for="{{qudao}}" wx:key="{{qudao.title}}">
+      <view class="weui-cell weui-cell_example " bindtap="toqudaodetail" data-item="{{item}}">
+        <view class="weui-cell__bd" data-item="{{item}}">{{item.title}}</view>
+        <view class="weui-cell__ft" data-item="{{item}}">{{item.createtime}}</view>
+      </view>
+    </block>
+  </view>
+</view>

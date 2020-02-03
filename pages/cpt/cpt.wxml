@@ -1,0 +1,532 @@
+<!--pages/cpt/cpt.wxml-->
+
+<view class="content">
+  <view class="loginTitle" style='height:80rpx'>
+    <view class="{{currentTab==0?'select':'default'}}" data-current="0" bindtap="switchNav">商业贷</view>
+
+    <view class="{{currentTab==1?'select':'default'}}" data-current="1" bindtap="switchNav">公积金贷</view>
+    <view class="{{currentTab==2?'select':'default'}}" data-current="2" bindtap="switchNav">组合贷</view>
+  </view>
+  <view class='hr'></view>
+  <swiper class="swip" current="{{currentTab}}" bindchange="currentChange" style='height:{{winHeight}}rpx'>
+    <swiper-item>
+
+      <scroll-view scroll-y="true" style="height: {{winHeight-80}}rpx;">
+        <form bindreset='commFormReset' bindsubmit='commFormSubmit'>
+          <view class="weui-cell ">
+            <view class="weui-cell__hd">
+              <view class="weui-label">选择银行：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker mode="selector" name="yinhang" data-item="{{item}}" range='{{banks}}' value='{{banksindex}}' range-key="name" bindchange='banksPickerChange'>
+                <view class='picker' data-item="{{item}}">{{banks[banksindex].name}}</view>
+              </picker>
+            </view>
+            <view class="weui-cell__ft">
+              <i-icon type="enter" size="28" />
+            </view>
+          </view>
+
+
+          <view class="weui-cell ">
+            <view class="weui-cell__hd">
+              <view class="weui-label">网点示例：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker mode="selector" range='{{banksF}}' name="wangdian" value='{{banksFindex}}' range-key="name" bindchange='banksFPickerChange'>
+                <view class='picker'>{{banksF[banksFindex].name}}</view>
+              </picker>
+            </view>
+            <view class="weui-cell__ft">
+              <i-icon type="enter" size="28" />
+            </view>
+          </view>
+
+          <view class="weui-cell ">
+            <view class="weui-cell__hd">
+              <view class="weui-label">网点地址：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <view>{{local}}</view>
+            </view>
+          </view>
+
+          <view class="weui-cell ">
+            <view class="weui-cell__hd">
+              <view class="weui-label">二手房龄约：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <view>{{houseAge}}</view>
+            </view>
+            <view class="weui-cell__hd">
+              <view class="weui-label">年龄上限：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <view>{{maxAge}}</view>
+            </view>
+          </view>
+
+          <view class="weui-cell ">
+            <view class="hd">计算方式: </view>
+            <view class="bd">
+              <radio-group name="cpt_1_methods" bindchange='cpt_radioChange_1'>
+                <radio class="radio1" checked value='1'>按成交总款</radio>
+                <radio class="radio1" value='2'>按贷款额</radio>
+              </radio-group>
+            </view>
+          </view>
+
+
+          <view wx:if='{{cptAreaFlag==1}}' class="areaCpt">
+
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">评估单价：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="areaPrice" bindinput='areapriceChange' type='digit' placeholder="请输入..." />
+              </view>
+              <view class="weui-cell__ft">
+                <view class="weui-label">元/平米</view>
+              </view>
+            </view>
+
+
+
+            <view class="weui-cell">
+              <view class="weui-cell__hd">
+                <view class="weui-label">建筑面积：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="area" bindinput='areaChange' type='digit' placeholder="请输入..." />
+              </view>
+              <view class="weui-cell__ft">
+                <view class="weui-label">平米</view>
+              </view>
+
+            </view>
+
+            <view class="weui-cell">
+              <view class="weui-cell__hd">
+                <view class="weui-label">评估总款：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="sumMoney" bindinput='areaChange' type='digit' placeholder="请输入..." />
+              </view>
+              <view class="weui-cell__ft">
+                <view class="weui-label">元</view>
+              </view>
+            </view>
+
+
+
+
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">贷款成数：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="selector" range='{{scale}}' name="loanScale" value='{{scaleindex}}' bindchange='scalePickerChange'>
+                  <view class='picker'>{{scales[scaleindex].name}}</view>
+                </picker>
+              </view>
+              <view class="weui-cell__ft">
+                <i-icon type="enter" size="28" />
+              </view>
+            </view>
+
+          </view>
+          <view wx:else class="loanCpt">
+            <view class='row'>
+              <view class="weui-cell ">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">贷款总额：</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <input class="weui-input" name="loanMoney" bindinput='loanMoneyChange' type='digit' placeholder="请输入贷款总金额" />
+                </view>
+                <view class="weui-cell__ft">
+                  <view class="weui-label">万元</view>
+                </view>
+              </view>
+            </view>
+          </view>
+
+
+
+          <view class="weui-cell ">
+            <view class="weui-cell__hd">
+              <view class="weui-label">贷款年限：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker mode="selector" name="loanYear" range='{{loantimes}}' value='{{timeindex}}' bindchange='timePickerChange'>
+                <view class='picker'>{{loantimes[timeindex]}}</view>
+              </picker>
+            </view>
+            <view class="weui-cell__ft">
+              <i-icon type="enter" size="28" />
+            </view>
+          </view>
+
+          <view class="weui-cell">
+            <view class="weui-cell__hd">
+              <view class="weui-label">LPR：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <view class='weui-label'>{{lpr}}</view>
+            </view>
+            <view class="weui-cell__ft">
+              <view class=''>%</view>
+            </view>
+            <!-- <view class="weui-cell__bd">
+              <picker mode="selector" name="lpr" range='{{lprs}}' value='{{lprIndex}}' bindchange='lprPickerChange'>
+                <view class='picker'>{{lprs[lprIndex].name}}</view>
+              </picker>
+            </view>
+            <view class="weui-cell__ft">
+              <i-icon type="enter" size="28" />
+            </view> -->
+          </view>
+          <!-- <view class="recommend"> 银行建议LPR：{{bankLPR}}</view> -->
+          <view class="weui-cell ">
+            <view class="weui-cell__hd">
+              <view class="weui-label">基点：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name="basePoints" bindinput='basePointsChange' type='digit' placeholder="请输入..." />
+            </view>
+            <view class="weui-cell__ft">
+              <view class="weui-label">BP(%。)</view>
+            </view>
+          </view>
+          <!-- <view class="weui-cell ">
+            <view class="weui-cell__hd">
+              <view class="weui-label">基点：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker mode="selector" name="basePoint" range='{{basePoints}}' value='{{basePointIndex}}' bindchange='basePointPickerChange'>
+                <view class='picker'>{{basePoints[basePointIndex].name}}</view>
+              </picker>
+            </view>
+            <view class="weui-cell__ft">
+              <i-icon type="enter" size="28" />
+            </view>
+          </view> -->
+          <!-- <view class="recommend"> 银行建议基点：{{bankBasePoint}}</view> -->
+
+
+
+          <view class="weui-cell ">
+            <view class="weui-cell__hd">
+              <view class="weui-label">贷款利率：</view>
+            </view>
+            <view class="weui-cell__bd">
+            <view class="weui-label">{{lpr}}+{{basePoint}}={{rate}}</view>            
+            </view>
+            <view class="weui-cell__ft">
+            <view class="">% </view>             
+            </view>
+          </view>
+
+
+          <view class="weui-cell ">
+            <view class="weui-cell__hd">还款方式: </view>
+            <radio-group class="weui-cell__bd" name="cpt_2_methods" bindchange='cpt_radioChange_2'>
+              <radio class="radio1" checked value='1'>等额本息</radio>
+              <radio class="radio1" value='2'>等额本金</radio>
+            </radio-group>
+          </view>
+
+          <view>
+            <button class="btn" form-type='submit' type='primary'>计算</button>
+          </view>
+          <view class="text">
+            <view class="title">温馨提示：</view>
+            <view class="textcon">1.LPR和基点，不同银行可能不同，且可能随时变动，平台将适时更新建议数据；</view>
+            <view class="textcon">2.借款人的征信、未结贷款、年龄、收入、流水、婚姻状况等，以及该房产的楼 层、房龄等，都可能对贷款额、利率浮动产生影响，必要时可能要求担保；
+            </view>
+            <view class="textcon">3.一手房合同价即评估价，二手房请一定提前注意评估价和房龄。
+            </view>
+          </view>
+        </form>
+      </scroll-view>
+    </swiper-item>
+
+    <swiper-item>
+      <scroll-view scroll-y="true" style="height: {{winHeight-80}}rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+        <form bindreset='commFormReset' bindsubmit='gFormSubmit'>
+          <view class="weui-cell ">
+            <view class="weui-cell__hd">
+              <view class="weui-label">选择银行：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker mode="selector" range='{{banks}}' name="yinhang" value='{{banksindex}}' range-key="name" bindchange='banksPickerChange'>
+                <view class='picker'>{{banks[banksindex].name}}</view>
+              </picker>
+            </view>
+            <view class="weui-cell__ft">
+              <i-icon type="enter" size="28" />
+            </view>
+          </view>
+
+
+          <view class="weui-cell ">
+            <view class="weui-cell__hd">
+              <view class="weui-label">网点示例：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker mode="selector" range='{{banksF}}' name="wangdian" value='{{banksFindex}}' bindchange='banksFPickerChange'>
+                <view class='picker'></view>
+              </picker>
+            </view>
+            <view class="weui-cell__ft">
+              <i-icon type="enter" size="28" />
+            </view>
+          </view>
+          <view class="weui-cell ">
+            <view class="weui-cell__hd">
+              <view class="weui-label">网点地址：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <view>{{local}}</view>
+            </view>
+          </view>
+          <view class="weui-cell ">
+            <view class="weui-cell__hd">
+              <view class="weui-label">二手房龄约：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <view>{{houseAge}}</view>
+            </view>
+            <view class="weui-cell__hd">
+              <view class="weui-label">年龄上限：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <view>{{maxAge}}</view>
+            </view>
+          </view>
+
+          <view class="weui-cell ">
+            <view class="weui-cell__hd">计算方式: </view>
+            <view class="bd">
+              <radio-group name="cpt_1_methods" bindchange='cpt_radioChange_1'>
+                <radio class="radio1" checked value='1'>按面积</radio>
+                <radio class="radio1" value='2'>按贷款额度</radio>
+              </radio-group>
+            </view>
+          </view>
+
+          <view wx:if='{{cptAreaFlag==1}}' class="areaCpt">
+
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">评估单价：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="areaPrice" bindinput='areapriceChange' type='digit' placeholder="请输入..." />
+              </view>
+              <view class="weui-cell__ft">
+                <view class="weui-label">元/平米</view>
+              </view>
+            </view>
+
+            <view class="weui-cell">
+              <view class="weui-cell__hd">
+                <view class="weui-label">建筑面积：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="area" bindinput='areaChange' type='digit' placeholder="请输入..." />
+              </view>
+              <view class="weui-cell__ft">
+                <view class="weui-label">平米</view>
+              </view>
+            </view>
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">评估总款：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="sumMoney" bindinput='gsumMoneyChange' type='digit' placeholder="请输入..." />
+              </view>
+              <view class="weui-cell__ft">
+                <view class="weui-label">元</view>
+              </view>
+            </view>
+
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">贷款成数：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="selector" range='{{scale}}' name="loanScale" value='{{scaleindex}}' bindchange='scalePickerChange'>
+                  <view class='picker'>{{scales[scaleindex].name}}</view>
+                </picker>
+              </view>
+              <view class="weui-cell__ft">
+                <i-icon type="enter" size="28" />
+              </view>
+            </view>
+          </view>
+          <view wx:else class="loanCpt">
+
+            <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">贷款总额：</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="loanMoney" bindinput='loanChange' type='digit' placeholder="请输入贷款总金额" />
+              </view>
+              <view class="weui-cell__ft">
+                <view class="weui-label">万元</view>
+              </view>
+            </view>
+
+          </view>
+
+          <view class="weui-cell ">
+            <view class="weui-cell__hd">
+              <view class="weui-label">按揭年限：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker mode="selector" name="loanYear" range='{{loantimes}}' value='{{timeindex}}' bindchange='timePickerChange'>
+                <view class='picker'>{{loantimes[timeindex]}}</view>
+              </picker>
+            </view>
+            <view class="weui-cell__ft">
+
+              <i-icon type="enter" size="28" />
+            </view>
+          </view>
+
+
+          <view class="weui-cell ">
+
+            <view class="weui-cell__hd">
+              <view class="weui-label">利率：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker mode="selector" name="loanrate" range='{{gloanrate}}' value='{{grateindex}}' bindchange='gratePickerChange'>
+                <view class='picker'>{{gloanrates[rateindex].name}}</view>
+              </picker>
+            </view>
+            <view class="weui-cell__ft">
+              <i-icon type="enter" size="28" />
+            </view>
+          </view>
+          <!-- <view class="recommend">银行推荐值：{{bankGrate}}</view> -->
+
+          <view class="text">
+            <view class="textcon">注意：</view>
+            <view class="textcon">1.请提前与出卖方沟通是否接受公积金贷款，与公积金中心沟通公积金缴存地与购房者户籍地是否影响贷款；</view>
+            <view class="textcon">2.目前，夫妻双方共同使用公积金最高可贷40万元，单人使用公积金最高可贷35万元，且均可能下调；
+            </view>
+            <view class="textcon">3.购房者在此之前公积金使用记录，可能影响此次贷款。
+
+            </view>
+          </view>
+
+
+          <view>
+            <button class="btn" form-type='submit' type='primary'>计算</button>
+          </view>
+
+
+          <view class="text">
+            <view class="title">温馨提示：</view>
+            <view class="textcon">1.LPR和基点，不同银行可能不同，且可能随时变动，平台将适时更新建议数据；</view>
+            <view class="textcon">2.借款人的征信、未结贷款、年龄、收入、流水、婚姻状况等，以及该房产的楼 层、房龄等，都可能对贷款额、利率浮动产生影响，必要时可能要求担保；
+            </view>
+            <view class="textcon">3.借款人的征信、未结贷款、年龄、收入、流水、婚姻状况等，以及该房产的楼 层、房龄等，都可能对贷款额、利率浮动产生影响，必要时可能要求担保；
+            </view>
+          </view>
+
+        </form>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <form bindreset='zgFormReset' bindsubmit='zgFormSubmit'>
+        <view class="row1">
+
+          <view class="weui-cell ">
+            <view class="weui-cell__hd">
+              <view class="weui-label">商业贷款额：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" bindinput='zcpriceChange' type='digit' placeholder="请输入商业贷款额" />
+            </view>
+            <view class="weui-cell__ft">
+              <view class="weui-label">万</view>
+            </view>
+          </view>
+          <view class="weui-cell ">
+            <view class="weui-cell__hd">
+              <view class="weui-label">贷款利率：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker mode="selector" range='{{loanrate}}' value='{{rateindex}}' bindchange='ratePickerChange'>
+                <view class='picker'>{{loanrates[rateindex].name}}</view>
+              </picker>
+            </view>
+            <view class="weui-cell__ft">
+              <i-icon type="enter" size="28" />
+            </view>
+          </view>
+
+          <view class="weui-cell ">
+            <view class="weui-cell__hd">
+              <view class="weui-label">公积金贷款额：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" bindinput='zgpriceChange' type='digit' placeholder="公积金贷款额" />
+            </view>
+            <view class="weui-cell__ft">
+              <view class="weui-label">万</view>
+            </view>
+          </view>
+          <view class="weui-cell ">
+            <view class="weui-cell__hd">
+              <view class="weui-label">贷款利率：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker mode="selector" range='{{gloanrate}}' value='{{grateindex}}' bindchange='gratePickerChange'>
+                <view class='picker'>{{gloanrates[grateindex].name}}</view>
+              </picker>
+            </view>
+            <view class="weui-cell__ft">
+              <i-icon type="enter" size="28" />
+            </view>
+          </view>
+          <view class="weui-cell ">
+            <view class="weui-cell__hd">
+              <view class="weui-label">按揭年限：</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker mode="selector" range='{{loantimes}}' value='{{timeindex}}' bindchange='timePickerChange'>
+                <view class='picker'>{{loantimes[timeindex]}}</view>
+              </picker>
+            </view>
+            <view class="weui-cell__ft">
+
+              <i-icon type="enter" size="28" />
+            </view>
+          </view>
+          <view class="weui-cell ">
+            <view class="weui-cell__hd">还款方式: </view>
+            <radio-group class="weui-cell__bd" bindchange='cpt_radioChange_2'>
+              <radio class="radio" checked value='1'>等额本息</radio>
+              <radio class="radio" value='2'>等额本金</radio>
+            </radio-group>
+          </view>
+        </view>
+        <view class='row'>
+          <view>
+            <button class="btn" form-type='submit' type='primary'>计算</button>
+          </view>
+        </view>
+        <view class="text">
+          <view> </view>
+        </view>
+      </form>
+    </swiper-item>
+  </swiper>
+</view>

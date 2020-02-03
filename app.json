@@ -1,0 +1,83 @@
+{
+  "pages": [
+    "pages/computer/computer-menu",
+    "pages/dynamic/dynamic-menu",
+    "pages/person/person-menu",
+    "pages/learn/learn-menu",
+    "pages/cpt/cpt",
+    "pages/cpt-comm-result/cpt-comm-result",
+    "pages/housecpt/cpt",
+    "pages/seller/index",
+    "pages/seller/detail",
+    "pages/seller/map",
+    "pages/map/map",
+    "pages/houseDetail/index",
+    "pages/tAX/index",
+    "pages/house/index",
+    "pages/tupai/index",
+    "pages/qudao/index",
+    "pages/build/index",
+    "pages/houseActive/index",
+    "pages/tupai/list/index",
+    "pages/qudao/list/index",
+    "pages/build/list/index",
+    "pages/houseDetail/list/index",
+    "pages/houseActive/list/index",
+    "pages/person/loginOrReg/index",
+    "pages/person/agent/index",
+    "pages/person/agent_proc/index",
+    "pages/person/pay/index",
+    "pages/person/pay/pay_rule",
+    "pages/person/set/index",
+    "pages/computer/index",
+    "pages/cpt-comm-result/child-result/tax/index",
+    "pages/jg",
+    "pages/jg/index",
+    "pages/learn/index",
+    "pages/index",
+    "pages/ptax/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "经纪人之家（南充）",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#ff6a3c",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/computer/computer-menu",
+        "text": "置业计算",
+        "iconPath": "assets/images/tabbar/home.png",
+        "selectedIconPath": "assets/images/tabbar/home_active.png"
+      },
+      {
+        "pagePath": "pages/learn/learn-menu",
+        "text": "终身学习",
+        "iconPath": "assets/images/tabbar/favor.png",
+        "selectedIconPath": "assets/images/tabbar/collect.png"
+      },
+      {
+        "pagePath": "pages/dynamic/dynamic-menu",
+        "text": "新盘动态",
+        "iconPath": "assets/images/tabbar/category.png",
+        "selectedIconPath": "assets/images/tabbar/category_active.png"
+      },
+      {
+        "pagePath": "pages/person/person-menu",
+        "text": "会员服务",
+        "iconPath": "assets/images/tabbar/profile.png",
+        "selectedIconPath": "assets/images/tabbar/profile_active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap3.json",
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  }
+}

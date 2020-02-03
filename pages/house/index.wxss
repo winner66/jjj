@@ -1,0 +1,173 @@
+/* pages/house/index.wxss */
+/* 公司 */
+.header{
+  padding: 8px;
+  border-bottom: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+
+}
+.company{
+      text-align: left;
+      font-size: 12px;
+}
+.placeholder{
+    margin: 5px;
+    padding: 0 5px;
+    text-align: center;
+    border-bottom: 16rpx solid #eee;
+    height: 2.3em;
+    line-height: 2.3em;
+    color: rgba(0,0,0,.3);
+}
+.row{
+  width: 100%;
+  height: 100rpx;
+
+}
+.name{
+  height: 100rpx;
+}
+.row-class{
+    background: #fff;
+}
+.col-class{
+    height: 35px;
+    line-height: 35px;
+    color: #fff;
+    text-align: center;
+    background: #fff;
+    font-size: 12px;
+}
+.col-class.light{
+    background: #5cadff;
+}
+
+.history-table-wrap{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* left: 50%; */
+  /* margin-left: -334rpx; */
+  /* top: 70rpx; */
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+/* 表格代码   */
+.table{
+  border:1px solid #dadada;
+  border-right:0;
+  border-bottom: 0;
+  width: 98%;
+  margin-left: 1%;
+}
+.tr{
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+}
+.td1,.td2{
+  padding: 8px;
+  border-bottom: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+  text-align: center;
+  width: 50%;
+  display: flex;
+}
+.td3{
+  padding: 8px;
+  border-bottom: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+  text-align: center;
+  width: 100%;
+  display: flex;
+}
+.td{
+ padding: 8px;
+  border-bottom: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+  text-align: center;
+  width: 100%;
+  font-size: 12px;
+  display: flex;
+
+}
+.td-title{
+  padding: 8px;
+  border-bottom: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+  text-align: center;
+  width: 100%;
+  font-size: 14px;
+  font-weight:bold;
+}
+.td-subtitle{
+ padding: 8px;
+  border-bottom: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+  text-align: left;
+  width: 100%;
+  font-size: 12px;
+  font-weight:bold;
+}
+.td-explain{
+ padding: 8px;
+  border-bottom: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+  text-align: left;
+  width: 100%;
+  font-size: 12px;
+  color: red;
+}
+
+.tdl{
+    flex: 1;
+    text-align: left;
+    font-size: 12px;
+    width: auto
+}
+.tdr{
+    flex: 1;
+    width: auto;
+    text-align: right;
+    font-size: 12px;
+}
+/* rule */
+.jf_rule {
+  border-top: 1px solid #efefef;
+  background: #fff;
+  padding: 3px 10rpx;
+  margin-top: 5rpx;
+}
+.jf_rule .title {
+  font-size: 12px;
+}
+.jf_rule .jf_jz_title {
+  color: #9999ff;
+  font-size: 12px;
+  padding-top: 5px;
+  display: block;
+}
+.jf_rule .jf_content {
+  text-align: left;
+  font-size: 30rpx;
+}
+.jf_rule .jf_content .sec_title {
+  color: #666;
+  padding-top: 10px;
+}
+.jf_rule .jf_content .jf_ins {
+  color: #999;
+  padding-top: 30rpx;
+}
+
+/* 投诉电话 */
+.phone{
+  font-size: 12px;
+  text-align: right;
+}
+.login{
+  font-size: 14px;
+  text-align: center;
+  font-weight:600;
+  color: #999;
+}

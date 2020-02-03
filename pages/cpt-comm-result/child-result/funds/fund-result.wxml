@@ -1,0 +1,8 @@
+<!--pages/cpt-comm-result/child-result/funds/fund-result.wxml-->
+<text>pages/cpt-comm-result/child-result/funds/fund-result.wxml</text>
+<view>
+
+ <view class="weui-cell ">
+  <view bindtap="toHouse">生成置业单</view>
+  </view>
+</view>

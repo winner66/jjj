@@ -1,0 +1,188 @@
+/* pages/houseActive/list/index.wxss */
+
+
+
+/* 2 */
+.good_list {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0rpx;
+  border-bottom: 1px solid #efefef;
+}
+.image_box image {
+  width: 180rpx;
+  height: 180rpx;
+}
+.product_name {
+  color: #414141;
+  font-size: 32rpx;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+.product_rule {
+  font-size: 26rpx;
+  color: #757575;
+  padding-top: 16rpx;
+}
+.price {
+  color: #de0000;
+  font-size: 34rpx;
+  font-weight: 600;
+}
+.goods {
+  padding: 15rpx 12rpx;
+}
+.goods .order_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20rpx;
+}
+.goods .order_state {
+  color: #ff4856;
+  font-size: 32rpx;
+}
+.goods .btn_group {
+  display: flex;
+  align-items: right;
+}
+.goods .btn_group .btn {
+  font-size: 25rpx;
+  padding: 10rpx 10rpx;
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+  -moz-border-radius: 15rpx;
+  /* Firefox */
+  -webkit-border-radius: 15rpx;
+  /* Safari 和 Chrome */
+  border-radius: 15rpx;
+  /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+}
+.goods .btn_group .btn_del {
+  color: #333;
+  border: 1px solid #ccc;
+}
+.product_info {
+  padding-top: 20rpx;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.cost_price {
+  padding-left: 20rpx;
+}
+.loadMoreGif {
+  margin: 15rpx auto;
+  width: 220rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loadMoreGif text {
+  font-size: 30rpx;
+  color: #999;
+  margin-left: 10rpx;
+}
+.loadMoreGif image {
+  width: 30rpx;
+  height: 30rpx;
+}
+.empty-placeholder {
+margin-top: 150rpx;
+width: 100%;
+text-align: center;
+}
+.empty-placeholder text {
+color: #666;
+font-size: 40rpx;
+margin-left: 30rpx;
+}
+.icon-xl {
+width: 140rpx;
+height: 148rpx;
+display: block;
+margin: 0 auto;
+}
+.txt {
+font-size: 26rpx;
+color: #888888;
+margin-top: 36rpx;
+}
+
+
+/* 
+sdsd */
+/* pages/houseDetail/list/index.wxss */
+.item{
+  display: flex;  
+  border-bottom:  3rpx solid #b2b2b2;
+  background:#fff;
+  height: 150rpx;
+
+    /* margin-bottom: 1em; */
+    /* padding: 1em 0em 0.5em 0em; */
+}
+
+.item .left{
+  display: flex;  
+  flex-direction: column;
+  flex: 1;
+  width: 70%;
+
+}
+.item .left .title { 
+height: 80rpx;
+font-size: 36rpx;
+text-align: left;
+font-weight: bold;
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis; 
+justify-content: center;
+margin-top: 20rpx;
+margin-bottom: 18rpx;
+margin-left: 24rpx;
+padding: 6rpx;
+}
+.item .left .time{
+height: 40rpx;
+font-size: 30rpx;
+text-align: left;
+color: gray;
+/* margin-top: 10px; */
+margin-bottom: 14rpx;
+margin-left: 24rpx;
+}
+.item .right{
+  flex: 1;
+  width: 20%;
+  text-align: right;
+  padding-right: 30rpx;
+  margin-top: 30rpx;
+  margin-bottom: 4rpx; 
+
+
+}
+
+.loading{  
+  padding: 10rpx;  
+  text-align: center;  
+ }  
+ .loading:before{  
+   display: inline-block;  
+   margin-right: 5rpx;  
+   vertical-align: middle;  
+   content: '';  
+   width: 60rpx;  
+  height: 60rpx;  
+  background: url(../../assets/images/common/loadding.gif) no-repeat;  
+   background-size: contain;  
+  animation: rotate 1s linear infinite;  
+ }  
+ .loading.complete:before{  
+   display: none;  
+ }
