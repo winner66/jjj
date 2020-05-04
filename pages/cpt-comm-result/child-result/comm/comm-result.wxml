@@ -2,11 +2,16 @@
 
 <!-- <text>pages/cpt-comm-result/child-result/comm/comm-result.wxml</text>
 <view>{{info}}</view> -->
-<view >
-
-  <view wx:if="{{methods==1}}">
-  <view>等额本息：</view>
-    <view class="weui-cell">
+<view>
+  <view class="loginTitle" style='height:80rpx'>
+     <view class="{{method==0?'select':'default'}}" data-current="0" bindtap="switchNav">等额本息</view>
+    <view class="{{method==1?'select':'default'}}" data-current="1" bindtap="switchNav">等额本金</view>
+  </view>
+  <view class='hr'></view>
+<swiper class="swip" current="{{method}}" bindchange="currentChange" style='height:{{winHeight}}rpx'>
+    <swiper-item>
+     <scroll-view scroll-y="true" style="height: {{winHeight}}rpx;">
+         <view class="weui-cell">
       <view class="weui-cell__hd">
         <view class="weui-label">首付：</view>
       </view>
@@ -17,7 +22,7 @@
         <view class="weui-label">元</view>
       </view>
     </view>
-    <view class="weui-cell ">
+     <view class="weui-cell ">
       <view class="weui-cell__hd">
         <view class="weui-label">每月月供：</view>
       </view>
@@ -69,12 +74,17 @@
         <view class="weui-label">{{months}}</view>
       </view>
       <view class="weui-cell__fd">
-        <view class="weui-label">元</view>
+        <view class="weui-label">月</view>
       </view>
     </view>
-  </view>
-  <view wx:if="methods">
-  <view>等额本金：</view>
+
+    <view class="weui-cell ">
+      <view bindtap="toHouse">生成置业单</view>
+    </view>
+    </scroll-view> 
+</swiper-item>
+ <swiper-item>  
+         <scroll-view scroll-y="true" style="height: {{winHeight}}rpx;">
     <view class="weui-cell ">
       <view class="weui-cell__hd">
         <view class="weui-label">首付：</view>
@@ -108,9 +118,34 @@
         <view class="weui-label">元</view>
       </view>
     </view>
+
+     <view class="weui-cell ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">第 </view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-label" name="index" bindchange="indexChange" type='digit' placeholder="请输入..." />
+              </view>
+              <view class="weui-cell__ft">
+                <view class="weui-label">月</view>
+              </view>
+        </view>
+
+      <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">第{{index}}月:</view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="weui-label">{{indexPayMoney}}</view>
+      </view>
+      <view class="weui-cell__fd">
+        <view class="weui-label">元</view>
+      </view>
+    </view>
+
     <view class="weui-cell ">
       <view class="weui-cell__hd">
-        <view class="weui-label">每月递减：</view>
+        <view class="weui-label">相比上个月少交了：</view>
       </view>
       <view class="weui-cell__bd">
         <view class="weui-label">{{reduceMoney}}</view>
@@ -161,11 +196,17 @@
         <view class="weui-label">{{months}}</view>
       </view>
       <view class="weui-cell__fd">
-        <view class="weui-label">元</view>
+        <view class="weui-label">月</view>
       </view>
     </view>
     <view class="weui-cell ">
       <view bindtap="toHouse">生成置业单</view>
     </view>
-  </view>
+    
+     
+    </scroll-view>   
+   </swiper-item>
+</swiper>
 </view>
+ 
+ 

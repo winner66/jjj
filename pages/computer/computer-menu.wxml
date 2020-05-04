@@ -71,7 +71,7 @@
         </view>
       </block>
       </view> -->
-      <block wx:for="{{jgArea}}" wx:key="{{jgArea.bank}}" wx:for-item="itemName">
+      <block wx:for="{{jgArea}}"  wx:key="{{jgArea.bank}}" wx:for-item="itemName">
         <view data-item="{{itemName}}">
           <view class="title">
             <view class="left">{{itemName.areaName}}</view>

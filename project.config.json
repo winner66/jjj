@@ -11,9 +11,9 @@
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
-		"nodeModules": true,
+		"nodeModules": false,
 		"autoAudits": true,
-		"showShadowRootInWxmlPanel": true,
+		"showShadowRootInWxmlPanel": false,
 		"scopeDataCheck": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
@@ -398,6 +398,20 @@
 					"id": -1,
 					"name": "pages/qudao/list/index",
 					"pathName": "pages/qudao/list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/house/index",
+					"pathName": "pages/house/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/computer/computer-menu",
+					"pathName": "pages/computer/computer-menu",
 					"scene": null
 				}
 			]

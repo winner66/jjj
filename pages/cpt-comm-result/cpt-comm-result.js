@@ -8,7 +8,7 @@ Page({
    */
   data: { 
     tab:null,
-    tabdata:null,   
+    tabdata:{},   
 
   },
 
@@ -25,11 +25,13 @@ Page({
       // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
       eventChannel.on('data', function (data) {
         
-        let temdata = JSON.stringify(data.data);
+        // let temdata = JSON.parse(data.data);
+        
         
         that.setData({
-          tabdata :temdata        
+          tabdata: data.data      
         })
+        
         console.log(that.data.tabdata);
       })
       eventChannel.on('tab', function (tab) {

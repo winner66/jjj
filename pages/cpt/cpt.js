@@ -8,12 +8,12 @@ import {
 } from '../../assets/comm/rate.js'
 
 import regeneratorRuntime from '../../utils/runtime';
-import api from '../../utils/api';
+// import api from '../../utils/apis';
 import tip from '../../utils/tip';
-import apis from '../../utils/apis';
+import  apis from '../../utils/apis';
 var base64 = require('../../utils/base.js');
 // var base64 = require('../../utils/base_64.js');
-var path = 'http://49.234.199.223:9090';
+// var path = 'http://49.234.199.223:9090';
 const app = getApp();
 Page({
 
@@ -97,17 +97,17 @@ Page({
     loanrates: loanrates,
     loanrate: loanrate,
 
-
     rateindex: 1,
-    area: null,
-    areaprice: null,
+    area: 0,
+    areaprice: 0,
     //  商业贷款金额 公积金贷款金额
-    loanmoney: null,
+    loanmoney: 0,
 
     timeindex: 4,
 
     gloanrates: gloanrates,
     gloanrate: gloanrate,
+    grateindex:1,
     // 公积金利率    
     // LPR
     lpr:4.85,
@@ -133,12 +133,10 @@ Page({
     // 组合贷金额
     zcloanmoney: null,
     zgloanmoney: null,
-
     //在商业贷款和公积金 里 判断是否按面积计算 
     cptAreaFlag: 1,
     // 计算方式 标签
     cptmethodFlag: 1,
-
     // 当前计算类型-商业贷 税贷。。。标签
     currentTab: 0,
     // 宽高
@@ -168,19 +166,28 @@ Page({
   areapriceChange: function(e) {
 
     this.setData({
-      areaprince: e.detail.value
+      areaprice: e.detail.value
     })
     // console.log('this:', this.data)
-    console.log('areaprice :', this.data.areaprince)
+    console.log('areaprice :', this.data.areaprice)
 
   },
   // 面积改变
   areaChange: function(e) {
-
-    this.setData({
-      area: e.detail.value
-    })
-    console.log('area:', this.data.area)
+   var price=this.data.areaprice;
+    if (this.data.areaprice==0){
+      wx.showModal({
+        title: '请填写评估单价',
+        confirmText: '确定',
+        cancelText: '取消',
+      })
+    }else{
+      this.setData({
+        area: e.detail.value,
+        loanmoney: e.detail.value * price,
+        // sumMoney: e.detail.value * price
+      })
+    }
 
   },
   // 首付比例
@@ -232,13 +239,13 @@ Page({
     })
     console.log(this.data.currentIndex)
   },
-  // 商业贷-贷款金额改变
+  // 公积金贷-贷款金额改变
   loanChange: function(e) {
     this.setData({
       loanmoney: e.detail.value,
 
     })
-    console.log('loanmoney :', this.data.grateindex)
+    console.log('loanmoney :', this.data.loanmoney)
   },
   // 商业贷款-根据按面积按贷款额度-得出贷款的总金额
   loan_money: function() {
@@ -247,7 +254,7 @@ Page({
     if (that.cptAreaFlag == 1) {
       var tem = that.scales[that.scaleindex].id;
 
-      money = parseFloat(this.data.areaprince) * parseFloat(this.data.area) * parseFloat(0.1) * parseFloat(tem);
+      money = parseFloat(this.data.areaprice) * parseFloat(this.data.area) * parseFloat(0.1) * parseFloat(tem);
       console.log("mon1 ：" + money);
     } else {
 
@@ -279,36 +286,64 @@ Page({
       },
       success: function(res) {
         // 通过eventChannel向被打开页面传送数据
-
-        var commData = {
-
-          // 首付比例
-          // scale: that.data.scales[that.data.scaleindex].id,
-          // 金额
-          money: that.loan_money(),
-          //时间 
-          time: that.data.timeindex,
-          // 利率
-          rate: that.data.loanrates[that.data.rateindex].id,
-          // 还款方式
-          methods: that.data.cptmethodFlag
-
-
+        var loanmoney = 10000;
+        if (!that.data.areaprice) {
+          wx.showModal({
+            title: '请填写评估单价',
+            confirmText: '确定',
+            cancelText: '取消',
+          })
+         
         }
-        res.eventChannel.emit('data', {
-          data: commData
-        })
-        //商业贷        
-        res.eventChannel.emit('tab', {
-          tab: 0
-        })
+        else if (!that.data.area) {
+          wx.showModal({
+            title: '请填写建筑面积',
+            confirmText: '确定',
+            cancelText: '取消',
+          })
+          
+        } else {
+          loanmoney = that.data.areaprice * that.data.area;
+          var commData = {
+            // 首付比例
+            // scale: that.data.scales[that.data.scaleindex].id,
+
+            loanmoney: that.loan_money(),
+            //贷款时间 （年）
+            time: that.data.timeindex + 1,
+            // 利率
+            rate: that.data.rate / 100,
+            // 还款方式 0-等额本息 1：等额本金
+            methods: that.data.cptmethodFlag - 1,
+            // 贷款成数
+            loanP: that.data.scales[that.data.scaleindex].id,
+
+            // 银行，名字
+            bankName: that.data.banks[that.data.banksindex].name,
+            // 网点示列
+            bankExp: that.data.banksF[that.data.banksFindex].name,
+            // 网点地址
+            bankAddr: that.data.banksF[that.data.banksFindex].local,
+            // 单价        
+            areaprice: that.data.areaprice,
+            // 评估总款 即 总金额          
+            money: loanmoney,
+            buildArea: that.data.area,
+          }
+          res.eventChannel.emit('data', {
+            data: commData
+          })
+          //商业贷        
+          res.eventChannel.emit('tab', {
+            tab: 0
+          })
+        }       
       }
     })
   },
   // 获取南充市银行 json
   getbanksJson: async function() {
-
-    const json = await api.getBankType({
+    const json = await apis.getBankType({
       query: {
         // 南充
         proId: "001",
@@ -327,7 +362,6 @@ Page({
         item.id = json[i].bank_type_id,
         item.name = json[i].bank_type_name
         banks.push(item);
-
       }
       console.log("getbankjson 1:" + JSON.stringify(banks))
       this.setData({
@@ -350,6 +384,9 @@ Page({
       console.log("没有获取到数据")
     } else {      
       // let banks = this.data.bankF;
+      // that.setData({
+      //   banksF: []
+      // })
       let banks = [];
       for (var i = 0; i < json.length; i++) {
         var item = {};
@@ -362,13 +399,12 @@ Page({
           // item.bankLPR: 4,
           // item.bankBasePoint: 4,
          banks.push(item);
-      }
-      console.log("getF 1:" + JSON.stringify(banks))
+      }     
       that.setData({
         banksF: banks
       })
     }
-    console.log("getF 2:" + JSON.stringify(that.data.banksF))
+    console.log("getF :" + JSON.stringify(that.data.banksF))
   },
   /**
    * 生命周期函数--监听页面加载
@@ -529,13 +565,16 @@ Page({
     var id = page.data.banks[e.detail.value].id;
     console.log('id:', id );
     this.setData({
-      banksindex : e.detail.value
+      banksindex : e.detail.value,
+      banksF: [],
+      banksFindex: 0,
+      local: 0,
+      houseAge: 0,
+      maxAge: 0
     }) 
     this.getListJson(id).then(res => console.log("res " + res)).catch(v => console.log("v " + v));
     // var id = page.data.banks[e.detail.value].id;
-    // var page = this;  
-    
-
+    // var page = this;     
  
   },
   // 选择网点
@@ -603,27 +642,58 @@ Page({
       },
       success: function(res) {
         // 通过eventChannel向被打开页面传送数据
-
-        var commData = {
-
-
-          // // 金额
-          // money: that.loan_money(),
-          // //时间 
-          // time: that.data.timeindex,
-          // // 利率
-          // rate: that.data.gloanrates[that.data.grateindex].id,
-          // // 还款方式
-          // methods: that.data.cptmethodFlag,
+        var loanmoney = 10000;
+        if (!that.data.areaprice) {
+          wx.showModal({
+            title: '请填写评估单价',
+            confirmText: '确定',
+            cancelText: '取消',
+          })
 
         }
-        res.eventChannel.emit('data', {
-          data: commData
-        })
-        //商业贷        
-        res.eventChannel.emit('tab', {
-          tab: 2
-        })
+        else if (!that.data.area) {
+          wx.showModal({
+            title: '请填写建筑面积',
+            confirmText: '确定',
+            cancelText: '取消',
+          })
+
+        } else {
+          loanmoney = that.data.areaprice * that.data.area;
+          var commData = {
+            // 首付比例
+            // scale: that.data.scales[that.data.scaleindex].id,
+
+            loanmoney: that.loan_money(),
+            //时间 
+            time: that.data.timeindex + 1,
+            // 利率
+            rate: that.data.gloanrates[that.data.grateindex].id,
+            // 还款方式 0-等额本息 1：等额本金
+            methods: that.data.cptmethodFlag - 1,
+            // 贷款成数
+            loanP: that.data.scales[that.data.scaleindex].id,
+            // 总金额
+            money: loanmoney,
+            // 银行，名字
+            bankName: that.data.banks[that.data.banksindex].name,
+            // 网点示列
+            bankExp: that.data.banksF[that.data.banksFindex].name,
+            // 网点地址
+            bankAddr: that.data.banksF[that.data.banksFindex].local,
+          }
+
+          res.eventChannel.emit('data', {
+            data: commData
+          })
+          //公积金-贷        
+          res.eventChannel.emit('tab', {
+            tab: 0
+          })
+
+        }
+
+        
       }
     })
   },

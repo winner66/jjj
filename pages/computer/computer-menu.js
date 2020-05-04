@@ -358,9 +358,24 @@ Page({
     if (json == '') {
       console.log("没有获取到数据")
     } else {  
-      var tem = json;      
+      var tem = json;  
+   
+      var temp = [];
+       
+      for(var i=0;i<tem.length;i++){
+        if(tem[i].banks.length>0){
+          var temitem = {};
+          temitem["id"] = tem[i].id;
+          temitem["active"]=tem[i].active;
+          temitem["areaName"] = tem[i].areaName;
+          temitem["area_id"] = tem[i].area_id;
+          temitem["area_name"] = tem[i].area_name;
+          temitem["banks"] = tem[i].banks;
+          temp.push(temitem)
+        }        
+      }    
       this.setData({
-        jgArea:tem,
+        jgArea:temp,
         // itemName:tem[0]
       })
     }

@@ -18,67 +18,67 @@
     <view class="tr">
       <view class="td3">
         <view class="tdl">房产座落：</view>
-        <input class="tdr" bindinput='localChange' name="local" type='text'></input>
+        <input class="tdr" bindinput='localChange' name="local" value="{{local}}" type='text'></input>
       </view>
     </view>
     <view class="tr">
       <view class="td2">
         <view class="tdl">建筑面积：</view>
-        <input class="tdr" bindinput='buildAreaChange' name="buildArea" type='text'  />
+        <input class="tdr" bindinput='buildAreaChange' name="buildArea" value="{{buildArea}}" type='text'  />
       </view>
       <view class="td2">
         <view class="tdl">土地分摊面积：</view>
-        <input class="tdr" bindinput='landAreaChange' type='text'name="landArea"  />
+        <input class="tdr" bindinput='landAreaChange' type='text'name="landArea"  value="{{landArea}}" />
       </view>
     </view>
     <view class="tr">
       <view class="td2">
         <view class="tdl">装修情况：</view>
-        <input class="tdr"  type='text' name="fit" />
+        <input class="tdr"  type='text' name="fit" value="{{fit}}"/>
       </view>
       <view class="td2">
         <view class="tdl">是否有电梯：</view>
-        <input class="tdr" type='text' name="ele" />
+        <input class="tdr" type='text' name="ele" value="{{ele}}"/>
       </view>
     </view>
     <view class="tr">
       <view class="td2">
         <view class="tdl">建筑性质：</view>
-        <input class="tdr" bindinput='buildChange' type='text' name="build" />
+        <input class="tdr" bindinput='buildChange' type='text' name="build" value="{{build}}" />
       </view>
       <view class="td2">
         <view class="tdl">土地性质：</view>
-        <input class="tdr" bindinput='landChange' type='text' name="land" />
+        <input class="tdr" bindinput='landChange' type='text' name="land" value="{{land}}" />
       </view>
     </view>
     <view class="tr">
       <view class="td2">
         <view class="tdl">房屋来源：</view>
-        <input class="tdr" bindinput='houseOrigChange' type='text' name="houseOrig" />
+        <input class="tdr" bindinput='houseOrigChange' type='text' name="houseOrig" value="{{houseOrig}}" />
       </view>
       <view class="td2">
         <view class="tdl">建成年代：</view>
-        <input class="tdr" bindinput='houseTimeChange' type='text' name="houseTime" />
+        <input class="tdr" bindinput='houseTimeChange' type='text' name="houseTime" value="{{houseTime}}"/>
       </view>
     </view>
     <view class="tr">
       <view class="td2">
         <view class="tdl">产权时间：</view>
-        <input class="tdr" bindinput='timeChange' type='text' name="time" />
+        <input class="tdr" bindinput='timeChange' type='text' name="time" value="{{time}}" />
       </view>
       <view class="td2">
         <view class="tdl">是否满五唯一：</view>
-        <input class="tdr" bindinput='onlyHouseChange' type='text' name="onlyHouse" />
+        <input class="tdr" bindinput='onlyHouseChange' type='text' name="onlyHouse" value="{{onlyHouse}}" />
       </view>
     </view>
     <view class="tr">
       <view class="td2">
         <view class="tdl">预计成交价：</view>
-        <input class="tdr" bindinput='tradePriceChange' type='text' name="tradePrice" />
+        <input class="tdr" bindinput='tradePriceChange' type='text' name="tradePrice" value="{{tradePrice}}" />
       </view>
       <view class="td2">
         <view class="tdl">付款方式：</view>
-        <input class="tdr" bindinput='payMethodsChange' type='text' name="payMethods" />
+        <input class="tdr" bindinput='payMethodsChange' type='text' value="{{payMethods}}" name="payMethods" />
       </view>
     </view>
     <view class="tr">
@@ -87,57 +87,57 @@
     <view class="tr">
       <view class="td2">
         <view class="tdl">贷款评估单价预估：</view>
-        <input class="tdr" bindinput='estimatePerPriceChange' type='text' name="estimatePerPrice" />
+        <input class="tdr" bindinput='estimatePerPriceChange' type='text' name="estimatePerPrice" value="{{estimatePerPrice}}" />
       </view>
       <view class="td2">
         <view class="tdl">贷款评估总价预估：</view>
-        <input class="tdr" bindinput='estimatePriceChange' type='text' name="estimatePrice" />
+        <input class="tdr" bindinput='estimatePriceChange' type='text' name="estimatePrice" value="{{estimatePrice}}" />
       </view>
     </view>
     <view class="tr">
       <view class="td2">
         <view class="tdl">首付款额预估：</view>
-        <input class="tdr" bindinput='firstPayPriceChange' type='text' name="firstPayPrice" />
+        <input class="tdr" bindinput='firstPayPriceChange' type='text' name="firstPayPrice"  value="{{firstPayPrice}}"/>
       </view>
       <view class="td2">
         <view class="tdl">贷款额预估：</view>
-        <input class="tdr" bindinput='loanPriceChange' type='text' name="loanPrice" />
+        <input class="tdr" bindinput='loanPriceChange' type='text' name="loanPrice"  value="{{loanPrice}}"/>
       </view>
     </view>
     <view class="tr">
       <view class="td2">
         <view class="tdl">预计税金：</view>
-        <input class="tdr" bindinput='taxChange' type='text' name="tax" />
+        <input class="tdr" bindinput='taxChange' type='text' name="tax" value="{{tax}}" />
       </view>
       <view class="td2">
         <view class="tdl">预计土地出让金：</view>
-        <input class="tdr" bindinput='landTaxChange' type='text' name="landTax" />
+        <input class="tdr" bindinput='landTaxChange' type='text' name="landTax"  value="{{landTax}}"/>
       </view>
     </view>
     <view class="tr">
       <view class="td2">
         <view class="tdl">中介服务费用预估：</view>
-        <input class="tdr" bindinput='midServerEstimateChange' type='text' name="midServerEstimate" />
+        <input class="tdr" bindinput='midServerEstimateChange' type='text' name="midServerEstimate" value="{{midServerEstimate}}"/>
       </view>
       <view class="td2">
         <view class="tdl">首付预备合计预估：</view>
-        <input class="tdr" bindinput='firstSumEstimateChange' type='text' name="firstSumEstimate"/>
+        <input class="tdr" bindinput='firstSumEstimateChange' type='text' name="firstSumEstimate" value="{{firstSumEstimate}}"/>
       </view>
     </view>
     <view class="tr">
       <view class="td2">
         <view class="tdl">贷款年限：</view>
-        <input class="tdr" bindinput='loanTimeChange' type='text' name="loanTime" />
+        <input class="tdr" bindinput='loanTimeChange' type='text' name="loanTime" value="{{loanTime}}" />
       </view>
       <view class="td2">
         <view class="tdl">还款方式：</view>
-        <input class="tdr" bindinput='MethodsChange' type='text' name="Methods" />
+        <input class="tdr" bindinput='MethodsChange' type='text' name="methods" value="{{methods}}" />
       </view>
     </view>
     <view class="tr">
       <view class="td3">
         <view class="tdl">预计月供：</view>
-        <input class="tdr" bindinput='monthPayChange' type='text' name="monthPay" />
+        <input class="tdr" bindinput='monthPayChange' type='text' name="monthPay"  value="{{monthPay}}"/>
       </view>
     </view>
 
@@ -169,17 +169,17 @@
     <view class="tr">
       <view class="td2">
         <view class="tdl">经纪人：</view>
-        <input class="tdr" bindinput='areapriceChange' type='text'name="name" />
+        <input class="tdr" bindinput='areapriceChange' type='text'name="name"  value="{{name}}"/>
       </view>
       <view class="td2">
         <view class="tdl">电话：</view>
-        <input class="tdr" bindinput='areapriceChange' type='digit' maxlength="11" name="phone" />
+        <input class="tdr" bindinput='areapriceChange' type='digit' maxlength="11" name="phone" value="{{phone}}" />
       </view>
     </view>
     <view class="tr">
       <view class="td3">
         <view class="tdl">预算时间：</view>
-        <input class="tdr" bindinput='areapriceChange' type='text' name="createTime" />
+        <input class="tdr" bindinput='areapriceChange' type='text' name="createTime"  value="{{createTime}}"/>
       </view>
     </view>
   </view>

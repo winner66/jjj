@@ -1,5 +1,5 @@
 <!--pages/cpt-comm-result/child-result/tax/index.wxml-->
-
+<!-- 非住宅 -->
 <view class="weui-cell ">
     <view class="weui-cell__hd">
       <view class="weui-label">契税：约</view>

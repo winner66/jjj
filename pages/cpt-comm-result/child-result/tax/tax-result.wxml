@@ -1,6 +1,6 @@
 <!--pages/cpt-comm-result/child-result/tax/tax-result.wxml-->
 
-
+<!-- 住宅 -->
 <!-- <text>pages/cpt-comm-result/child-result/tax/tax-result.wxml</text> -->
 <!-- <view>{{info}}</view> -->
 <view class="weui-cell ">

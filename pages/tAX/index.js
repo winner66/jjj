@@ -12,10 +12,12 @@ Page({
     winHeight: 0,
     
     houseName:null,
+
     // 楼层
     houseStorey:null,
     houseStoreyCount:null,
     area:null,
+    //实际成交价
     price:null,
     // 中介费
     mediums: [{ id: 0, name: "买房2%卖方1%" }, { id: 1, name: "买房2%卖方0%" },{ id: 2, name: "买房1%卖方1%" }, { id: 3, name: "自定义" }],
@@ -29,8 +31,10 @@ Page({
     sellmediums:null,
     // 贷款
     loanmoney:null,
+    //评税单价
+    minprice: 10000,
     // 123456789
-    years:[1,2,3,4,5,6],
+    years:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
     // 卖方产权年限
     yearIndex:5,
     
@@ -48,6 +52,7 @@ Page({
     // 土地性质
     lands: [{ id: 0, name: "出让" }, { id: 1, name: "划拨" },{ id: 2, name: "划拨(房改)" }],
     landIndex:0,
+    //拆迁金额
     cQprice:1,
  
   },
@@ -113,6 +118,7 @@ Page({
     this.setData({
       mediumIndex: e.detail.value
     })
+
     console.log(page.data.mediumIndex);
   },
   // 
@@ -149,6 +155,14 @@ Page({
     this.setData({
       loanServer: e.detail.value
     })
+  },
+  minpriceChange: function (e) {
+    console.log('minprice:', e.detail.value);
+    var page = this;
+    this.setData({
+      minprice: e.detail.value
+    })
+    console.log(page.data.minprice);
   },
   // 贷款金额
   loanmoneyChange: function (e) {
@@ -240,10 +254,144 @@ Page({
     })
     console.log(page.data.cQIndex);
   },
-  //计算  submit form
+  //计算   //住宅 税费 提交
   taxFormSubmit: function (e) {
     // if(){};
-    let that = this;
+    if (!this.data.houseName) {
+      wx.showModal({
+        title: '请填写楼盘名称',
+        confirmText: '确定',
+        cancelText: '取消',
+      })
+    }
+    else if (!this.data.houseStorey) {
+           wx.showModal({
+        title: '请填写该住宅楼层',
+        confirmText: '确定',
+        cancelText: '取消',
+      })
+
+    } else if (!this.data.houseStoreyCount) {
+      wx.showModal({
+        title: '请填写楼盘总层数',
+        confirmText: '确定',
+        cancelText: '取消',
+      })
+    }  else if (!this.data.area) {
+      wx.showModal({
+        title: '请填写建筑面积',
+        confirmText: '确定',
+        cancelText: '取消',
+      })
+    } else if (!this.data.price) {
+      wx.showModal({
+        title: '请填写实际成交价',
+        confirmText: '确定',
+        cancelText: '取消',
+      })
+    } 
+    // else if (!this.data.mediumMedthods) {
+    //   wx.showModal({
+    //     title: '请填写中介费方案',
+    //     confirmText: '确定',
+    //     cancelText: '取消',
+    //   })
+    // }
+    else if (!this.data.buymediums && this.data.mediumIndex === 3) {
+      wx.showModal({
+        title: '请填写中介费-买房',
+        confirmText: '确定',
+        cancelText: '取消',
+      })
+    } else if (!this.data.sellmediums && this.data.mediumIndex === 3) {
+      wx.showModal({
+        title: '请填写中介费-卖方',
+        confirmText: '确定',
+        cancelText: '取消',
+      })
+    } else if (!this.data.loanmoney ) {
+      wx.showModal({
+        title: '请填写委托贷款金额',
+        confirmText: '确定',
+        cancelText: '取消',
+      })
+    } 
+  else if (!this.data.loanServer && this.data.loanserverIndex === 1) {
+      wx.showModal({
+        title: '请填写自定义-贷款服务费',
+        confirmText: '确定',
+        cancelText: '取消',
+      })
+    } else if (!this.data.minprice) {
+      wx.showModal({
+        title: '请填写评税单价',
+        confirmText: '确定',
+        cancelText: '取消',
+      })
+    } else if (!this.data.cQprice && this.data.cQIndex=== 0) {
+      wx.showModal({
+        title: '请填写拆迁金额',
+        confirmText: '确定',
+        cancelText: '取消',
+      })
+    }else {
+      let that = this;
+      //中介费  单位%
+      var buymediums=0.0;
+      var sellmediums=0.0;
+      if (this.data.mediumIndex==0){
+        buymediums = 0.02;
+        sellmediums = 0.01;
+      } else if (this.data.mediumIndex == 1){
+        buymediums = 0.02;
+        sellmediums = 0.0;
+      } else if (this.data.mediumIndex == 2){
+        buymediums = 0.01;
+        sellmediums = 0.01;
+      } else {//自定义
+        buymediums = this.data.buymediums;
+        sellmediums = this.data.sellmediums;
+      }
+      var loanServer=0.02;
+      // 自定义贷款服务费
+      if(this.data.loanserverIndex==1){
+        loanServer = this.data.loanServer;
+      }
+      let data={
+        name: this.data.houseName,
+        houseStorey: this.data.houseStorey,
+        //总楼层
+        houseStoreyCount: this.data.houseStoreyCount,
+        area: this.data.area,
+        //实际成交价
+        price: this.data.price,
+        //mediumIndex: mediumIndex,
+        mediumsname: this.data.mediums[this.data.mediumIndex].name,
+             //默认或者自定义
+        buymediums: buymediums,
+        sellmediums :sellmediums,
+        loanmoney: this.data.loanmoney,
+        //默认或者自定义
+        loanservername: this.data.loanserver[this.data.loanserverIndex].name,
+        loanServer:loanServer,
+        //评税单价
+        minprice: this.data.minprice,
+        //卖方产权
+        yearIndex: this.data.yearIndex,
+        houseOnly: this.data.isorNo[this.data.houseOnlyIndex],
+        lands: this.data.lands[this.data.landIndex].name,
+        // 赠送
+        give: this.data.isorNo[this.data.giveIndex],
+        // 继承
+        herit: this.data.isorNo[this.data.heritIndex],
+        // cQ拆迁
+        cQ: this.data.isorNo[this.data.cQIndex],
+        cQprice: this.data.cQprice,
+        // 买房家庭住宅数
+        buyerHouseCount: this.data.buyerHouseCount,
+
+      };
+     
     wx.navigateTo({
       url: '/pages/cpt-comm-result/cpt-comm-result?tag=1',
       events: {
@@ -257,13 +405,13 @@ Page({
       },
       success: function (res) {
         // 通过eventChannel向被打开页面传送数据
-        var commData = {
-        }
-        res.eventChannel.emit('data', { data: commData })
+       
+        res.eventChannel.emit('data', { data: data })
         //税       
         res.eventChannel.emit('tab', { tab: 1 })
       }
     })
+    }//end if
   },
   /**
    * 生命周期函数--监听页面加载
@@ -299,45 +447,146 @@ Page({
 
     console.log("h:" + this.data.winHeight + "w:" + this.data.winWidth)
   },
+  //非住宅 税费 提交
   formSubmit: function(e) {
     // if(){};
     console.log(e.detail.value);
     let { area ,   cQ  ,  cQprice,    give,    herit,    houseStorey,    houseStoreyCount,    loanMoney,    mediumMedthods,    minprice,    name,    price } = e.detail.value;
-    if (name=="") {
-      wx.wx.showModal({
-        title: '请填写物业名称',
+    if (!this.data.houseName) {
+      wx.showModal({
+        title: '请填写楼盘名称',
         confirmText: '确定',
         cancelText: '取消',
-      }) 
-    }  
-      
-     else if (!cQprice) {
-      wx.wx.showModal({
-        title: '请填写物业名称',
+      })
+    }
+    else if (!this.data.houseStorey) {
+      wx.showModal({
+        title: '请填写该住宅楼层',
         confirmText: '确定',
         cancelText: '取消',
-      } )
+      })
 
-     } else if (!loanMoney) {
-       wx.wx.showModal({
-         title: '请填写贷款金额',
-         confirmText: '确定',
-         cancelText: '取消',
-       })
-     } else if (!mediumMedthods) { 
-       wx.wx.showModal({
-         title: '请填写中介费方案',
-         confirmText: '确定',
-         cancelText: '取消',
-       })
-    } else if (!area){
-      wx.wx.showModal({
+    } else if (!this.data.houseStoreyCount) {
+      wx.showModal({
+        title: '请填写楼盘总层数',
+        confirmText: '确定',
+        cancelText: '取消',
+      })
+    } else if (!this.data.area) {
+      wx.showModal({
         title: '请填写建筑面积',
         confirmText: '确定',
         cancelText: '取消',
-      } )
-    }else{
+      })
+    } else if (!this.data.price) {
+      wx.showModal({
+        title: '请填写实际成交价',
+        confirmText: '确定',
+        cancelText: '取消',
+      })
+    }
+    // else if (!this.data.mediumMedthods) {
+    //   wx.showModal({
+    //     title: '请填写中介费方案',
+    //     confirmText: '确定',
+    //     cancelText: '取消',
+    //   })
+    // }
+    else if (!this.data.buymediums && this.data.mediumIndex === 3) {
+      wx.showModal({
+        title: '请填写中介费-买房',
+        confirmText: '确定',
+        cancelText: '取消',
+      })
+    } else if (!this.data.sellmediums && this.data.mediumIndex === 3) {
+      wx.showModal({
+        title: '请填写中介费-卖方',
+        confirmText: '确定',
+        cancelText: '取消',
+      })
+    } else if (!this.data.loanmoney) {
+      wx.showModal({
+        title: '请填写委托贷款金额',
+        confirmText: '确定',
+        cancelText: '取消',
+      })
+    }
+    else if (!this.data.loanServer && this.data.loanserverIndex === 1) {
+      wx.showModal({
+        title: '请填写自定义-贷款服务费',
+        confirmText: '确定',
+        cancelText: '取消',
+      })
+    } else if (!this.data.minprice) {
+      wx.showModal({
+        title: '请填写评税单价',
+        confirmText: '确定',
+        cancelText: '取消',
+      })
+    } else if (!this.data.cQprice && this.data.cQIndex === 0) {
+      wx.showModal({
+        title: '请填写拆迁金额',
+        confirmText: '确定',
+        cancelText: '取消',
+      })
+    } else {
       let that = this;
+      //中介费  单位%
+      var buymediums = 0;
+      var sellmediums = 0;
+      if (this.data.mediumIndex === 0) {
+        buymediums = 0;
+        sellmediums = 0;
+      } else if (this.data.mediumIndex === 1) {
+        buymediums = 2;
+        sellmediums = 1;
+      } else if (this.data.mediumIndex === 2) {
+        buymediums = 2;
+        sellmediums = 0;
+      } else {//自定义
+        buymediums = this.data.buymediums;
+        sellmediums = this.data.sellmediums;
+      }
+      var loanServer = 2;
+      // 自定义贷款服务费
+      if (this.data.loanserverIndex == 1) {
+        loanServer = this.data.loanServer;
+      }
+      let data = {
+        name: this.data.houseName,
+        houseStorey: this.data.houseStorey,
+        //总楼层
+        houseStoreyCount: this.data.houseStoreyCount,
+        area: this.data.area,
+        //实际成交价
+        price: this.data.price,
+        //mediumIndex: mediumIndex,
+        mediumsname: this.data.mediums[this.data.mediumIndex].name,
+        //默认或者自定义
+        buymediums: buymediums,
+        sellmediums: sellmediums,
+        loanmoney: this.data.loanmoney,
+        //默认或者自定义
+        loanservername: this.data.loanserver[this.data.loanserverIndex].name,
+        loanServer: loanServer,
+        //评税单价
+        minprice: this.data.minprice,
+        //卖方产权
+        yearIndex: this.data.yearIndex,
+        houseOnly: this.data.isorNo[this.data.houseOnlyIndex],
+        lands: this.data.lands[this.data.landIndex].name,
+        // 赠送
+        give: this.data.isorNo[this.data.giveIndex],
+        // 继承
+        herit: this.data.isorNo[this.data.heritIndex],
+        // cQ拆迁
+        cQ: this.data.isorNo[this.data.cQIndex],
+        cQprice: this.data.cQprice,
+        // 买房家庭住宅数
+        buyerHouseCount: this.data.buyerHouseCount,
+
+      }
+      
       wx.navigateTo({
         url: '/pages/cpt-comm-result/cpt-comm-result?tag=4',
         events: {

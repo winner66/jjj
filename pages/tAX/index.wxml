@@ -11,14 +11,14 @@
     <swiper current="{{currentTab}}" style='height:{{winHeight-80}}rpx'>
       <swiper-item>
         <scroll-view scroll-y="true" style="height: {{winHeight-80}}rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-          <form bindsubmit='commFormSubmit'>
+          <form bindsubmit='taxFormSubmit'>
 
             <view class="weui-cell ">
               <view class="weui-cell__hd">
                 <view class="weui-label">楼盘名称：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" bindinput='houseNameChange' type="text" placeholder="请输入楼盘名称" />
+                <input class="weui-input" bindinput='houseNameChange' type="text" value='{{houseName}}'placeholder="请输入楼盘名称" />
               </view>
             </view>
             <view class="weui-cell ">
@@ -26,7 +26,7 @@
                 <view class="weui-label">所处楼层：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" bindinput='houseStoreyChange' type='digit' placeholder="请输入楼盘名称" />
+                <input class="weui-input" bindinput='houseStoreyChange' type='digit'value='{{houseStorey}}' placeholder="请输入住宅所在楼层" />
               </view>
 
             </view>
@@ -35,7 +35,7 @@
                 <view class="weui-label">总层数：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" bindinput='houseStoreyCountChange' type='digit' placeholder="请输入楼盘名称" />
+                <input class="weui-input" bindinput='houseStoreyCountChange' value='{{houseStoreyCount}}'type='digit' placeholder="请输入住宅楼总层数" />
               </view>
 
             </view>
@@ -44,7 +44,7 @@
                 <view class="weui-label">建筑面积：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" bindinput='areaChange' type='digit' placeholder="请输入..." />
+                <input class="weui-input" bindinput='areaChange'value='{{area}}' type='digit' placeholder="请输入..." />
               </view>
               <view class="weui-cell__fd">
                 <view>平方米</view>
@@ -55,7 +55,7 @@
                 <view class="weui-label">实际成交价：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" bindinput='priceChange' type='digit' placeholder="请输入..." />
+                <input class="weui-input" bindinput='priceChange' value='{{price}}' type='digit' placeholder="请输入..." />
               </view>
               <view class="weui-cell__fd">
                 <view>元</view>
@@ -80,7 +80,7 @@
                   <view class="weui-label">中介费方案买方：</view>
                 </view>
                 <view class="weui-cell__bd">
-                  <input class="weui-input" bindinput='sellChange' type='digit' placeholder="请输入..." />
+                  <input class="weui-input" bindinput='sellChange' type='digit' value='{{buymediums}}'placeholder="请输入..." />
                 </view>
                 <view class="weui-cell__fd">
                   <view>%</view>
@@ -91,7 +91,7 @@
                   <view class="weui-label">中介费方案卖方：</view>
                 </view>
                 <view class="weui-cell__bd">
-                  <input class="weui-input" bindinput='buyerChange' type='digit' placeholder="请输入..." />
+                  <input class="weui-input" bindinput='buyerChange' type='digit' value='{{sellmediums}}'placeholder="请输入..." />
                 </view>
                 <view class="weui-cell__fd">
                   <view>%</view>
@@ -103,7 +103,7 @@
                 <view class="weui-label">委托贷款金额：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" bindinput='loanmoneyChange' type='digit' placeholder="请输入..." />
+                <input class="weui-input" bindinput='loanmoneyChange' value='{{loanmoney}}' type='digit' placeholder="请输入..." />
               </view>
               <view class="weui-cell__fd">
                 <view>元</view>
@@ -128,7 +128,7 @@
                   <view class="weui-label">自定义贷款服务费：</view>
                 </view>
                 <view class="weui-cell__bd">
-                  <input class="weui-input" bindinput='loanServerChange' type='digit' placeholder="请输入..." />
+                  <input class="weui-input" bindinput='loanServerChange'value='{{loanserver}}' type='digit' placeholder="请输入..." />
                 </view>
                 <view class="weui-cell__fd">
                   <view>%</view>
@@ -142,7 +142,7 @@
                 <view class="weui-label">评税单价最低约：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" bindinput='minpriceChange' type='digit' placeholder="请输入..." />
+                <input class="weui-input" bindinput='minpriceChange'value='{{minprice}}' type='digit' placeholder="请输入..." />
               </view>
               <view class="weui-cell__ft">
                 <view>元</view>
@@ -234,12 +234,12 @@
                 <i-icon type="enter" size="24" />
               </view>
             </view>
-            <view class="weui-cell " wx:if="cQIndex==1">
+            <view class="weui-cell " wx:if="{{cQIndex==0}}">
               <view class="weui-cell__hd">
                 <view class="weui-label">拆迁金额：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" name="cQprice" bindinput='cQpriceChange' type='digit' placeholder="请输入..." />
+                <input class="weui-input" name="cQprice" value='{{cQprice}}' bindinput='cQpriceChange' type='digit' placeholder="请输入..." />
               </view>
               <view class="weui-cell__ft">
                 <view>元</view>
@@ -258,23 +258,22 @@
                 <i-icon type="enter" size="24" />
               </view>
             </view>
-
             <view class="recommend"> 建议查看“家庭套数认定规定”</view>
             <view>
-              <button class="btn" form-type='submit' type='primary'>计算</button>
+              <button class="btn"   form-type='submit' type='primary'>计算</button>
             </view>
           </form>
         </scroll-view>
       </swiper-item>
       <swiper-item>
         <scroll-view scroll-y="true" style="height: {{winHeight-80}}rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-          <form bindsubmit='FformSubmit'>
+          <form bindsubmit='formSubmit'>
             <view class="weui-cell ">
               <view class="weui-cell__hd">
                 <view class="weui-label">楼盘名称：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" name="name" bindinput='houseNameChange' type="text" placeholder="请输入楼盘名称" />
+                <input class="weui-input" name="name" value='{{houseName}}' bindinput='houseNameChange' type="text" placeholder="请输入楼盘名称" />
               </view>
             </view>
             <view class="weui-cell ">
@@ -282,7 +281,7 @@
                 <view class="weui-label">所处楼层：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" name="houseStorey" bindinput='houseStoreyChange' type='digit' placeholder="请输入楼盘名称" />
+                <input class="weui-input" name="houseStorey" value='{{houseStorey}}' bindinput='houseStoreyChange' type='digit' placeholder="请输入该住宅所在楼层" />
               </view>
 
             </view>
@@ -291,7 +290,7 @@
                 <view class="weui-label">总层数：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" name="houseStoreyCount" bindinput='houseStoreyCountChange' type='digit' placeholder="请输入楼盘名称" />
+                <input class="weui-input" name='houseStoreyCount' bindinput='houseStoreyCountChange'  value='{{houseStoreyCount}}' type='digit' placeholder="请输入住宅楼总层数" />
               </view>
 
             </view>
@@ -300,7 +299,7 @@
                 <view class="weui-label">建筑面积：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" name="area" bindinput='areaChange' type='digit' placeholder="请输入..." />
+                <input class="weui-input" name="area" value='{{area}}' bindinput='areaChange' type='digit' placeholder="请输入..." />
               </view>
               <view class="weui-cell__fd">
                 <view>平方米</view>
@@ -311,7 +310,7 @@
                 <view class="weui-label">实际成交价：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" name="price" bindinput='priceChange' type='digit' placeholder="请输入..." />
+                <input class="weui-input" name="price" value='{{price}}' bindinput='priceChange' type='digit' placeholder="请输入..." />
               </view>
               <view class="weui-cell__fd">
                 <view>元</view>
@@ -336,7 +335,7 @@
                   <view class="weui-label">中介费方案买方：</view>
                 </view>
                 <view class="weui-cell__bd">
-                  <input class="weui-input" bindinput='sellChange' type='digit' placeholder="请输入..." />
+                  <input class="weui-input" bindinput='buyerChange' value='{{buymediums}}' type='digit' placeholder="请输入..." />
                 </view>
                 <view class="weui-cell__fd">
                   <view>%</view>
@@ -347,7 +346,7 @@
                   <view class="weui-label">中介费方案卖方：</view>
                 </view>
                 <view class="weui-cell__bd">
-                  <input class="weui-input" bindinput='buyerChange' type='digit' placeholder="请输入..." />
+                  <input class="weui-input" bindinput='sellChange' value='sellmediums' type='digit' placeholder="请输入..." />
                 </view>
                 <view class="weui-cell__fd">
                   <view>%</view>
@@ -359,7 +358,7 @@
                 <view class="weui-label">委托贷款金额：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" bindinput='loanmoneyChange' type='digit' placeholder="请输入..." />
+                <input class="weui-input" bindinput='loanmoneyChange'  value='{{loanmoney}}' type='digit' placeholder="请输入..." />
               </view>
               <view class="weui-cell__fd">
                 <view>元</view>
@@ -384,7 +383,7 @@
                   <view class="weui-label">自定义贷款服务费：</view>
                 </view>
                 <view class="weui-cell__bd">
-                  <input class="weui-input" bindinput='loanServerChange' type='digit' placeholder="请输入..." />
+                  <input class="weui-input" bindinput='loanServerChange'value='{{loanserver}}' type='digit' placeholder="请输入..." />
                 </view>
                 <view class="weui-cell__fd">
                   <view>%</view>
@@ -396,7 +395,7 @@
                 <view class="weui-label">评税单价最低约：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" name="minprice" bindinput='minpriceChange' type='digit' placeholder="请输入..." />
+                <input class="weui-input" name="minprice" value='{{minprice}}' bindinput='minpriceChange' type='digit' placeholder="请输入..." />
               </view>
               <view class="weui-cell__ft">
                 <view>元</view>
@@ -447,7 +446,7 @@
                 <view class="weui-label">拆迁金额：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" name="cQprice" bindinput='cQpriceChange' type='digit' placeholder="请输入..." />
+                <input class="weui-input" name="cQprice" value='{{cQprice}}' bindinput='cQpriceChange' type='digit' placeholder="请输入..." />
               </view>
               <view class="weui-cell__ft">
                 <view>元</view>

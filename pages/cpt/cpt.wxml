@@ -5,20 +5,20 @@
     <view class="{{currentTab==0?'select':'default'}}" data-current="0" bindtap="switchNav">商业贷</view>
 
     <view class="{{currentTab==1?'select':'default'}}" data-current="1" bindtap="switchNav">公积金贷</view>
-    <view class="{{currentTab==2?'select':'default'}}" data-current="2" bindtap="switchNav">组合贷</view>
+    <!-- <view class="{{currentTab==2?'select':'default'}}" data-current="2" bindtap="switchNav">组合贷</view> -->
   </view>
   <view class='hr'></view>
   <swiper class="swip" current="{{currentTab}}" bindchange="currentChange" style='height:{{winHeight}}rpx'>
     <swiper-item>
 
-      <scroll-view scroll-y="true" style="height: {{winHeight-80}}rpx;">
+      <scroll-view scroll-y="true" style="height: {{winHeight}}rpx;">
         <form bindreset='commFormReset' bindsubmit='commFormSubmit'>
           <view class="weui-cell ">
             <view class="weui-cell__hd">
               <view class="weui-label">选择银行：</view>
             </view>
             <view class="weui-cell__bd">
-              <picker mode="selector" name="yinhang" data-item="{{item}}" range='{{banks}}' value='{{banksindex}}' range-key="name" bindchange='banksPickerChange'>
+              <picker mode="selector" name="yinhang1" data-item="{{item}}" range='{{banks}}' value='{{banksindex}}' range-key="name" bindchange='banksPickerChange'>
                 <view class='picker' data-item="{{item}}">{{banks[banksindex].name}}</view>
               </picker>
             </view>
@@ -33,8 +33,8 @@
               <view class="weui-label">网点示例：</view>
             </view>
             <view class="weui-cell__bd">
-              <picker mode="selector" range='{{banksF}}' name="wangdian" value='{{banksFindex}}' range-key="name" bindchange='banksFPickerChange'>
-                <view class='picker'>{{banksF[banksFindex].name}}</view>
+              <picker mode="selector" range='{{banksF}}' name="wangdian1" value='{{banksFindex}}' range-key="name" data-item="{{item}}" bindchange='banksFPickerChange'>
+                <view class='picker'data-item="{{item}}" >{{banksF[banksFindex].name}}</view>
               </picker>
             </view>
             <view class="weui-cell__ft">
@@ -84,7 +84,7 @@
                 <view class="weui-label">评估单价：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" name="areaPrice" bindinput='areapriceChange' type='digit' placeholder="请输入..." />
+                <input class="weui-input" name="areaPrice" value="{{areaprice}}" bindinput='areapriceChange' type='digit' placeholder="请输入..." />
               </view>
               <view class="weui-cell__ft">
                 <view class="weui-label">元/平米</view>
@@ -98,7 +98,7 @@
                 <view class="weui-label">建筑面积：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" name="area" bindinput='areaChange' type='digit' placeholder="请输入..." />
+                <input class="weui-input" name="area" value="{{area}}" bindinput='areaChange' type='digit' placeholder="请输入..." />
               </view>
               <view class="weui-cell__ft">
                 <view class="weui-label">平米</view>
@@ -111,7 +111,8 @@
                 <view class="weui-label">评估总款：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" name="sumMoney" bindinput='areaChange' type='digit' placeholder="请输入..." />
+                <!-- <input class="weui-input" name="sumMoney"  value="{{loanmoney}}"type='digit' placeholder="请输入..." /> -->
+                <view  class='weui-label' name="summoney" value="{{loanmoney}}">{{loanmoney}}</view>
               </view>
               <view class="weui-cell__ft">
                 <view class="weui-label">元</view>
@@ -143,7 +144,7 @@
                   <view class="weui-label">贷款总额：</view>
                 </view>
                 <view class="weui-cell__bd">
-                  <input class="weui-input" name="loanMoney" bindinput='loanMoneyChange' type='digit' placeholder="请输入贷款总金额" />
+                  <input class="weui-input" name="loanMoney" bindinput='loanMoneyChange' type='digit'  value="{{loanmoney}}"placeholder="请输入贷款总金额" />
                 </view>
                 <view class="weui-cell__ft">
                   <view class="weui-label">万元</view>
@@ -193,7 +194,7 @@
               <view class="weui-label">基点：</view>
             </view>
             <view class="weui-cell__bd">
-              <input class="weui-input" name="basePoints" bindinput='basePointsChange' type='digit' placeholder="请输入..." />
+              <input class="weui-input" name="basePoints" bindinput='basePointsChange' type='digit' value="{{basePoints}}" placeholder="请输入..." />
             </view>
             <view class="weui-cell__ft">
               <view class="weui-label">BP(%。)</view>
@@ -253,15 +254,15 @@
     </swiper-item>
 
     <swiper-item>
-      <scroll-view scroll-y="true" style="height: {{winHeight-80}}rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+      <scroll-view scroll-y="true" style="height: {{winHeight}}rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
         <form bindreset='commFormReset' bindsubmit='gFormSubmit'>
           <view class="weui-cell ">
             <view class="weui-cell__hd">
               <view class="weui-label">选择银行：</view>
             </view>
             <view class="weui-cell__bd">
-              <picker mode="selector" range='{{banks}}' name="yinhang" value='{{banksindex}}' range-key="name" bindchange='banksPickerChange'>
-                <view class='picker'>{{banks[banksindex].name}}</view>
+              <picker mode="selector" range='{{banks}}' data-item="{{item}}" name="yinhang2" value='{{banksindex}}' range-key="name" bindchange='banksPickerChange'>
+                <view class='picker'  data-item="{{item}}">{{banks[banksindex].name}}</view>
               </picker>
             </view>
             <view class="weui-cell__ft">
@@ -275,9 +276,10 @@
               <view class="weui-label">网点示例：</view>
             </view>
             <view class="weui-cell__bd">
-              <picker mode="selector" range='{{banksF}}' name="wangdian" value='{{banksFindex}}' bindchange='banksFPickerChange'>
-                <view class='picker'></view>
+              <picker mode="selector" range='{{banksF}}' data-item="{{item}}" name="wangdian2" value='{{banksFindex}}' range-key="name" bindchange='banksFPickerChange'>
+                <view class='picker' data-item="{{item}}" >{{banksF[banksFindex].name}}</view>
               </picker>
+              
             </view>
             <view class="weui-cell__ft">
               <i-icon type="enter" size="28" />
@@ -323,7 +325,7 @@
                 <view class="weui-label">评估单价：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" name="areaPrice" bindinput='areapriceChange' type='digit' placeholder="请输入..." />
+                <input class="weui-input" name="areaPrice"  value="{{areaprice}}" bindinput='areapriceChange' type='digit' placeholder="请输入..." />
               </view>
               <view class="weui-cell__ft">
                 <view class="weui-label">元/平米</view>
@@ -335,7 +337,7 @@
                 <view class="weui-label">建筑面积：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" name="area" bindinput='areaChange' type='digit' placeholder="请输入..." />
+                <input class="weui-input" name="area"  value="{{area}}" bindinput='areaChange' type='digit' placeholder="请输入..." />
               </view>
               <view class="weui-cell__ft">
                 <view class="weui-label">平米</view>
@@ -346,7 +348,7 @@
                 <view class="weui-label">评估总款：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" name="sumMoney" bindinput='gsumMoneyChange' type='digit' placeholder="请输入..." />
+                <input class="weui-input" name="sumMoney" value="{{loanmoney}}"  bindinput='gsumMoneyChange' type='digit' placeholder="请输入..." />
               </view>
               <view class="weui-cell__ft">
                 <view class="weui-label">元</view>
@@ -374,10 +376,11 @@
                 <view class="weui-label">贷款总额：</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" name="loanMoney" bindinput='loanChange' type='digit' placeholder="请输入贷款总金额" />
+                <input class="weui-input" name="loanMoney"  value="{{loanmoney}}"
+                bindinput='loanChange' type='digit' placeholder="请输入贷款总金额" />
               </view>
               <view class="weui-cell__ft">
-                <view class="weui-label">万元</view>
+                <view class="weui-label">元</view>
               </view>
             </view>
 
@@ -406,15 +409,14 @@
             </view>
             <view class="weui-cell__bd">
               <picker mode="selector" name="loanrate" range='{{gloanrate}}' value='{{grateindex}}' bindchange='gratePickerChange'>
-                <view class='picker'>{{gloanrates[rateindex].name}}</view>
+                <view class='picker'>{{gloanrates[grateindex].name}}</view>
               </picker>
             </view>
             <view class="weui-cell__ft">
               <i-icon type="enter" size="28" />
             </view>
-          </view>
+          </view>          
           <!-- <view class="recommend">银行推荐值：{{bankGrate}}</view> -->
-
           <view class="text">
             <view class="textcon">注意：</view>
             <view class="textcon">1.请提前与出卖方沟通是否接受公积金贷款，与公积金中心沟通公积金缴存地与购房者户籍地是否影响贷款；</view>
@@ -423,6 +425,13 @@
             <view class="textcon">3.购房者在此之前公积金使用记录，可能影响此次贷款。
 
             </view>
+          </view>
+            <view class="weui-cell ">
+            <view class="weui-cell__hd">还款方式: </view>
+            <radio-group class="weui-cell__bd" name="cpt_2_methods" bindchange='cpt_radioChange_2'>
+              <radio class="radio1" checked value='1'>等额本息</radio>
+              <radio class="radio1" value='2'>等额本金</radio>
+            </radio-group>
           </view>
 
 
@@ -443,7 +452,7 @@
         </form>
       </scroll-view>
     </swiper-item>
-    <swiper-item>
+    <!-- <swiper-item>
       <form bindreset='zgFormReset' bindsubmit='zgFormSubmit'>
         <view class="row1">
 
@@ -527,6 +536,6 @@
           <view> </view>
         </view>
       </form>
-    </swiper-item>
+    </swiper-item> -->
   </swiper>
 </view>

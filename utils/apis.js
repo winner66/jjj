@@ -2,9 +2,15 @@ import {
   fetch
 } from './pRequest';
 
-const apiMall = 'http://49.234.199.223:9090/hob/Api'
-const imgCoverPath ='http://49.234.199.223:9090/hob/Public/Imgs/'
-const imgSecPath = 'http://49.234.199.223:9090/hob/Public/Upload/'
+// const apiMall = 'http://49.234.199.223:9090/hob/Api'
+// const imgCoverPath ='http://49.234.199.223:9090/hob/Public/Imgs/'
+// const imgSecPath = 'http://49.234.199.223:9090/hob/Public/Upload/'
+
+const apiMall = 'http://118.24.1.237/hob/index.php/Api'
+// 封面图片
+const imgCoverPath ='http://118.24.1.237/hob/Public/Imgs/'
+// 文章内部图片
+const imgSecPath = 'http://118.24.1.237/hob/Public/Upload/'
 
 const getDiscoverList = (params) => pRequest(params, apiMall + '/emall/goods/list?cateidOne=1&cateidTwo=0&price=0&sales=2');
 // // fetch(url, method = {}, header = {}, data = {}, loading = true)

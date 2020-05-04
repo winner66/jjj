@@ -5,9 +5,9 @@
 <block wx:if="{{tab==0}}">
   <px-comm-result  info="{{tabdata}}"/>
 </block>
-  <!-- 税  住宅-->
+  <!-- 税  住宅  info="{{tabdata}}"-->
   <block wx:elif="{{tab==1}}">
-  <px-tax1-result  info="{{tabdata}}"/>
+  <px-tax1-result info="{{tabdata}}" />
   </block>
     <!-- 税 非住宅 -->
   <block wx:elif="{{tab==4}}">
