@@ -53,7 +53,8 @@
     "pages/nonlocal/index",
     "pages/nonlocal/list/index",
     "pages/assistant/search/searchPost",
-    "pages/assistant/help/index"
+    "pages/assistant/help/index",
+    "pages/person/join/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
