@@ -60,13 +60,7 @@ Page({
   },
 
   onLoad: function (options) {
-    this.test1(); // array()
-    // this.test2();  //no
-    // this.test3(); //  yse
-
-
-
-
+   
   },
 
   /**
@@ -80,6 +74,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.test1(); // array()
+    // this.test2();  //no
+    // this.test3(); //  yse
 
   },
 

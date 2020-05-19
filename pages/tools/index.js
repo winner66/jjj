@@ -39,10 +39,9 @@ Page({
   },
   // 获取制度json
   getRulesJson: async function () {
-
     console.log('jjson before')
     const json = await api.getRuler({
-      query: {       
+      query: {     
         
       }
     });
@@ -216,14 +215,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    // console.log("ready"+this.html)
-    console.log('onload before')
-    this.getRulesJson().then(res => console.log(res)).catch(v => console.log(v))
-    console.log('onload after')
-    that.setData({
-      winWidth: app.globalData.winWidth,
-      winHeight: app.globalData.winHeight,
-    })
    
 
 
@@ -240,6 +231,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    // console.log("ready"+this.html)
+    console.log('onload before')
+    this.getRulesJson().then(res => console.log(res)).catch(v => console.log(v))
+    console.log('onload after')
+    that.setData({
+      winWidth: app.globalData.winWidth,
+      winHeight: app.globalData.winHeight,
+    })  
 
   },
 

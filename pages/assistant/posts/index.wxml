@@ -1,0 +1,148 @@
+<!--pages/assistant/posts/index.wxml-->
+<!-- 二手房--qq -->
+<view class="touch" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" >
+
+<scroll-view>
+<!-- 图片 -->
+   <swiper class="swiper" bindchange="swiperchange" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="indicator-dots" indicator-color="rgba(0, 0, 0, .3)}" indicator-active-color="#000000" current="{{current_img}}">
+    <block wx:for="{{img_urls}}" wx:key="*this">
+        <swiper-item>
+          <image src="{{item}}" mode="widthFix" class="img"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+
+  <view class="table">
+  <view class="tr">
+      <view class="td3">
+        <view class="td3l">楼盘名称：</view>
+        <view class="td3r"  >{{item.er_name}}</view>
+      </view>
+    </view>
+
+      <view class="tr">
+      <view class="td3">
+        <view class="td3l">二手房所在区域：</view>
+        <view class="td3r" >{{item.area}}</view>
+        <view>       
+       </view> 
+      </view>
+    </view>
+
+    <view class="tr">
+      <view class="td3">
+        <view class="td3l">二手房详细地址：</view>
+        <view class="td3r" >{{item.address}}</view>
+       
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">建筑面积（平米）：</view>       
+        <view class="tdr">{{item.area}}</view>
+      </view>
+      <view class="td2">
+        <view class="tdl">土地分摊面积（平米）：</view>        
+        <view class="tdr"> {{item.landArea}}</view>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">装修情况：</view>
+        <view  class="tdr" >
+          
+        <view class='picker' >{{isOrNo[item.is_fit].name}}</view>                  
+        </view>      
+      </view>
+      
+      <view class="td2">
+        <view class="tdl">是否有电梯：</view>
+        <view  class="tdr">
+               
+          <view class='picker' >{{isOrNo[item.have_ele].name}}</view>                  
+               
+        </view>  
+      </view>
+    </view>
+     <view class="tr">
+      <view class="td2">
+        <view class="tdl">楼层：</view>
+         
+        <view  class="tdr">{{item.houseF}} </view>
+      </view>
+      <view class="td2">
+        <view class="tdl">朝向：</view>        
+        <view  class="tdr">{{item.face}} </view>   
+      </view>
+    </view>
+    </view>
+
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">建筑性质：</view>
+        <view class="tdr">       
+         <view class='picker' >{{bNatureArray[item.build_nature].name}}</view>                  
+             
+        </view>      
+      </view>
+      <view class="td2">
+        <view class="tdl">土地性质：</view>
+        <view class="tdr">
+        <view class='picker' >{{lNatureArray[item.land_nature].name}}</view>  
+        </view>       
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">登记目的</view>      
+        <view class="tdr"> {{item.use}}</view>
+      </view>
+      <view class="td2">
+        <view class="tdl">发布者是否中介：</view>
+        <view class="tdr">       
+          <view class='picker'  >{{trustArray[item.is_trust].name}}</view>                 
+        </view>      
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">取得产权时间(年)：</view>
+        <view class="tdr">        
+           <view class='picker' >{{ yearArray[item.year]}}</view>            
+        </view>
+            
+      </view>
+      <view class="td2">
+        <view class="tdl">满五且唯一：</view>
+        <view class="tdr"> 
+          <view class='picker'>{{isFiveArray[item.is_five].name}}</view>                   
+        </view>       
+      </view>
+    </view>
+  
+       <view class="tr">
+      <view class="td2">
+        <view class="tdl">报价（万元）：</view>
+        <view class="tdr"> {{item.money}}</view>
+      </view>
+      <view class="td2">
+        <view class="tdl">联系方式：</view>
+       
+        <view class="tdr"> {{item.phone}}</view>
+    </view>
+    </view>      
+     <view class="tr">
+      <view class="tdl">附加说明（小于30个字）：</view>
+      <view  class=" tdr {{item.explain.length<30?'count1':'count2'}}">{{item.explain.length}}/30</view>
+    </view>
+    <!--输入文本框-->
+     <view class="tr"> 
+      <view class="td3">        
+         <view  class="explain" >{{item.explain}}
+          <view>  
+      </view>
+    </view>    
+  </view> 
+  </view>  
+</scroll-view>
+</view>

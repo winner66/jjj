@@ -22,25 +22,7 @@ Page({
    */
   // 建设进度列表 传item 2-》houseId
   onLoad: function (options) {
-    let that = this;
-    const eventChannel = this.getOpenerEventChannel()
-    eventChannel.emit('acceptDataFromOpenedPage', { data: 'cpt_result' });
-    eventChannel.emit('someEvent', { data: 'cpt_result2' });
-    // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
-    eventChannel.on('data', function (data) {
-      let temdata = data.data;    
-      console.log(data.data);
-      that.setData({
-        time: temdata.createtime,
-        build: temdata.build_title,
-        buildId: temdata.build_id,
-        cover: temdata.cover,
-        con: temdata.content,
-        title: temdata.title,
-      })
-      console.log(that.data.title);
-    })   
-
+   
   },
 
   /**
@@ -54,6 +36,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+
+    let that = this;
+    const eventChannel = this.getOpenerEventChannel()
+    eventChannel.emit('acceptDataFromOpenedPage', { data: 'cpt_result' });
+    eventChannel.emit('someEvent', { data: 'cpt_result2' });
+    // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
+    eventChannel.on('data', function (data) {
+      let temdata = data.data;
+      console.log(data.data);
+      that.setData({
+        time: temdata.createtime,
+        build: temdata.build_title,
+        buildId: temdata.build_id,
+        cover: temdata.cover,
+        con: temdata.content,
+        title: temdata.title,
+      })
+      console.log(that.data.title);
+    })  
 
   },
 

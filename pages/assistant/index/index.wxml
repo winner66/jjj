@@ -1,0 +1,80 @@
+<!--index.wxml-->
+
+<page>
+<view class="touch" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" ><!--切换页面-->
+<scroll-view scroll-y="true" class="container"  >
+  <view class="search flex-wrp"><!--搜索框开始-->
+      <!-- <view class="search-left flex-item"> -->
+          <input class='search-left flex-item' placeholder="搜索帖子" placeholder-class="search-placeholder" value="{{searchValue}}" auto-focus bindinput="searchValueInput" bindconfirm='start_search_db'/>
+          <view class="search-right flex-item" bindtap="start_search_db">
+            <image src="../../../assets/images/tabbar/sous.png"></image>
+          </view>
+      <!-- </view> -->
+  </view><!--搜索框结束-->
+
+<icon  class="iconfont iconicon_tianjia:before" bindtap="onPostClick"/><!--发帖按钮-->
+
+<!-- 
+<block wx:for="{{feed}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+        <view class="feed-item" data-item-Value="{{item}}" bindtap="bindItemTap">
+            <view class="feed-source">
+                <a class="">
+                    <view class="avatar">                        
+                       
+                        <image src="../../../assets/images/tabbar/icon1.jpeg"></image>
+                    </view>                    
+                    <text>{{item.user_name}}发了帖子</text>
+                </a>
+            </view>
+          <view> 
+          <label class="mylabel" wx:for="{{item.post_tags}}" wx:for-index="idx" wx:for-item="item_tag"><text class="label_text">{{item_tag}}</text> </label>
+          </view>     
+            <view class="feed-content">            
+                <view class="answer-body">                    
+                    <view data-item-Value="{{item}}" bindtap="bindItemTap">                        
+                        <text class="answer-txt" >{{item.post_brief}}</text>
+                    </view>
+                    <view class="answer-actions" data-item-Value="{{item}}" bindtap="bindItemTap">
+                        <view class="like dot">
+                            <a>{{item.like_count}} 赞 </a>
+                        </view>                        
+                        <view class="comments">
+                            <a>{{item.follow_count}} 跟帖 </a>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+</block> -->
+<block wx:for="{{feed}}" wx:key="objectId">
+<view class="item" bindtap="bindItemTap" data-item="{{item}}">
+          <view class="img">
+              <image class="img" src="{{item.img}}"></image>
+          </view>
+          <view class="left">
+              <view class="title">{{item.address}}  {{item.er_name}}</view>
+              <view class="details">
+                <view class='details-left'>三室一厅一卫|60㎡</view><!--未写数据-->
+                <view class='sell'>{{item.sell}} 万元</view>
+              </view>
+          </view>
+ </view>
+</block>
+ <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>
+ <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>
+</scroll-view>
+</view>
+
+
+
+
+      <view>
+      <scroll-view class="classify_detail"  style="height:{{winHeight}}px background: gray" scroll-y="true" bindscrolltolower="scrollLower" >
+        <view wx:for="{{qudao}}" wx:key="objectId">
+          
+        </view>
+         <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>
+      <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>
+      </scroll-view>
+    </view>
+    </page>

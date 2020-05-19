@@ -1,11 +1,8 @@
 // pages/tools/detail.js
-
-
 // var app = getApp();
 // var Bmob = require('../../utils/bmob.js');
 // var utils = require('../../utils/util.js');
 // var API = require('../../api/API.js');
-
 // var gourmet = null;
 // var mComments = [];
 // //
@@ -14,13 +11,11 @@
 // var mIsmore = true;
 // var mLoading = false;
 // var mIsSupportOk = false;
-
 // function setLoading(loading) {
 //   mLoading = loading;
 //   utils.showLoading(loading);
 //   loading ? wx.showNavigationBarLoading() : wx.hideNavigationBarLoading()
 // }
-
 // var loadSupportSataus = function (gourmetID, that) {
 //   API.getGourmetSupportInfo(gourmetID, (evaluation) => {
 //     console.log('evaluation', JSON.stringify(evaluation));
@@ -325,6 +320,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (e) {   
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
     let that = this;
     const eventChannel = this.getOpenerEventChannel();
     eventChannel.emit('acceptDataFromOpenedPage', { data: 'cpt_result' });
@@ -341,24 +350,9 @@ Page({
     })
 
     that.setData({
-      
       winWidth: app.globalData.winWidth,
       winHeight: app.globalData.winHeight,
-
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
 
   },
 

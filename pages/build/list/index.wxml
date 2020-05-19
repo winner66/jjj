@@ -1,5 +1,5 @@
 <!--pages/build/list/index.wxml 建设进度list-->
-<scroll-view style="height:{{winHeight}}rpx background: gray" scroll-y="true" bindscrolltolower="scrollLower" >
+<scroll-view  scroll-y="true" bindscrolltolower="scrollLower" >
   <block wx:for="{{schedule}}" wx:key="objectId">
     <view class="content"  data-item="{{item}}"  bindtap="gotoDetail">
       <view class="imge">

@@ -38,19 +38,7 @@ Page({
 
   },
   onLoad: function (options) {
-    var page = this;
-
-    wx.getSystemInfo({
-      success: function (res) {
-        console.log(res);
-        page.setData({ winWidth: res.windowWidth });
-        page.setData({ winHeight: res.windowHeight });
-      }
-    })
-    // 1.请求分类数据
-    this.getjgJson();
-    //  JSON.parse(str);
-    console.log("getjg-jsonload :" + JSON.stringify(this.data.categories))
+   
   },
 
   // 获取监管
@@ -147,6 +135,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var page = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res);
+        page.setData({ winWidth: res.windowWidth });
+        page.setData({ winHeight: res.windowHeight });
+      }
+    })
+    // 1.请求分类数据
+    this.getjgJson();
+    //  JSON.parse(str);
+    console.log("getjg-jsonload :" + JSON.stringify(this.data.categories))
 
   },
 

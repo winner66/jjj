@@ -1,0 +1,16 @@
+<!--pages/person/post/index.wxml-->
+<view>
+
+<block wx:for="{{feed}}" wx:key="objectId">
+<view class="item" bindtap="bindItemTap" data-item="{{item}}">
+          <view class="left">
+              <view class="title">{{item.er_name}}</view>
+              <view class="time">{{item.area}}-{{item.address}}</view>
+              <view class="sell">{{item.sell}} 万元</view>
+          </view>
+            <view class="img">
+              <image class="img" src="{{item.img}}"></image>
+            </view>
+ </view>
+</block>
+</view>

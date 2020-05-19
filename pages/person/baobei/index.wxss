@@ -1,0 +1,4 @@
+/* pages/person/baobei/index.wxss */
+
+/* 弹窗 */
+@import "../../templates/loginModal/loginModal.wxss";

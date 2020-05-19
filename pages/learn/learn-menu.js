@@ -6,7 +6,8 @@ import tip from '../../utils/tip';
 var base64 = require('../../utils/base.js');
 // var base64 = require('../../utils/base_64.js');
 
-var path = 'http://49.234.199.223:9090';
+// var path = 'http://49.234.199.223:9090';
+var path ="http://118.24.1.237";
 const app = getApp();
 
 
@@ -21,7 +22,7 @@ Page({
       id: 1,
       active: false,
     }, {
-      name: "楼市见解",
+      name: "经纪课堂",
       id: 2,
       active:false,
     }],
@@ -39,20 +40,7 @@ Page({
 
   },
   onLoad: function(options) {
-    var page = this;
-
-    wx.getSystemInfo({
-
-      success: function (res) {
-
-        console.log(res);
-
-        page.setData({ winWidth: res.windowWidth });
-        page.setData({ winHeight: res.windowHeight });
-      }
-    })  
-    // 1.请求分类数据
-    this._getCategory()
+  
   },
 
   _getCategory() {
@@ -71,7 +59,8 @@ Page({
     })
     // 4.请求第一个类别的数据
     // this.getRulesJson();
-    this.getViewJson();
+    // this.getViewJson();
+    this.getStudyJson();
     this.getAnalyJson();
     this.getRulesJson();
 
@@ -97,9 +86,9 @@ Page({
       }
     } else if (e.currentTarget.dataset.code== 2) {
       if (this.data.viewList == undefined || this.data.viewList == []) {  
-        this.getViewJson();
+        // this.getViewJson();
+        this.getStudyJson();
       } else {
-
         this.setData({
           childcateList: this.data.viewList          
         })
@@ -244,6 +233,51 @@ Page({
     console.log("getRulesjson :" + this.data.viewList)
     console.log("getRulesjson :" + this.data.childcateList[0].title)
   },
+  // 获取经纪课堂json
+  getStudyJson: async function () {
+
+    const json = await apis.getStudy({
+      data: {}
+    });
+    // console.log(json);
+    if (json == "") {
+      // tip.error('json错误',true);
+      console.log("没有获取到数据")
+    } else {
+      console.log(json);
+      for (var i = 0; i < json.length; i++) {
+        // 处理文章内容
+        var base = base64.decode("'" + JSON.stringify(json[i].content) + "'")
+        var base = base.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/gi, function (match, capture) {
+          return '<img  src="' + (path + capture) + '"/>';
+        });
+        //处理图片宽度
+        // alt，src，height，width  小程序 rich-text 不支持 section 标签的情况 +this.data.winWidth + 
+        base = base.replace(/\<img/g, '<img alt="图片" style="width:100px;height:auto;display:block;margin-left:-10px;margin-right:-10px;"')
+          .replace(/<section/g, '<div')
+          .replace(/\/section>/g, '\div>');
+        // console.log(basetext)
+        json[i].content = base;
+        console.log(base)
+        // 处理封面
+        json[i].cover = apis.imgCoverPath + json[i].cover;
+
+
+      }
+      // console.log(JSON.stringify(json)) //不需要将json数据转换为string
+      var categoryData = this.data.categoryData;
+      categoryData[0] = json
+      this.setData({
+        categoryData: categoryData,
+        childcateList: json,
+        viewList: json
+      })
+    }
+    //  JSON.parse(str);
+    console.log("getstudyjson :" + this.data.viewList)
+    console.log("getstudyjson :" + this.data.childcateList[0].title)
+
+  },
   gotoDetail: function(e) {
     // if (mLoading) return;
     var item = e.currentTarget.dataset.item;
@@ -287,6 +321,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    var page = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res);
+        page.setData({ winWidth: res.windowWidth });
+        page.setData({ winHeight: res.windowHeight });
+      }
+    })
+    // 1.请求分类数据
+    this._getCategory()
 
   },
 

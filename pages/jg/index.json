@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "i-icon": "../../iview/dist/icon/index"
+    "i-icon": "../../iview/dist/icon/index",
+    "i-cell-group": "../../iview/dist/cell-group/index",
+    "i-cell": "../../iview/dist/cell/index"
   }
 }

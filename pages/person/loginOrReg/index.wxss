@@ -1,5 +1,7 @@
 /* pages/person/register/index.wxss */
 
+/* 弹窗 */
+@import "../../templates/loginModal/loginModal.wxss";
 
 .loginTitle {
   display: flex;

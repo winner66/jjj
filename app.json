@@ -27,6 +27,9 @@
     "pages/person/pay/index",
     "pages/person/pay/pay_rule",
     "pages/person/set/index",
+    "pages/person/baobei/index",
+    "pages/person/ershou/index",
+    "pages/person/post/index",
     "pages/computer/index",
     "pages/cpt/cpt",
     "pages/cpt-comm-result/cpt-comm-result",
@@ -39,7 +42,18 @@
     "pages/jg/index",
     "pages/learn/index",
     "pages/index",
-    "pages/ptax/index"
+    "pages/ptax/index",
+    "pages/assistant/index",
+    "pages/assistant/index/index",
+    "pages/assistant/comment/comment",
+    "pages/assistant/posts/index",
+    "pages/assistant/posts/posts",
+    "pages/assistant/release/release",
+    "pages/assistant/search/search",
+    "pages/nonlocal/index",
+    "pages/nonlocal/list/index",
+    "pages/assistant/search/searchPost",
+    "pages/assistant/help/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -68,6 +82,12 @@
       {
         "pagePath": "pages/dynamic/dynamic-menu",
         "text": "新盘动态",
+        "iconPath": "assets/images/tabbar/category.png",
+        "selectedIconPath": "assets/images/tabbar/category_active.png"
+      },
+      {
+        "pagePath": "pages/assistant/index/index",
+        "text": "二手租售",
         "iconPath": "assets/images/tabbar/category.png",
         "selectedIconPath": "assets/images/tabbar/category_active.png"
       },

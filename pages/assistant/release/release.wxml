@@ -1,0 +1,239 @@
+<!--index.wxml-->
+<scroll-view>
+<view class="content">
+  <view class="loginTitle" style='height:100rpx'>
+    <view class="{{currentTab==0?'select':'default'}}" data-current="0" bindtap="switchNav">二手</view>
+
+    <view class="{{currentTab==1?'select':'default'}}" data-current="1" bindtap="switchNav">互助</view>
+   
+  </view>
+  <!-- <view class='hr'></view> -->
+  <swiper class="swip" current="{{currentTab}}" bindchange="currentChange" style='height:{{winHeight}}rpx'>
+    <swiper-item>
+    <scroll-view  scroll-y="true"  style='height:{{winHeight}}rpx'>
+    
+<view wx:if="{{condition}}" class="container" class="citypicker">
+  <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange" class="citybody">
+    <view class="cityheader">
+      <view bindtap="open" class="city-cancel">取消</view>
+      <view bindtap="open" class="city-true">确定</view>
+    </view>
+    <picker-view-column>
+      <view wx:for="{{provinces}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column> 
+      <view wx:for="{{citys}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{countys}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</view> 
+<view class="table">
+  <view class="tr">
+      <view class="td3">
+        <view class="td3l">楼盘名称：</view>
+        <input class="td3r" bindinput="bindErNameInput" name="houseName" value="{{er_name}}" type='text'></input>
+      </view>
+    </view>
+
+      <view class="tr">
+      <view class="td3">
+        <view class="td3l">二手房所在区域：</view>
+        <view> 
+      <view class="input_city">
+     <input placeholder="选择" value="{{province}}-{{city}}-{{county}}" focus="{{focus}}" bindfocus="open" />  
+       </view>   
+       </view> 
+      </view>
+    </view>
+
+    <view class="tr">
+      <view class="td3">
+        <view class="td3l">二手房详细地址：</view>
+        <input class="td3r" bindinput='addressChange' name="address" value="{{address}}" type='text'></input>
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">建筑面积（平米）：</view>
+        <input class="tdr" bindinput='buildAreaChange' name="buildArea" value="{{area}}" type='digit' />
+      </view>
+      <view class="td2">
+        <view class="tdl">土地分摊面积（平米）：</view>
+        <input class="tdr" bindinput='landAreaChange'  type='digit' name="landArea"  value="{{landArea}}" />
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">装修情况：</view>
+        <view  class="tdr" >
+                <picker mode="selector" range="{{isOrNo}}"  data-item="{{item}}" range-key="name" name="is_fit" value='{{is_fit}}' bindchange='scalePickerChange'>
+                  <view class='picker' data-item="{{item}}" >{{isOrNo[is_fit].name}}</view>                  
+                </picker>
+        </view>      
+      </view>
+      
+      <view class="td2">
+        <view class="tdl">是否有电梯：</view>
+        <view  class="tdr">
+               <picker mode="selector" range="{{isOrNo}}"  data-item="{{item}}" range-key="name" name="is_ele" value='{{have_ele}}' bindchange='scalePickerChange'>
+                  <view class='picker' data-item="{{item}}" >{{isOrNo[have_ele].name}}</view>                  
+                </picker>
+        </view>  
+      </view>
+    </view>
+     <view class="tr">
+      <view class="td2">
+        <view class="tdl">楼层：</view>
+         <input class="tdr" type='text'bindinput="houseFChange" name="houseF" value="{{houseF}}" />  
+        
+      </view>
+      <view class="td2">
+        <view class="tdl">朝向：</view>
+         <input class="tdr" type='text'  bindinput="faceChange"name="face" value="{{face}}" />    
+      </view>
+    </view>
+    </view>
+
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">建筑性质：</view>
+        <view class="tdr">
+               <picker mode="selector" range="{{bNatureArray}}"  data-item="{{item}}" range-key="name" name="build_nature" value='{{build_nature}}' bindchange='scalePickerChange'>
+                  <view class='picker' data-item="{{item}}" >{{bNatureArray[build_nature].name}}</view>                  
+                </picker>
+        </view>      
+      </view>
+      <view class="td2">
+        <view class="tdl">土地性质：</view>
+        <view class="tdr">
+         <picker mode="selector" range="{{lNatureArray}}"  data-item="{{item}}" range-key="name" name="land_nature" value='{{land_nature}}' bindchange='scalePickerChange'>
+                  <view class='picker' data-item="{{item}}" >{{lNatureArray[land_nature].name}}</view>                  
+                </picker>
+        </view>       
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">登记目的</view>
+        <input class="tdr" bindinput='houseOrigChange' type='text' name="use" value="{{use}}" />
+      </view>
+      <view class="td2">
+        <view class="tdl">发布者是否中介：</view>
+        <view class="tdr">
+       
+        <picker mode="selector" range="{{trustArray}}"  data-item="{{item}}" range-key="name" name="is_trust" value='{{is_trust}}' bindchange='scalePickerChange'>
+                  <view class='picker' data-item="{{item}}" >{{trustArray[is_trust].name}}</view>                  
+                </picker>
+        </view>      
+      </view>
+    </view>
+    <view class="tr">
+      <view class="td2">
+        <view class="tdl">取得产权时间(年)：</view>
+        <view class="tdr">
+          <picker mode="selector" range="{{yearArray}}"  data-item="{{item}}" name="year" value='{{year}}' bindchange='scalePickerChange'>
+                  <view class='picker' data-item="{{item}}" >{{ yearArray[year]}}</view>                  
+                </picker>
+        </view>
+        
+      </view>
+      <view class="td2">
+        <view class="tdl">满五且唯一：</view>
+        <view class="tdr">
+       
+        <picker mode="selector" range="{{isFiveArray}}"  data-item="{{item}}" range-key="name" name="is_five" value='{{is_five}}' bindchange='scalePickerChange'>
+                  <view class='picker' data-item="{{item}}" >{{isFiveArray[is_five].name}}</view>                  
+                </picker>
+        </view>       
+      </view>
+    </view>
+    
+       <view class="tr">
+      <view class="td2">
+        <view class="tdl">报价（万元）：</view>
+        <input class="tdr" type='text' bindinput="moneyChange" name="sell" value="{{sell}}" />  
+        
+      </view>
+      <view class="td2">
+        <view class="tdl">联系方式：</view>
+        <input class="tdr" type='digit' bindinput="phoneChange" name="phone" value="{{phone}}" />  
+      </view>
+    </view>
+   
+      
+     <view class="tr">
+      <view class="tdl">附加说明（小于30个字）：</view>
+      <view  class=" tdr {{textarea.length<30?'count1':'count2'}}">{{textarea.length}}/30</view>
+    </view>
+
+    <!--输入文本框-->
+     <view class="tr"> 
+      <view class="td3">        
+          <textarea class='input_text' value="{{explain}}" placeholder='请输入附加说明...'  bindinput="getExplain" maxlength='200'>
+          </textarea>     
+      </view>
+    </view>        
+   
+    <view class="end">
+   <!-- 上传图片 -->
+  
+  <view class="add_img_view">
+     <button class="add_img" bindtap='uploadPhoto' style='background:#ffffff'>     
+      <view>上传图片(最多九张)：</view>   
+     </button>
+    </view>
+     <view class='line_sha'></view>
+      <view class='line'></view>         
+    <view class="send">
+      <button class="send_button"  style=' background-color: rgb(104, 182, 102)' bindtap='insert_post'>发布</button>
+    </view>  
+    </view> 
+    </scroll-view>
+
+    </swiper-item>
+
+      <swiper-item>
+       <view calss="content">
+  <!-- <view class="head">   
+    <view class="head_text">
+      发布一个新帖
+    </view>
+  </view> -->
+  <view class='line_sha'></view>
+  <view class='line'></view>   
+    <!--添加内容-->
+    <view class='input'>
+      <!--添加标题-->
+      <view class='input_title_border'>
+        <input class='input_title'  bindinput='getTitle' placeholder='请输入标题...' maxlength='15'></input>
+      </view>
+      <view class='title_line'></view><!--一条线-->
+      
+      <!--输入文本框-->
+      <textarea class='input_text' placeholder='请输入内容...'  bindinput="getTextarea" maxlength='200'></textarea>
+      <view>
+        <view  class="{{textarea.length<200?'count1':'count2'}}">{{textarea.length}}/200</view>
+      </view>
+    </view>
+    <view class="end">
+    上传图片
+    <view class="add_img_view">
+     <button class="add_img" bindtap='uploadPhoto' style='background:#ffffff'>
+     <image class="image" src='../../../assets/image/tabbar/add_img.png'></image>
+     </button></view>
+     <!--发送-->
+     <view class='line_sha'></view>
+         <view class='line'></view>         
+    <view class="send">
+      <button class="send_button"  style=' background-color: rgb(104, 182, 102)' bindtap='insert_post2'>
+     发送</button>
+    </view>
+    </view>
+</view>
+    </swiper-item>
+    </swiper> 
+  </view>  
+</scroll-view>
+

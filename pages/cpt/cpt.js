@@ -410,47 +410,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var page = this;
-
-    wx.getSystemInfo({
-
-      success: function(systemInfo) {
-
-        console.log(systemInfo);
-        // px转换到rpx的比例
-        let pxToRpxScale = 750 / systemInfo.windowWidth;
-        // 状态栏的高度
-        let ktxStatusHeight = systemInfo.statusBarHeight * pxToRpxScale
-        // 导航栏的高度
-        let navigationHeight = 44 * pxToRpxScale
-        // window的高度
-        let ktxWindowHeight = systemInfo.windowHeight * pxToRpxScale
-        // window的宽度
-        let ktxWindowWidth = systemInfo.windowWidth * pxToRpxScale
-        // 屏幕的高度
-        let ktxScreentHeight = systemInfo.screenHeight * pxToRpxScale
-        // 底部tabBar的高度
-        let tabBarHeight = ktxScreentHeight - ktxStatusHeight - navigationHeight - ktxWindowHeight
-        page.setData({
-          winWidth: systemInfo.windowWidth
-        });
-        page.setData({
-          winHeight: ktxWindowHeight
-        });
-      }
-    })
-    // let that=this;
-    // that.test();
-    // // 网络请求 ?1
-    // this.test1();
-    // console.log("get" + this.data.banks);
-    // console.log("get" + JSON.stringify(this.data.banks));
-    this.getbanksJson().then(res => console.log("res " + res)).catch(v => console.log("v " + v));
-
-
-
-    // console.log("h:" + this.data.winHeight + "w:" + this.data.winWidth) 
-    // console.log("getbankjson 3:" + JSON.stringify(this.data.banks)) 
+   
   },
   test1: function() {
     this.getbanksJson().then(res => console.log("res " + res)).catch(v => console.log("v " + v));
@@ -793,6 +753,42 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    var page = this;
+    wx.getSystemInfo({
+      success: function (systemInfo) {
+        console.log(systemInfo);
+        // px转换到rpx的比例
+        let pxToRpxScale = 750 / systemInfo.windowWidth;
+        // 状态栏的高度
+        let ktxStatusHeight = systemInfo.statusBarHeight * pxToRpxScale
+        // 导航栏的高度
+        let navigationHeight = 44 * pxToRpxScale
+        // window的高度
+        let ktxWindowHeight = systemInfo.windowHeight * pxToRpxScale
+        // window的宽度
+        let ktxWindowWidth = systemInfo.windowWidth * pxToRpxScale
+        // 屏幕的高度
+        let ktxScreentHeight = systemInfo.screenHeight * pxToRpxScale
+        // 底部tabBar的高度
+        let tabBarHeight = ktxScreentHeight - ktxStatusHeight - navigationHeight - ktxWindowHeight
+        page.setData({
+          winWidth: systemInfo.windowWidth
+        });
+        page.setData({
+          winHeight: ktxWindowHeight
+        });
+      }
+    })
+    // let that=this;
+    // that.test();
+    // // 网络请求 ?1
+    // this.test1();
+    // console.log("get" + this.data.banks);
+    // console.log("get" + JSON.stringify(this.data.banks));
+    this.getbanksJson().then(res => console.log("res " + res)).catch(v => console.log("v " + v));
+    // console.log("h:" + this.data.winHeight + "w:" + this.data.winWidth) 
+    // console.log("getbankjson 3:" + JSON.stringify(this.data.banks)) 
+    
 
   },
 

@@ -1,10 +1,12 @@
 import {
   wxRequest
 } from './wxRequest';
-
-const apiMall = 'http://49.234.199.223:9090/hob/Api';
-const paths = 'http://49.234.199.223:9090/hob/Api';
-
+// 此js 废弃 用apis.js
+// /118.24.1.237
+// const apiMall = 'http://49.234.199.223:9090/hob/Api';
+// const paths = 'http://49.234.199.223:9090/hob/Api';
+const apiMall = 'http://118.24.1.237:9090/hob/Api';
+const paths = 'http://118.24.1.237:9090/hob/Api';
 
 const getDiscoverList = (params) => wxRequest(params, apiMall + '/emall/goods/list?cateidOne=1&cateidTwo=0&price=0&sales=2');
 
@@ -48,6 +50,9 @@ const canalsPage = (params) => wxRequest(params, apiMall + "/Build/canalsPage");
 
 // 获取楼盘渠道
 const getCanals = (params) => wxRequest(params, apiMall + "/Build/getCanals");
+// http://118.24.1.237/hob/Api/Ershou
+// 获取二手房
+const getErshou = (params) => wxRequest(params, apiMall + "/Ershou");
 
 
 

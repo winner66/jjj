@@ -2,8 +2,7 @@
 Page{
  
   /* color: #babab2; */
-  background-color:  #b2b2b2;
-  
+  background-color:  #bebebe;
 
 }
 scroll-view{
@@ -21,14 +20,17 @@ scroll-view{
   margin-left: 20rpx;
   margin-bottom: 15rpx;
   padding:25rpx 25rpx 2rpx ;
-  height: 350rpx;
+  height: 400rpx;
   border-radius:20rpx;
 
 }
 .imge{
   height:250rpx;
+  width:95%;
+  margin: 0 auto;
   background-color: #fff;
 }
+
 .block{
   height:300rpx;
   width: 100%;

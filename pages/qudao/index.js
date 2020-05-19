@@ -16,8 +16,28 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
-  
+  onLoad: function () {     
+
+  },
+  toHouse:function(){
+    let that=this;
+    wx.navigateTo({
+      url: '/page//houseDetail/index?houseId='+that.data.build_id,
+    })
+
+  },
+    /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
     // console.log("result:tag ->" + option.tag)
     let that = this;
 
@@ -39,27 +59,7 @@ Page({
 
       })
       console.log(that.data.title);
-    })   
-
-  },
-  toHouse:function(){
-    let that=this;
-    wx.navigateTo({
-      url: '/page//houseDetail/index?houseId='+that.data.build_id,
-    })
-
-  },
-    /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+    })  
 
   },
 

@@ -65,18 +65,37 @@ Page({
    */
   onLoad: function (options) {
 // 
+  },
+  formSubmit: function (e) {
+    console.log('form发生了submit事件，携带数据为：', e.detail.value)
+  },
+  formReset: function () {
+    console.log('form发生了reset事件')
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
     console.log("置业计算：result:tag ->" + options.tag)
     let that = this;
     const eventChannel = this.getOpenerEventChannel()
     // eventChannel.emit('acceptDataFromOpenedPage', { data: 'cpt_result' });
     // eventChannel.emit('someEvent', { data: 'cpt_result2' });
     // // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
- 
-    if (options.tag==0)
-    {
-     
 
-    } else if (options.tag == 1){
+    if (options.tag == 0) {
+
+
+    } else if (options.tag == 1) {
       // 税费计算-- 住宅
       eventChannel.on('data', function (data) {
         console.log(data.data);
@@ -107,30 +126,30 @@ Page({
       })
 
     } else if (options.tag == 2) {
-//  ////商业贷
+      //  ////商业贷
       eventChannel.on('data', function (data) {
         console.log(data.data);
         that.setData({
           buildArea: data.data.buildArea,
-        // 贷款评估单价
+          // 贷款评估单价
           estimatePerPrice: data.data.estimatePerPrice,
           //  贷款评估总价
           estimatePrice: data.data.estimatePrice,
-            // 首付款额预估
+          // 首付款额预估
           firstPayPrice: data.data.firstPayPrice,
-              // 贷款额预估
+          // 贷款额预估
           loanPrice: data.data.loanPrice,
-                // 贷款年限
+          // 贷款年限
           loanTime: data.data.loanTime,
-                  // 还款方式
+          // 还款方式
           methods: data.data.method,
-                    // 预计月供
+          // 预计月供
           monthPay: data.data.monthPay,
 
         })
       })
 
-    } else if (options.tag == 3){
+    } else if (options.tag == 3) {
       // 税费计算--非住宅
       eventChannel.on('data', function (data) {
         console.log(data.data);
@@ -159,28 +178,9 @@ Page({
         })
         console.log("------");
       })
-    }else{
+    } else {
 
     }  
-  },
-  formSubmit: function (e) {
-    console.log('form发生了submit事件，携带数据为：', e.detail.value)
-  },
-  formReset: function () {
-    console.log('form发生了reset事件')
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
 
   },
 

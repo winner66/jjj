@@ -1,0 +1,52 @@
+<!--pages/houseDetail/index.wxml楼盘详细信息-->
+<view class="pageClass">
+  <view class="swiper-container">
+    <swiper class="swiper" bindchange="swiperchange" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="indicator-dots" indicator-color="rgba(0, 0, 0, .3)}" indicator-active-color="#000000" current="{{current_img}}">
+
+      <block wx:for="{{img_urls}}" wx:key="*this">
+        <swiper-item>
+          <image src="{{item}}" mode="widthFix" class="img"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="container">
+    <view class="title">
+      <text>楼盘名：</text>
+      <view> {{title}}</view>
+    </view>
+    <!-- <view class="address">
+      <text>地址 : </text>
+      <view>{{address}}</view>
+    </view> -->
+
+    <view class="time">
+      <text>更新于：</text>
+      <view>{{createtime}}</view>
+    </view>
+    <view class="sell">
+      <view wx:if="{{sell_id==0}}" >在售</view>
+      <view wx:else >待售</view>
+
+      <view class="imga">
+        <image class="img" wx:if="{{sell_id==0}}" src="../../assets/images/common/onSell.png"></image>
+        <image class="img" wx:else src="../../assets/images/common/Sell.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="con">
+    <rich-text nodes="{{html}}">
+    </rich-text>
+  </view>
+
+  <view class="btn">
+    <button class="btn1" bindtap="build">朕要看进度</button>
+    <button class="btn1" bindtap="activi">朕要看优惠</button>
+    <button class="btn1" bindtap="qudao">朕要看渠道</button>
+  </view>
+  <view class="text">
+    <view class="textcon">说明：所有信息、图片仅供参考，为方便您的工作或者置业提供帮助，不作为投资建议。请以现场实情为准。 本文档未经授权，不得转载。
+    </view>
+  </view>
+</view>

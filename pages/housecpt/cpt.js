@@ -28,18 +28,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var page = this;
-
-    wx.getSystemInfo({
-
-      success: function (res) {
-
-        console.log(res);
-
-        page.setData({ winWidth: res.windowWidth });
-        page.setData({ winHeight: res.windowHeight });
-      }
-    })    
+      
   },
 
   /**
@@ -53,9 +42,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var page = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res);
+        page.setData({ winWidth: res.windowWidth });
+        page.setData({ winHeight: res.windowHeight });
+      }
+    }) 
 
   },
-
   /**
    * 生命周期函数--监听页面隐藏
    */

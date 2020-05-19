@@ -6,7 +6,6 @@ var base64 = require('../../utils/base.js');
 const app = getApp();
 
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -375,30 +374,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log('地图定位！')
-    let that = this
-    wx.getLocation({
-      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-      success: (res) => {
-        let latitude = res.latitude;
-        let longitude = res.longitude;
-
-        let marker = this.createMarker(res);
-        this.setData({
-          centerX: longitude,
-          centerY: latitude,
-          markers: this.getHouseMarkers()
-        })  
-      }
-    });
-
-    that.setData({
-      winWidth: app.globalData.winWidth,
-      winHeight: app.globalData.winHeight,
-    })
-    console.log(this.data.winHeight)
-    that.getHouseJson();  
-
+   
   },
 
   /**
@@ -413,6 +389,30 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+
+    console.log('地图定位！')
+    let that = this
+    wx.getLocation({
+      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+      success: (res) => {
+        let latitude = res.latitude;
+        let longitude = res.longitude;
+
+        let marker = this.createMarker(res);
+        this.setData({
+          centerX: longitude,
+          centerY: latitude,
+          markers: this.getHouseMarkers()
+        })
+      }
+    });
+
+    that.setData({
+      winWidth: app.globalData.winWidth,
+      winHeight: app.globalData.winHeight,
+    })
+    console.log(this.data.winHeight)
+    that.getHouseJson();  
 
   },
 

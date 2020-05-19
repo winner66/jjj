@@ -5,8 +5,6 @@ import apis from '../../../utils/apis';
 // import tip from '../../utils/tip';
 var base64 = require('../../../utils/base.js');
 // var base64 = require('../../utils/base_64.js');
-
-
 const app = getApp();
 
 Page({
@@ -165,12 +163,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    const that=this;
-    this.getTuPaoJson(that.data.pageLimit, that.data.page)
-    that.setData({
-      winWidth: app.globalData.winWidth,
-      winHeight: app.globalData.winHeight,
-    })
+   
   },
 
   /**
@@ -184,6 +177,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+
+    const that = this;
+    this.getTuPaoJson(that.data.pageLimit, that.data.page)
+    that.setData({
+      winWidth: app.globalData.winWidth,
+      winHeight: app.globalData.winHeight,
+    })
 
   },
 

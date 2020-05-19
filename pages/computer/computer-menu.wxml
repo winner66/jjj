@@ -1,4 +1,6 @@
 <!--pages/computer/computer-menu.wxml-->
+
+<!-- 正文 -->
 <scroll-view>
   <view class="swiper-container">
     <swiper class="swiper" bindchange="swiperchange" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="indicator-dots" indicator-color="rgba(0, 0, 0, .3)}" indicator-active-color="#000000" current="{{current_img}}">
@@ -21,32 +23,32 @@
 
     <view class='recommend-item' bindtap="cptchange">
       <view>
-        <image src="../../assets/images/common/cpt_house.png" />
+        <image src="../../assets/images/common/正统统计.png" />
       </view>
       <view>房贷计算</view>
     </view>
 
     <view class='recommend-item' bindtap="taxchange">
       <view>
-        <image src="../../assets/images/common/cpt_tax.png" />
+        <image src="../../assets/images/common/税费计算.png" />
       </view>
       <view>税费计算</view>
     </view>
     <view class='recommend-item' bindtap="housechange">
       <view>
-        <image src="../../assets/images/common/infoTable.png" />
+        <image src="../../assets/images/common/基础信息.png" />
       </view>
       <view>置业单</view>
     </view>
     <view class='recommend-item' bindtap="jgchange">
       <view>
-        <image src="../../assets/images/common/supervition.png" />
+        <image src="../../assets/images/common/人群分析.png" />
       </view>
       <view>监管</view>
     </view>
         <view class='recommend-item' bindtap="ptaxchange">
       <view>
-        <image src="../../assets/images/common/supervition.png" />
+        <image src="../../assets/images/common/调查表管理.png" />
       </view>
       <view>评税建议</view>
     </view>

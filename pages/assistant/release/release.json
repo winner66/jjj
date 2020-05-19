@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "i-input": "../../../iview/dist/input/index"
+  },
+  "navigationBarTitleText": "发布新帖"
+}

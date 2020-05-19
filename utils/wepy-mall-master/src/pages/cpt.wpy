@@ -1,0 +1,215 @@
+<style>
+
+    .loginTitle{
+        display: flex;  flex-direction: row;
+        width: 100%;
+    }
+    .select{
+        font-size: 35rpx;
+        color: red;
+        width: 25%;
+        text-align: center ;
+        height: 45px;
+        line-height: 45px;
+        border-bottom:5rpx solid red;
+    }
+    .default{
+        font-size: 35rpx;
+        margin: 0 auto;
+        padding: 15px;
+    }
+    .hr{
+        border: lpx solid#cccccc;
+        opacity: 0.2;
+    }
+    .cptrightimage{
+        position: absolute;
+        right: 30rpx;
+        margin-top: 30rpx;
+        width: 60rpx;
+        height: 60rpx;
+    }
+
+
+</style>
+<template >
+    <view class="content">
+        <view class="loginTitle">
+            <view class="{{currentTab==0?'select':'default'}}" data-current="0" @tap="switchNav" >商业贷</view>
+            <view class="{{currentTab==1?'select':'default'}}" data-current="1" @tap="switchNav">税贷</view>
+            <view class="{{currentTab==2?'select':'default'}}" data-current="2" @tap="switchNav">公积金贷</view>
+            <view class="{{currentTab==3?'select':'default'}}" data-current="3" @tap="switchNav">组合贷</view>
+        </view>
+        <view class='hr'></view>
+        <swiper current="{{currentTab}}" style="height:{{winHeight}}px">
+            <swiper-item>
+              <view>我要中文</view>
+                <form>
+                    <view>商业贷1</view>
+                </form>
+            </swiper-item>
+            <swiper-item>
+                <form>
+                    <view>税贷2</view>
+                </form>
+            </swiper-item>
+            <swiper-item>
+                <form>
+                    <view>公积金贷3</view>
+                </form>
+            </swiper-item>
+            <swiper-item>
+                <form>
+                    <view>组合贷4</view>
+                </form>
+            </swiper-item>
+        </swiper>
+    </view>
+</template>
+
+<script>
+
+    import wepy from 'wepy'
+    import { connect } from 'wepy-redux'
+    import Panel from '@/components/panel' // alias example
+    import Counter from 'counter' // alias example
+    import List from '../components/list' // aliasFields example
+    import moduleA from 'module-a' // aliasFields ignore module example
+    import Group from '../components/group'
+    import Toast from 'wepy-com-toast'
+    import testMixin from '../mixins/test'
+    export default class CPT extends wepy.page {
+
+        data={
+                scales: ['一成',
+                '二成',
+                '三成',
+                '四成',
+                '五成',
+                '六成',
+                '七成',
+                '八成',
+                '九成',
+                '十成'
+                ],
+                loantimes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40],
+                loanrates: ['4.9%', '4.655%', '4.41%', '4.165%', '3.92%', '3.65%', '3.42%', '6.37%'],
+                area: '50',
+                areaprice: '10000',
+                scaleindex: 1,
+                timeindex: 4,
+                rateindex: 1,
+                cptAreaFlag: 1,
+                cptmethodFlag:1,
+
+                currentTab: 0,
+                winWidth: 0,
+                winHeight: 0
+        }
+         methods= {
+             areapriceChange(e) {
+                 this.areaprince = e.detail.value;
+                 this.$apply();
+
+                 console.log('rate :', this.areaprince)
+             },
+             areaChange(e) {
+                 this.area = e.detail.value;
+                 this.$apply();
+                 console.log('area:', this.area)
+
+             },
+             scalePickerChange (e) {
+                 this.scaleindex = e.detail.value;
+                 this.$apply();
+                 console.log('scale :', this.scaleindex)
+             },
+             timePickerChange(e) {
+                 this.timeindex = e.detail.value;
+                 this.$apply();
+                 console.log('time :', this.timeindex)
+             },
+             ratePickerChange(e) {
+                 this.rateindex = e.detail.value;
+                 this.$apply();
+                 console.log('rate :', this.rateindex)
+             },
+
+             commFormReset(e){
+
+             },
+             commFormSubmit(e) {
+             },
+
+             itemClick(e) {
+                 // 1.设置最新的index
+                 this.currentIndex = e.currentTarget.dataset.index;
+                 this.$apply();
+                 // 2.发出时间
+                 const data = {index: this.data.currentIndex};
+                 this.triggerEvent("tabclick", data, {});
+                 this.$apply();
+             },
+             setCurrentIndex(index) {
+                 this.currentIndex = index
+                 this.$apply();
+                 console.log(this.currentIndex)
+             },
+             switchNav(e){
+                console.log(e);
+                 if (this.data.currentTab == e.target.dataset.current) {
+                     return false;
+                 } else {
+                     this.currentTab = e.target.dataset.current
+                     this.$apply();
+                 }
+
+             },
+             cpt_radioChange_1(e){
+                 console.log('radio1:', e.detail.value);
+
+                 this.cptAreaFlag = e.detail.value;
+                 console.log(this.cptAreaFlag);
+                 this.$apply();
+             },
+             cpt_radioChange_2(e){
+                 console.log('radio2:', e.detail.value);
+                 this.cptmethodFlag = e.detail.value;
+                 this.$apply();
+
+             },
+             // 计算商业贷 reset form
+             commFormReset(e){
+
+             },
+             //计算商业贷  submit form
+             commFormSubmit(e){
+
+                 wepy.navigateTo({
+                     url: '/pages/cpt-comm-result/cpt-comm-result',
+                     events: {
+                         // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+                         acceptDataFromOpenedPage(data) {
+                             console.log(data)
+                         },
+                         someEvent(data) {
+                             console.log(data)
+                         }
+
+                     },
+                     success: function (res) {
+                         // 通过eventChannel向被打开页面传送数据
+                         res.eventChannel.emit('acceptDataFromOpenerPage', {data: 'test'})
+                     }
+                 })
+
+             }
+         }
+
+        onLoad() {
+
+        }
+    }
+
+
+</script>

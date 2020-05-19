@@ -417,35 +417,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var page = this;
-
-    wx.getSystemInfo({
-
-      success: function (systemInfo) {
-
-        console.log(systemInfo);
-        // px转换到rpx的比例
-        let pxToRpxScale = 750 / systemInfo.windowWidth;
-        // 状态栏的高度
-        let ktxStatusHeight = systemInfo.statusBarHeight * pxToRpxScale
-        // 导航栏的高度
-        let navigationHeight = 44 * pxToRpxScale
-        // window的高度
-        let ktxWindowHeight = systemInfo.windowHeight * pxToRpxScale
-        // window的宽度
-        let ktxWindowWidth = systemInfo.windowWidth * pxToRpxScale
-        // 屏幕的高度
-        let ktxScreentHeight = systemInfo.screenHeight * pxToRpxScale
-        // 底部tabBar的高度
-        let tabBarHeight = ktxScreentHeight - ktxStatusHeight - navigationHeight - ktxWindowHeight
-
-
-        page.setData({ winWidth: systemInfo.windowWidth });
-        page.setData({ winHeight: ktxWindowHeight });
-      }
-    })
-
-    console.log("h:" + this.data.winHeight + "w:" + this.data.winWidth)
+   
   },
   //非住宅 税费 提交
   formSubmit: function(e) {
@@ -659,6 +631,32 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var page = this;
+    wx.getSystemInfo({
+      success: function (systemInfo) {
+        console.log(systemInfo);
+        // px转换到rpx的比例
+        let pxToRpxScale = 750 / systemInfo.windowWidth;
+        // 状态栏的高度
+        let ktxStatusHeight = systemInfo.statusBarHeight * pxToRpxScale
+        // 导航栏的高度
+        let navigationHeight = 44 * pxToRpxScale
+        // window的高度
+        let ktxWindowHeight = systemInfo.windowHeight * pxToRpxScale
+        // window的宽度
+        let ktxWindowWidth = systemInfo.windowWidth * pxToRpxScale
+        // 屏幕的高度
+        let ktxScreentHeight = systemInfo.screenHeight * pxToRpxScale
+        // 底部tabBar的高度
+        let tabBarHeight = ktxScreentHeight - ktxStatusHeight - navigationHeight - ktxWindowHeight
+
+
+        page.setData({ winWidth: systemInfo.windowWidth });
+        page.setData({ winHeight: ktxWindowHeight });
+      }
+    })
+
+    console.log("h:" + this.data.winHeight + "w:" + this.data.winWidth)
 
   },
 

@@ -17,30 +17,7 @@ Page({
    */
   onLoad: function (option) {
      
-      console.log("result:tag ->"+option.tag)
-      let that=this;
-      const eventChannel = this.getOpenerEventChannel()
-      eventChannel.emit('acceptDataFromOpenedPage', { data: 'cpt_result' });
-      eventChannel.emit('someEvent', { data: 'cpt_result2' });
-      // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
-      eventChannel.on('data', function (data) {
-        
-        // let temdata = JSON.parse(data.data);
-        
-        
-        that.setData({
-          tabdata: data.data      
-        })
-        
-        console.log(that.data.tabdata);
-      })
-      eventChannel.on('tab', function (tab) {
-        
-        that.setData({
-           tab  :tab.tab
-         })
-        console.log(that.data.tab)
-      })
+    
     
   },
 
@@ -56,6 +33,30 @@ Page({
    */
   onShow: function () {
 
+    console.log("result:tag ->" + option.tag)
+    let that = this;
+    const eventChannel = this.getOpenerEventChannel()
+    eventChannel.emit('acceptDataFromOpenedPage', { data: 'cpt_result' });
+    eventChannel.emit('someEvent', { data: 'cpt_result2' });
+    // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
+    eventChannel.on('data', function (data) {
+
+      // let temdata = JSON.parse(data.data);
+
+
+      that.setData({
+        tabdata: data.data
+      })
+
+      console.log(that.data.tabdata);
+    })
+    eventChannel.on('tab', function (tab) {
+
+      that.setData({
+        tab: tab.tab
+      })
+      console.log(that.data.tab)
+    })
   },
 
   /**

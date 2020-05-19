@@ -1,0 +1,68 @@
+<!--pages/assistant/index.wxml-->
+<!-- 弹框（用户使用说明） -->
+ <import src="../templates/loginModal/modal.wxml" />
+
+<scroll-view scroll-y="true" class="container"  >
+<view class="payWay-container {{isTipTrue?'isTipShow':'isTipHide'}}">
+   <template is="modal"></template>    
+</view>
+
+  <view class="search flex-wrp"><!--搜索框开始-->
+      <view class="search-left flex-item">
+          <input placeholder="搜索帖子" placeholder-class="search-placeholder" value="{{searchValue}}" auto-focus bindinput="searchValueInput" bindconfirm='start_search_db'/>
+      </view>
+      <view class="search-right flex-item" bindtap="start_search_db">
+          <image src="../../assets/images/tabbar/search.png"></image>
+      </view>
+  </view><!--搜索框结束-->
+
+<icon  class="iconfont iconicon_tianjia:before" bindtap="onPostClick"/>
+<!--发帖按钮-->
+
+
+<view class="classify" style="height:{{winHeight-50}}px">
+  <scroll-view class="classify_catetory" scroll-y scroll-with-animation="true" style="height:{{winHeight-50}}px">
+    <!-- <view class="name {{item.active? 'active':''}}" wx:for="{{categories}}" wx:key="item" bindtap="changeCate" data-code="{{item.id}}">
+      {{item.name}}
+    </view> -->
+    <view class=" name {{currentIndex==0?'active':'default'}}" data-code="0" bindtap="changeCate">二手</view>
+    <view class="name {{currentIndex==1?'active':'default'}}" data-code="1" bindtap="changeCate">互助</view>    
+  </scroll-view>
+
+  <scroll-view class="classify_detail" scroll-y scroll-with-animation="true" style="height:{{winHeight-50}}px">
+    <view>
+      <view style="height:{{winHeight-50}}px background: gray" >
+<view wx:if="{{currentIndex==0}}">
+<block wx:for="{{childcateList}}" wx:key="objectId" >
+
+<view class="item" bindtap="bindItemTap" data-item="{{item}}">
+          <view class="left">
+              <view class="title">{{item.er_name}}</view>
+              <view class="time">{{item.street}}-{{item.address}}</view>
+              <view class="sell">{{item.sell}} 万元</view>
+          </view>
+            <view class="img">
+              <image class="img" src="{{item.img}}"></image>
+            </view>
+ </view>
+</block>
+</view>
+<view wx:else>
+<block  wx:for="{{childcateList}}" wx:key="objectId" >
+<view class="item" bindtap="bindItemTap" data-item="{{item}}">
+          <view class="left">
+              <view class="title">{{item.er_name}}</view>
+              <view class="time">{{item.area}}-{{item.address}}</view>
+              <view class="sell">{{item.sell}} 万元</view>
+          </view>
+            <view class="img">
+              <image class="img" src="{{item.img}}"></image>
+            </view>
+ </view>
+</block>
+</view>    
+      </view>
+    </view>
+  </scroll-view>
+</view>
+</scroll-view>

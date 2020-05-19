@@ -1,18 +1,22 @@
 <!--pages/learn/index.wxml-->
-
+<page>
 <scroll-view>
   <view class="container">
     <view class="imga">
       <image src="{{cover}}" class="img"></image>
     </view>
-    <view class="title">{{title}}</view>
-    <view class="time_row">
+    <view class='box'>
+      <view class="title">{{title}}</view>
+      <view class="time_row">
 
-      <view class="time">{{time}}</view>
-     
-    </view>
-    <view class="con">
-      <rich-text nodes="{{con}}"></rich-text>
-    </view>
+        <view class="time">{{time}}</view>
+      
+      </view>
+      <view class="con">
+        <rich-text nodes="{{con}}"></rich-text>
+      </view>
   </view>
+    </view>
+    
 </scroll-view>
+</page>

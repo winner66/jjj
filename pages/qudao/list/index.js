@@ -201,34 +201,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that=this;
-    // const eventChannel = this.getOpenerEventChannel();
-    // eventChannel.emit('acceptDataFromOpenedPage', { data: 'cpt_result' });
-    // eventChannel.emit('someEvent', { data: 'cpt_result2' });
-    // // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
-    // eventChannel.on('qudaoList', function (data) {
-
-    //   let temdata = data.data;
-    //   console.log(data);
-    //   that.setData({
-    //     qudao: temdata
-    //   })
-    //   console.log("qudaoList:"+that.data.qudao);
-    // })
- 
-    console.log(options.houseId + "   " + options);
-
-    var tem=JSON.stringify(options)
-    console.log(tem);
-    if (tem=="{}" || options.houseId =='undefined' ||options.houseId == "") {
-      that.getqudaoJson();
-    } else {      
-      that.getHousequdaoJson(options.houseId)
-    }    
-    that.setData({
-      winWidth: app.globalData.winWidth,
-      winHeight: app.globalData.winHeight,
-    })
+   
   },
   gotoDetail: function(e) {
     // if (mLoading) return;
@@ -267,6 +240,35 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+
+    let that = this;
+    // const eventChannel = this.getOpenerEventChannel();
+    // eventChannel.emit('acceptDataFromOpenedPage', { data: 'cpt_result' });
+    // eventChannel.emit('someEvent', { data: 'cpt_result2' });
+    // // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
+    // eventChannel.on('qudaoList', function (data) {
+
+    //   let temdata = data.data;
+    //   console.log(data);
+    //   that.setData({
+    //     qudao: temdata
+    //   })
+    //   console.log("qudaoList:"+that.data.qudao);
+    // })
+
+    console.log(options.houseId + "   " + options);
+
+    var tem = JSON.stringify(options)
+    console.log(tem);
+    if (tem == "{}" || options.houseId == 'undefined' || options.houseId == "") {
+      that.getqudaoJson();
+    } else {
+      that.getHousequdaoJson(options.houseId)
+    }
+    that.setData({
+      winWidth: app.globalData.winWidth,
+      winHeight: app.globalData.winHeight,
+    })
 
   },
 

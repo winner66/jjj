@@ -7,12 +7,17 @@ import apis from '../../../utils/apis';
 var base64 = require('../../../utils/base.js');
 const app = getApp();
 
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+
+    // 使用说明显示标签
+    isTipTrue: false,
+
     // 当前标签  登录/注册
     currentTab: 1,
     // 宽高
@@ -89,11 +94,6 @@ Page({
    */
   onLoad: function(options) {
 
-    this.setData({
-      winWidth: app.globalData.winWidth,
-      winHeight: app.globalData.winHeight,
-    });
-    console.log("h:" + this.data.winHeight + " w:" + this.data.winWidth);
   },
   // 导航
   switchNav: function(e) {
@@ -126,6 +126,13 @@ Page({
     this.login(e.detail.value);   
     
   },
+  // 点击弹窗之后- 隐藏
+  tipAgree: function () {
+    this.setData({
+      isTipTrue: false
+    })
+  },
+
   // 注册
   formSubmit2: function(e) {
     // console.log('form发生了submit事件，携带数据为：', e.detail.value)
@@ -140,8 +147,81 @@ Page({
     //   phone: that.data.phone,
     //   code: that.data.code,
     // };
+
+    // 弹窗
+    var that = this;
+    var time = e.formatTime(new Date());
+    console.log("注册小程序的时间是：", time)
+    that.setData({
+      isTipTrue: true
+    })
+    // 下单- 并再服务器上 注册-支付
     console.log("form:" + JSON.stringify(e.detail.value));
-    this.registe(e.detail.value);    
+    this.registe(e.detail.value);  
+    var tem = e.detail.value;
+    tem["openid"]=app.globalData.openid;
+
+    wx.request({
+
+      url: 'https://m.******.com/index.php/Home/Xiaoxxf/make_order',
+
+      header: {
+
+        "Content-Type": "application/x-www-form-urlencoded"
+
+      },
+      method: "POST",
+      data:tem,
+      success: function (res) {
+        if (res.data.state == 1) {
+          // --------- 订单生成成功，发起支付请求 ------------------
+          wx.requestPayment({
+            timeStamp: res.data.timeStamp,
+            nonceStr: res.data.nonceStr,   //字符串随机数
+            package: res.data.package,
+            signType: res.data.signType,
+            paySign: res.data.paySign,
+        'success': function (res) {
+              console.log(res);    //requestPayment:ok==>调用支付成功
+              console.log('注册成功')
+              wx.showToast({
+                title: '注册成功',
+                icon: 'success',
+                duration: 2000
+              })
+              try {
+                wx.setStorageSync('userInfo', res);
+              } catch (e) { }
+            },
+            'fail': function (res) {
+              console.log(res.errMsg);
+
+              wx.showToast({
+                title: '注册失败',
+                icon: 'fail',
+                duration: 2000
+              })
+            },
+            'complete': function (res) {
+              console.log(res.errMsg);
+            }
+          })
+        } else if (res.data.state == 0) {
+          wx.showToast({
+            title: res.data.Msg,
+            icon: 'fail',
+            duration: 1000
+          })
+        } else {
+          wx.showToast({
+            title: '系统繁忙，请稍后重试~',
+            icon: 'fail',
+            duration: 1000
+          })
+        }
+      }
+
+    })   
    
 
   },
@@ -172,7 +252,9 @@ Page({
     
       try {
         wx.setStorageSync('userInfo', jsonData)
-      } catch (e) { }
+      } catch (e) { 
+
+      }
     }
 
     
@@ -185,6 +267,11 @@ Page({
     console.log(json);
     if(json==''){
       console.log('没有获取json')
+      wx.showToast({
+        title: '注册失败1',
+        icon: 'fail',
+        duration: 2000
+      })  
     }else if(json=='-1'){
       console.log('注册失败')
       wx.showToast({
@@ -237,6 +324,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+
+    this.setData({
+      winWidth: app.globalData.winWidth,
+      winHeight: app.globalData.winHeight,
+    });
+    console.log("h:" + this.data.winHeight + " w:" + this.data.winWidth);
 
   },
 

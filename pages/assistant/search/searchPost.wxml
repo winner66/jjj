@@ -1,0 +1,48 @@
+<!--pages/assistant/search/searchPost.wxml-->
+<!--pages/search/search.wxml-->
+<!--index.wxml-->
+<view class="touch" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" ><!--切换页面-->
+<scroll-view scroll-y="true" class="container" bindscrolltoupper="upper" upper-threshold="10" lower-threshold="5" bindscrolltolower="lower"  scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <view class="search flex-wrp"><!--搜索框开始-->
+      <view class="search-left flex-item">
+          <!--image src="../../images/search.png"></image-->
+          <input placeholder="搜索帖子" placeholder-class="search-placeholder" value="{{searchValue}}" auto-focus bindinput="searchValueInput" bindconfirm='start_search_db'/>
+      </view>
+      <view class="search-right flex-item" bindtap="start_search_db">
+          <image src="../../images/New folder/search.png"></image>
+      </view>
+  </view><!--搜索框结束-->
+
+<icon  class="iconfont iconicon_tianjia:before" bindtap="onPostClick"/><!--发帖按钮-->
+
+
+<block wx:for="{{feed}}" wx:key="objectId">
+<view class="item" bindtap="bindItemTap" data-item="{{item}}">
+          <view class="left">
+              <view class="title">{{item.er_name}}</view>
+              <view class="time">{{item.area}}-{{item.address}}</view>
+              <view class="sell">{{item.sell}} 万元</view>
+          </view>
+            <view class="img">
+              <image class="img" src="{{item.img}}"></image>
+            </view>
+ </view>
+</block>
+ <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>
+ <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>
+</scroll-view>
+</view>
+
+
+
+
+      <view>
+      <scroll-view class="classify_detail"  style="height:{{winHeight}}px background: gray" scroll-y="true" bindscrolltolower="scrollLower" >
+        <view wx:for="{{qudao}}" wx:key="objectId">
+          
+        </view>
+         <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>
+      <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>
+</scroll-view>
+</view>
+

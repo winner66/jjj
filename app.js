@@ -6,10 +6,9 @@ App({
     // logs.unshift(Date.now())
     // wx.setStorageSync('logs', logs)
     let that=this;
+    // 获取系统参数-屏幕大小
     wx.getSystemInfo({
-
       success: function (systemInfo) {
-
         console.log(systemInfo);
         // px转换到rpx的比例
         let pxToRpxScale = 750 / systemInfo.windowWidth;
@@ -30,7 +29,32 @@ App({
       },
     })
     console.log(that.globalData.winHeight + "  " + that.globalData.winWidth)
+  // 登录-本地缓存
+    var logs = wx.getStorageSync('logs') || []
+    logs.unshift(Date.now())
+    wx.setStorageSync('logs', logs)
   },
+  getUserInfo: function (cb) {
+    var that = this
+    if (this.globalData.userInfo) {
+      typeof cb == "function" && cb(this.globalData.userInfo)
+    } else {
+      //调用登录接口
+      wx.login({
+        success: function () {
+          wx.getUserInfo({
+            success: function (res) {
+              that.globalData.userInfo = res.userInfo
+              typeof cb == "function" && cb(that.globalData.userInfo)
+            }
+          })
+        }
+      })
+    }
+
+
+  },
+
   globalData: {
     userInfo: null,
     access_token: null, // 访问令牌
@@ -38,6 +62,8 @@ App({
     // 宽高(屏幕有tabBar)
     winWidth: null,
     winHeight: null,
+    openid:null,
+    
   }
     // // 登录
     // wx.login({
@@ -67,6 +93,6 @@ App({
     //     }
     //   }
     // })
- 
-  
+
+   
 })

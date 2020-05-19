@@ -49,32 +49,38 @@
   <view class='recommend'>
     <view class='recommend-item' bindtap="sellerChange">
       <view>
-        <image src="../../assets/images/common/houseSell.png" />
+        <image src="../../assets/images/common/property_inspection.png" />
       </view>
       <view>在售一览</view>
+    </view>
+    <view class='recommend-item' bindtap="nonLocalchange">
+      <view>
+        <image src="../../assets/images/common/residence.png" />
+      </view>
+      <view>外地楼盘</view>
     </view>
 
     <view class='recommend-item' bindtap="qudaochange">
       <view>
-        <image src="../../assets/images/common/qudao.png" />
+        <image src="../../assets/images/common/rental_contract.png" />
       </view>
       <view>渠道规则</view>
     </view>
     <view class='recommend-item' bindtap="tupaichange">
       <view>
-        <image src="../../assets/images/common/land.png" />
+        <image src="../../assets/images/common/property_consult.png" />
       </view>
       <view>土拍信息</view>
     </view>
     <view class='recommend-item' bindtap="housechange">
       <view>
-        <image src="../../assets/images/common/house.png" />
+        <image src="../../assets/images/common/property_detail.png" />
       </view>
       <view>新盘活动</view>
     </view>
     <view class='recommend-item' bindtap="buildchange">
       <view>
-        <image src="../../assets/images/common/supervition.png" />
+        <image src="../../assets/images/common/property_investment.png" />
       </view>
       <view>建设进度</view>
     </view>

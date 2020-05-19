@@ -1,6 +1,6 @@
 <!--pages/tupai/list/index.wxml-->
 <!-- <text>pages/tupai/list/index.wxml</text> -->
-<view>
+<view style='background:#dedede;'>
  <scroll-view class="classify_detail"   scroll-y scroll-with-animation="true" style="height:{{winHeight-50}}px">
     <view>
       <scroll-view style="height:{{winHeight-50}}px background: gray"scroll-y="true" bindscrolltolower="scrollLower"  >
@@ -15,8 +15,19 @@
             </view>
           </view>
         </view>
+
+        <i-grid>
+            <i-grid-item i-class="item">
+                <i-spin custom>
+                    <i-icon type="refresh" size="20" i-class="icon-load"></i-icon>
+                    <view>Loading</view>
+                </i-spin>
+            </i-grid-item>
+        </i-grid>
+
+<!-- 
          <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>
-      <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>
+      <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view> -->
       </scroll-view>
 
     </view>

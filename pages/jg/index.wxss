@@ -29,8 +29,8 @@
 .classify .classify_detail {
   position: relative;
   z-index: 999;
-  background: #fff;
-  padding: 15px 10px 10px 30px;
+  /* background: pink; */
+  padding: 15px 10px 10px 15px;
 }
 .classify .classify_detail .title {
   font-size: 30rpx;
@@ -49,18 +49,21 @@
   /* margin: 0rpx,10rpx; */
   border-bottom: 3rpx solid  #b2b2b2;
   height: 60rpx;
+  line-height: 60rpx;
+  background: #deedee;
   font-size: 36rpx;
+  margin-bottom: 15rpx;
 }
 
 .left{
   flex: 1;
   text-align: left;
- 
   /* border-bottom: 2rpx solid #cccccc; */
 }
 .right{
   flex: 1;
-  text-align: right;
+  text-align: right; 
+  color:#b2b2b2;
 }
 
 .item{

@@ -1,0 +1,107 @@
+<!--pages/person/baobei/index.wxml-->
+<!-- 客源推荐 -->
+<!-- 弹框（用户使用说明） -->
+ <import src="../../templates/loginModal/modal.wxml" />
+<view class="payWay-container {{isTipTrue?'isTipShow':'isTipHide'}}">
+   <template is="Cooperate"></template>    
+</view>
+
+<!--报备  -->
+
+<view class='content'>   
+
+  <form bindreset='commFormReset' bindsubmit='commFormSubmit'>
+   
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">楼盘名：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name="r_build" bindinput='houseNameChange' type='text' placeholder="请输入楼盘" />
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">客户姓名：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name="root_name" bindinput='clientNameChange' type='text' placeholder="请输入客户姓名" />
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">客户联系方式：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name="root_phone" bindinput='clientphoneChange' type='digit' maxlength="11" placeholder="请输入电话号码" />
+      </view>
+    </view> <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">报备人姓名：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name="rp_name" bindinput='rpNameChange' type='text' placeholder="请输入报备人姓名" />
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">报备人电话：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name="rp_phone" bindinput='rpPhoneChange' type='digit' maxlength="11" placeholder="请输入电话号码" />
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">预计看房时间：</view>
+      </view>
+      <view class="weui-cell__bd">
+       <picker mode="date" value="{{date}}" name="time" start="2019-09-01" end="2050-09-01" bindchange="bindDateChange">
+    <view class="picker">
+       {{date}}
+    </view>
+  </picker>
+      </view>
+    </view>
+    <!-- <view class="weui-cell ">
+
+      <view class="weui-cell__hd">
+        <view class="weui-label">楼盘：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="selector" name="loupan"  data-item="{{item}}" range='{{houses}}' range-key="name" value='{{index}}' bindchange='houseChange'>
+          <view class='picker' >{{houses[index].name}}</view>
+        </picker>
+      </view>
+      <view class="weui-cell__ft">
+        <i-icon type="enter" size="28" />
+      </view>
+    </view> -->
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">看房人数：</view>
+      </view>
+      <view class="weui-cell__bd">
+         <input class="weui-input" name="num" bindinput='pnumChange' type='text'  placeholder="请输入看房人数" />
+        <!-- {{methods[methodsindex].name}} -->
+      </view>     
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">看房方式：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="selector" name="look" range='{{looks}}' value='{{lookIndex}}' range-key="name" bindchange='lookPickerChange'>
+          <view class='picker'>{{looks[lookIndex].name}}</view>
+        </picker>
+      </view>
+      <view class="weui-cell__ft">
+        <i-icon type="enter" size="28" />
+      </view>
+    </view>
+  
+    <button class="btn" form-type='submit' type='primary'>提交</button>
+  </form>
+</view>
+  
+

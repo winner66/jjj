@@ -17,6 +17,9 @@
           
         </view>
       </scroll-view>
+      <!-- <i-cell-group  wx:for="{{childcateList}}" wx:key="objectId">
+        <i-cell data-item="{{item}}" title="{{item.jg_bank}}" bindtap="gotoDetail" label="详细信息" is-link></i-cell>
+      </i-cell-group> -->
 
     </view>
   </scroll-view>

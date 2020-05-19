@@ -1,7 +1,6 @@
 // pages/computer/computer-menu.js
 // pages/dynamic/dynamic-menu.js
 import regeneratorRuntime from '../../utils/runtime';
-
 import apis from '../../utils/apis';
 
 
@@ -13,6 +12,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // 使用说明显示标签
+    isTipTrue:true,
+
     autoplay: true,
     // 自动切换时间间隔
     interval: 5000,
@@ -231,18 +233,18 @@ Page({
   },
   // 置业单
   housechange: function(e) {
-    // 判断是否是会员
-    if (app.globalData.user_token == null || app.globalData.user_token == '') {
-      wx.showToast({
+    // // 判断是否是会员
+    // if (app.globalData.user_token == null || app.globalData.user_token == '') {
+    //   wx.showToast({
 
-        title: "请注册会员",
+    //     title: "请注册会员",
 
-        duration: 3000, //提示的延迟时间，单位毫秒，默认：1500 
+    //     duration: 3000, //提示的延迟时间，单位毫秒，默认：1500 
 
-        mask: false, //是否显示透明蒙层，防止触摸穿透，默认：false        
+    //     mask: false, //是否显示透明蒙层，防止触摸穿透，默认：false        
 
-      })
-    } else {
+    //   })
+    // } else { }
       let that = this;
       wx.navigateTo({
         url: '/pages/house/index?tag=0',
@@ -266,7 +268,7 @@ Page({
           })
         }
       })
-    }
+    
 
   },
   // 评税建议
@@ -306,13 +308,11 @@ Page({
    */
   onLoad: function(options) {
 
-    // // 轮播
-    this.getURLs()
-
-    // // 监管
-    this.getjgJson()
+  
+   
 
   },
+ 
   // 获取轮播图URL
   getURLs: async function () {
 
@@ -433,6 +433,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    // // 轮播
+    this.getURLs()
+    // // 监管
+    this.getjgJson()
 
   },
 

@@ -15,6 +15,7 @@
 		"autoAudits": true,
 		"showShadowRootInWxmlPanel": false,
 		"scopeDataCheck": false,
+		"uglifyFileName": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
@@ -26,7 +27,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.7",
-	"appid": "wxb686d11b965db08e",
+	"appid": "wxefc7cd6aafb3344f",
 	"projectname": "mini",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -412,6 +413,62 @@
 					"id": -1,
 					"name": "pages/computer/computer-menu",
 					"pathName": "pages/computer/computer-menu",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/assistant/release/release",
+					"pathName": "pages/assistant/release/release",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/assistant/index/index",
+					"pathName": "pages/assistant/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/learn/learn-menu",
+					"pathName": "pages/learn/learn-menu",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/nonlocal/list/index",
+					"pathName": "pages/nonlocal/list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/assistant/release/release",
+					"pathName": "pages/assistant/release/release",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/assistant/index/index",
+					"pathName": "pages/assistant/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/assistant/index",
+					"pathName": "pages/assistant/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/assistant/index",
+					"pathName": "pages/assistant/index",
 					"scene": null
 				}
 			]
